@@ -9,10 +9,10 @@ export default function Navbar() {
             <h1 class="text-dark">
               <i class="text-secondary la la-plug"></i>
               <span>
-                electr<span class="text-secondary">o.</span>
+                Bol<span class="text-secondary">o.</span>
               </span>
             </h1>
-            <small class="text-dark">electronics shopping mall</small>
+            <small class="text-dark">electronics shopping.</small>
           </a>
         </div>
 
