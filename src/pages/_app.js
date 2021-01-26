@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div class="page-container">
+    <div className="page-container">
       <Topbar />
       <Navbar />
       <Component {...pageProps} />

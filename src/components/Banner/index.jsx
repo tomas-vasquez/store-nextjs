@@ -2,24 +2,28 @@ import React from "react";
 
 export default function index() {
   return (
-    <div class="container products-tab-carousel">
-      <div class="tab-content" id="nav-tabContent">
+    <div className="container products-tab-carousel">
+      <div className="tab-content" id="nav-tabContent">
         <div
-          class="tab-pane fade show active"
+          className="tab-pane fade show active"
           id="nav-home"
           role="tabpanel"
           aria-labelledby="nav-home-tab"
         >
           <section
-            class="container products clearfix"
+            className="container products clearfix"
             data-component-products="limit:4 page:0 id:1679,807,786,1597"
             data-products='{"1": "Mac pro", "2":"Ipod"}'
           >
-            <div class="owl-carousel owl-theme">
-              <div class="item" data-product>
-                <article class="product">
+            <div className="owl-carousel owl-theme">
+              <div className="item" data-product>
+                <article className="product">
                   <a href="product.html" data-url>
-                    <img src="img/products/1.jpg" class="img-fluid" data-img />
+                    <img
+                      src="img/products/1.jpg"
+                      className="img-fluid"
+                      data-img
+                    />
                   </a>
 
                   <h3>
@@ -28,64 +32,68 @@ export default function index() {
                     </a>
                   </h3>
 
-                  <span class="description" data-product-description>
+                  <span className="description" data-product-description>
                     Lorem ipsum
                   </span>
 
-                  <div class="price-group">
-                    <div class="old-price">
-                      <span class="currency" data-product-currency>
+                  <div className="price-group">
+                    <div className="old-price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>385</span>
                     </div>
 
-                    <div class="price">
-                      <span class="currency" data-product-currency>
+                    <div className="price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>315</span>
                     </div>
                   </div>
 
-                  <div class="btngroup">
+                  <div className="btngroup">
                     <a
                       type="button"
-                      class="btn btn-sm btn-secondary"
+                      className="btn btn-sm btn-secondary"
                       title="Add to Cart"
                       href=""
                       data-product-cart-url
                       data-vvveb-action="addCart"
                       data-product_id="40"
                     >
-                      <i class="la la-shopping-cart"></i> Add to cart
+                      <i className="la la-shopping-cart"></i> Add to cart
                     </a>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to favorites"
                       data-product-fav-url
                     >
-                      <i class="la la-heart"></i>
+                      <i className="la la-heart"></i>
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to compare"
                       data-product-compare-url
                     >
-                      <i class="la la-exchange"></i>
+                      <i className="la la-exchange"></i>
                     </button>
                   </div>
                 </article>
               </div>
 
-              <div class="item" data-product>
-                <article class="product">
+              <div className="item" data-product>
+                <article className="product">
                   <a href="product.html" data-url>
-                    <img src="img/products/2.jpg" class="img-fluid" data-img />
+                    <img
+                      src="img/products/2.jpg"
+                      className="img-fluid"
+                      data-img
+                    />
                   </a>
 
                   <h3>
@@ -94,62 +102,66 @@ export default function index() {
                     </a>
                   </h3>
 
-                  <span class="description" data-product-description>
+                  <span className="description" data-product-description>
                     Lorem ipsum
                   </span>
 
-                  <div class="price-group">
-                    <div class="old-price">
-                      <span class="currency" data-product-currency>
+                  <div className="price-group">
+                    <div className="old-price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>385</span>
                     </div>
 
-                    <div class="price">
-                      <span class="currency" data-product-currency>
+                    <div className="price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>315</span>
                     </div>
                   </div>
 
-                  <div class="btngroup">
+                  <div className="btngroup">
                     <button
                       type="button"
-                      class="btn btn-sm btn-secondary"
+                      className="btn btn-sm btn-secondary"
                       title="Add to Cart"
                       data-product-cart-url
                       data-vvveb-action="addCart"
                     >
-                      <i class="la la-shopping-cart"></i> Add to cart
+                      <i className="la la-shopping-cart"></i> Add to cart
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to favorites"
                       data-product-fav-url
                     >
-                      <i class="la la-heart"></i>
+                      <i className="la la-heart"></i>
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to compare"
                       data-product-compare-url
                     >
-                      <i class="la la-exchange"></i>
+                      <i className="la la-exchange"></i>
                     </button>
                   </div>
                 </article>
               </div>
 
-              <div class="item" data-product>
-                <article class="product">
+              <div className="item" data-product>
+                <article className="product">
                   <a href="product.html" data-url>
-                    <img src="img/products/3.jpg" class="img-fluid" data-img />
+                    <img
+                      src="img/products/3.jpg"
+                      className="img-fluid"
+                      data-img
+                    />
                   </a>
 
                   <h3>
@@ -158,62 +170,66 @@ export default function index() {
                     </a>
                   </h3>
 
-                  <span class="description" data-product-description>
+                  <span className="description" data-product-description>
                     Lorem ipsum
                   </span>
 
-                  <div class="price-group">
-                    <div class="old-price">
-                      <span class="currency" data-product-currency>
+                  <div className="price-group">
+                    <div className="old-price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>385</span>
                     </div>
 
-                    <div class="price">
-                      <span class="currency" data-product-currency>
+                    <div className="price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>315</span>
                     </div>
                   </div>
 
-                  <div class="btngroup">
+                  <div className="btngroup">
                     <button
                       type="button"
-                      class="btn btn-sm btn-secondary"
+                      className="btn btn-sm btn-secondary"
                       title="Add to Cart"
                       data-product-cart-url
                       data-vvveb-action="addCart"
                     >
-                      <i class="la la-shopping-cart"></i> Add to cart
+                      <i className="la la-shopping-cart"></i> Add to cart
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to favorites"
                       data-product-fav-url
                     >
-                      <i class="la la-heart"></i>
+                      <i className="la la-heart"></i>
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to compare"
                       data-product-compare-url
                     >
-                      <i class="la la-exchange"></i>
+                      <i className="la la-exchange"></i>
                     </button>
                   </div>
                 </article>
               </div>
 
-              <div class="item" data-product>
-                <article class="product">
+              <div className="item" data-product>
+                <article className="product">
                   <a href="product.html" data-url>
-                    <img src="img/products/4.jpg" class="img-fluid" data-img />
+                    <img
+                      src="img/products/4.jpg"
+                      className="img-fluid"
+                      data-img
+                    />
                   </a>
 
                   <h3>
@@ -222,62 +238,66 @@ export default function index() {
                     </a>
                   </h3>
 
-                  <span class="description" data-product-description>
+                  <span className="description" data-product-description>
                     Lorem ipsum
                   </span>
 
-                  <div class="price-group">
-                    <div class="old-price">
-                      <span class="currency" data-product-currency>
+                  <div className="price-group">
+                    <div className="old-price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>385</span>
                     </div>
 
-                    <div class="price">
-                      <span class="currency" data-product-currency>
+                    <div className="price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>315</span>
                     </div>
                   </div>
 
-                  <div class="btngroup">
+                  <div className="btngroup">
                     <button
                       type="button"
-                      class="btn btn-sm btn-secondary"
+                      className="btn btn-sm btn-secondary"
                       title="Add to Cart"
                       data-product-cart-url
                       data-vvveb-action="addCart"
                     >
-                      <i class="la la-shopping-cart"></i> Add to cart
+                      <i className="la la-shopping-cart"></i> Add to cart
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to favorites"
                       data-product-fav-url
                     >
-                      <i class="la la-heart"></i>
+                      <i className="la la-heart"></i>
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to compare"
                       data-product-compare-url
                     >
-                      <i class="la la-exchange"></i>
+                      <i className="la la-exchange"></i>
                     </button>
                   </div>
                 </article>
               </div>
 
-              <div class="item" data-product>
-                <article class="product">
+              <div className="item" data-product>
+                <article className="product">
                   <a href="product.html" data-url>
-                    <img src="img/products/5.jpg" class="img-fluid" data-img />
+                    <img
+                      src="img/products/5.jpg"
+                      className="img-fluid"
+                      data-img
+                    />
                   </a>
 
                   <h3>
@@ -286,62 +306,66 @@ export default function index() {
                     </a>
                   </h3>
 
-                  <span class="description" data-product-description>
+                  <span className="description" data-product-description>
                     Lorem ipsum
                   </span>
 
-                  <div class="price-group">
-                    <div class="old-price">
-                      <span class="currency" data-product-currency>
+                  <div className="price-group">
+                    <div className="old-price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>385</span>
                     </div>
 
-                    <div class="price">
-                      <span class="currency" data-product-currency>
+                    <div className="price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>315</span>
                     </div>
                   </div>
 
-                  <div class="btngroup">
+                  <div className="btngroup">
                     <button
                       type="button"
-                      class="btn btn-sm btn-secondary"
+                      className="btn btn-sm btn-secondary"
                       title="Add to Cart"
                       data-product-cart-url
                       data-vvveb-action="addCart"
                     >
-                      <i class="la la-shopping-cart"></i> Add to cart
+                      <i className="la la-shopping-cart"></i> Add to cart
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to favorites"
                       data-product-fav-url
                     >
-                      <i class="la la-heart"></i>
+                      <i className="la la-heart"></i>
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to compare"
                       data-product-compare-url
                     >
-                      <i class="la la-exchange"></i>
+                      <i className="la la-exchange"></i>
                     </button>
                   </div>
                 </article>
               </div>
 
-              <div class="item" data-product>
-                <article class="product">
+              <div className="item" data-product>
+                <article className="product">
                   <a href="product.html" data-url>
-                    <img src="img/products/6.jpg" class="img-fluid" data-img />
+                    <img
+                      src="img/products/6.jpg"
+                      className="img-fluid"
+                      data-img
+                    />
                   </a>
 
                   <h3>
@@ -350,53 +374,53 @@ export default function index() {
                     </a>
                   </h3>
 
-                  <span class="description" data-product-description>
+                  <span className="description" data-product-description>
                     Lorem ipsum
                   </span>
 
-                  <div class="price-group">
-                    <div class="old-price">
-                      <span class="currency" data-product-currency>
+                  <div className="price-group">
+                    <div className="old-price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>385</span>
                     </div>
 
-                    <div class="price">
-                      <span class="currency" data-product-currency>
+                    <div className="price">
+                      <span className="currency" data-product-currency>
                         $
                       </span>
                       <span data-product-price>315</span>
                     </div>
                   </div>
 
-                  <div class="btngroup">
+                  <div className="btngroup">
                     <button
                       type="button"
-                      class="btn btn-sm btn-secondary"
+                      className="btn btn-sm btn-secondary"
                       title="Add to Cart"
                       data-product-cart-url
                       data-vvveb-action="addCart"
                     >
-                      <i class="la la-shopping-cart"></i> Add to cart
+                      <i className="la la-shopping-cart"></i> Add to cart
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to favorites"
                       data-product-fav-url
                     >
-                      <i class="la la-heart"></i>
+                      <i className="la la-heart"></i>
                     </button>
 
                     <button
                       type="button"
-                      class="btn btn-sm btn-link"
+                      className="btn btn-sm btn-link"
                       title="Add to compare"
                       data-product-compare-url
                     >
-                      <i class="la la-exchange"></i>
+                      <i className="la la-exchange"></i>
                     </button>
                   </div>
                 </article>
@@ -405,14 +429,14 @@ export default function index() {
           </section>
         </div>
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="nav-profile"
           role="tabpanel"
           aria-labelledby="nav-profile-tab"
         ></div>
 
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="nav-contact"
           role="tabpanel"
           aria-labelledby="nav-contact-tab"

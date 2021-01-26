@@ -3,9 +3,9 @@ import React from "react";
 export default function Navigation() {
   return (
     <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <div className="nav nav-tabs" id="nav-tab" role="tablist">
         <a
-          class="nav-item nav-link active"
+          className="nav-item nav-link active"
           id="nav-home-tab"
           data-toggle="tab"
           href="#nav-home"
@@ -16,7 +16,7 @@ export default function Navigation() {
           Featured products
         </a>
         <a
-          class="nav-item nav-link"
+          className="nav-item nav-link"
           id="nav-profile-tab"
           data-toggle="tab"
           href="#nav-profile"
@@ -27,7 +27,7 @@ export default function Navigation() {
           Popular products
         </a>
         <a
-          class="nav-item nav-link"
+          className="nav-item nav-link"
           id="nav-contact-tab"
           data-toggle="tab"
           href="#nav-contact"

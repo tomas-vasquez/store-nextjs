@@ -2,9 +2,9 @@ import React from "react";
 
 export default function index() {
   return (
-    <section id="parallax_1" class="module parallax white mb-3">
+    <section id="parallax_1" className="module parallax white mb-3">
       <div>
-        <div class="container">
+        <div className="container">
           <h3>Parallax call to action</h3>{" "}
           <p>
             Kale chips wolf banh mi, Tumblr polaroid Truffaut semiotics Echo
@@ -14,7 +14,7 @@ export default function index() {
           </p>
           <a
             href="/index.php?route=product/category&amp;path=20"
-            class="btn btn-lg btn-secondary"
+            className="btn btn-lg btn-secondary"
           >
             Buy now!
           </a>
