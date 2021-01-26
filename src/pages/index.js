@@ -1,6 +1,13 @@
 import Head from "next/head";
-// import styles from '../styles/Home.module.css'
+
+import Banner from "../components/Banner";
+import Products from "../components/Products";
 
 export default function Home() {
-  return <div>pjdjopajdpi</div>;
+  return (
+    <>
+      <Banner />
+      <Products />
+    </>
+  );
 }
