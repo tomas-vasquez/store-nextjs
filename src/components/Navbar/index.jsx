@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "./Nav";
 
 export default function Navbar() {
   return (
@@ -9,10 +10,10 @@ export default function Navbar() {
             <h1 className="text-dark">
               <i className="text-secondary la la-plug"></i>
               <span>
-                Bol<span className="text-secondary">o.</span>
+                electróni<span className="text-secondary">cos.</span>
               </span>
             </h1>
-            <small className="text-dark">electronics shopping.</small>
+            <small className="text-dark">electronics shopping in latam.</small>
           </a>
         </div>
 
@@ -68,7 +69,7 @@ export default function Navbar() {
                   3
                 </span>
               </i>
-              &ensp;{" "}
+              &ensp;
               <div className="d-inline-block text-dark">
                 <span className="small d-block text-left">Your cart</span>
                 <span className="font-weight-bold" data-total>
@@ -85,7 +86,6 @@ export default function Navbar() {
                 <tbody>
                   <tr>
                     <td className="text-center">
-                      {" "}
                       <a href="http://opencart3100.givan.ro/index.php?route=product/product&amp;language=en-gb&amp;product_id=40">
                         <img
                           src="http://opencart3100.givan.ro/image/cache/catalog/demo/iphone_1-47x47.jpg"
@@ -93,7 +93,7 @@ export default function Navbar() {
                           title="iPhone"
                           className="img-thumbnail"
                         />
-                      </a>{" "}
+                      </a>
                     </td>
                     <td className="text-left">
                       <a href="http://opencart3100.givan.ro/index.php?route=product/product&amp;language=en-gb&amp;product_id=40">
@@ -105,7 +105,7 @@ export default function Navbar() {
                     <td className="text-center">
                       <button
                         type="button"
-                        onclick="cart.remove('1');"
+                        onClick="cart.remove('1');"
                         data-toggle="tooltip"
                         title=""
                         className="btn btn-danger btn-sm"
@@ -117,7 +117,6 @@ export default function Navbar() {
                   </tr>
                   <tr>
                     <td className="text-center">
-                      {" "}
                       <a href="http://opencart3100.givan.ro/index.php?route=product/product&amp;language=en-gb&amp;product_id=43">
                         <img
                           src="http://opencart3100.givan.ro/image/cache/catalog/demo/macbook_1-47x47.jpg"
@@ -125,7 +124,7 @@ export default function Navbar() {
                           title="MacBook"
                           className="img-thumbnail"
                         />
-                      </a>{" "}
+                      </a>
                     </td>
                     <td className="text-left">
                       <a href="http://opencart3100.givan.ro/index.php?route=product/product&amp;language=en-gb&amp;product_id=43">
@@ -137,7 +136,7 @@ export default function Navbar() {
                     <td className="text-center">
                       <button
                         type="button"
-                        onclick="cart.remove('2');"
+                        onClick="cart.remove('2');"
                         data-toggle="tooltip"
                         title=""
                         className="btn btn-danger btn-sm"
@@ -149,7 +148,6 @@ export default function Navbar() {
                   </tr>
                   <tr>
                     <td className="text-center">
-                      {" "}
                       <a href="http://opencart3100.givan.ro/index.php?route=product/product&amp;language=en-gb&amp;product_id=30">
                         <img
                           src="http://opencart3100.givan.ro/image/cache/catalog/demo/canon_eos_5d_1-47x47.jpg"
@@ -157,20 +155,20 @@ export default function Navbar() {
                           title="Canon EOS 5D"
                           className="img-thumbnail"
                         />
-                      </a>{" "}
+                      </a>
                     </td>
                     <td className="text-left">
                       <a href="http://opencart3100.givan.ro/index.php?route=product/product&amp;language=en-gb&amp;product_id=30">
                         Canon EOS 5D
                       </a>
-                      <br />- <small>Select Red</small>{" "}
+                      <br />- <small>Select Red</small>
                     </td>
                     <td className="text-right">x 1</td>
                     <td className="text-right">$98.00</td>
                     <td className="text-center">
                       <button
                         type="button"
-                        onclick="cart.remove('3');"
+                        onClick="cart.remove('3');"
                         data-toggle="tooltip"
                         title=""
                         className="btn btn-danger btn-sm"
@@ -264,116 +262,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      <nav className="navbar navbar-light bg-white  rounded navbar-expand-md mt-4">
-        <button
-          className="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#containerNavbar"
-          aria-controls="containerNavbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="containerNavbar">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item dropdown categories-dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="http://example.com"
-                id="dropdown04"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i className="la la-bars"></i>&ensp;Categories{" "}
-                <i className="la la-angle-down float-right"></i>
-              </a>
-              <div className="dropdown-menu" aria-labelledby="dropdown04">
-                <a className="dropdown-item" href="#">
-                  <i className="la la-desktop"></i> Desktops
-                </a>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
-
-            <li className="nav-item active">
-              <a className="nav-link" href="#">
-                Home <span className="sr-only">(current)</span>
-              </a>
-            </li>
-
-            <li className="nav-item dropdown dropdown--canvas dropdown--canvas--left dropdown--canvas--sm">
-              <a
-                className="nav-link dropdown-toggle"
-                data-toggle="dropdown"
-                href="#"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Store Location
-              </a>
-              <div className="dropdown-menu">Hello!</div>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Delivery Services
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Blog
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Support
-              </a>
-            </li>
-
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="http://example.com"
-                id="dropdown04"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                About Us
-              </a>
-              <div className="dropdown-menu" aria-labelledby="dropdown04">
-                <a className="dropdown-item" href="#">
-                  FAQ
-                </a>
-                <a className="dropdown-item" href="#">
-                  Our Story
-                </a>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Nav />
     </header>
   );
 }

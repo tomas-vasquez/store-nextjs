@@ -1,11 +1,12 @@
 import React from "react";
+import Image from "next/Image";
 
 export default function SingleProduct() {
   return (
     <article className="product d-flex shadow rounded">
       <div className=" mx-auto d-inline-block">
         <a href="product.html" data-url>
-          <img src="products/3.jpg" className="img-fluid" data-img />
+          <Image src="/products/3.jpg" width={230} height={290} />
         </a>
         <div className="px-2 pb-1">
           <h3>
