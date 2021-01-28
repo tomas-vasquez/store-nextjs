@@ -1,5 +1,6 @@
 import React from "react";
-import Image from "next/Image";
+import Image from "next/image";
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -28,28 +29,28 @@ export default function index() {
       >
         {["a", "a", "a", "a", "a", "a"].map((course, index) => (
           <div className="container" key={`ca-${index}`}>
-            <div class="row">
+            <div className="row">
               <div className="col-lg-4 p-5">
-                <h1 class="font-weight-bold">iMac Pro 2.</h1>
-                <p class="font-weight-normal pb-4">
+                <h1 className="font-weight-bold">iMac Pro 2.</h1>
+                <p className="font-weight-normal pb-4">
                   Mobile ready, outstanding performance
                   <br />
                   with gorgeous display
                 </p>
                 <p>
                   <a
-                    class="btn btn-md btn-outline-primary font-weight-bold px-5 py-2"
+                    className="btn btn-md btn-outline-primary font-weight-bold px-5 py-2"
                     href="#"
                     role="button"
                   >
-                    Añadir al carrito <i class="la la-arrow-right"></i>
+                    Añadir al carrito <i className="la la-arrow-right"></i>
                   </a>
                 </p>
               </div>
               <div className="col-lg-8">
                 <Image
                   src="/ipad.png"
-                  class="float-right col-md-8"
+                  className="float-right col-md-8"
                   width={700}
                   height={300}
                 />

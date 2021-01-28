@@ -48,35 +48,15 @@ export default function Nav() {
             </a>
           </li>
 
-          <li className="nav-item dropdown dropdown--canvas dropdown--canvas--left dropdown--canvas--sm">
-            <a
-              className="nav-link dropdown-toggle"
-              data-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Store Location
-            </a>
-            <div className="dropdown-menu">Hello!</div>
-          </li>
-
           <li className="nav-item">
             <a className="nav-link" href="#">
-              Delivery Services
+              Servicio de envio
             </a>
           </li>
 
           <li className="nav-item">
             <a className="nav-link" href="#">
-              Blog
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Support
+              Como comprar?
             </a>
           </li>
 
@@ -89,7 +69,7 @@ export default function Nav() {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              About Us
+              Acerca de
             </a>
             <div className="dropdown-menu" aria-labelledby="dropdown04">
               <a className="dropdown-item" href="#">
@@ -105,12 +85,12 @@ export default function Nav() {
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
-              Contact Us
+              Contactanos
             </a>
           </li>
         </ul>
       </div>
-      <div class="thickline"></div>
+      <div className="thickline"></div>
     </nav>
   );
 }
