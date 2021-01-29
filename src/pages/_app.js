@@ -8,22 +8,28 @@ import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+//redux
+import { Provider } from "react-redux";
+import store from "../store";
+
+//nprogress module
+import Router from "next/router";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css"; //styles of nprogress
+
+//Binding events.
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Head>
-        <script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-          crossorigin="anonymous"
-        ></script>
-        <title></title>
-      </Head>
+    <Provider store={store}>
       <Topbar />
       <Navbar />
       <Component {...pageProps} />
       <Footer />
-    </>
+    </Provider>
   );
 }
 

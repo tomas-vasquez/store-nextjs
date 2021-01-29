@@ -1,4 +1,4 @@
-const categories = [];
+const categories = ["placas", "conectividad", "lcd's"];
 
 const products = [
   {

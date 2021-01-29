@@ -1,6 +1,6 @@
 import React from "react";
 import Navigation from "./Navigation";
-import Product from "./SingleProduct";
+import Product from "./Product";
 
 import { products } from "../../../site.data";
 

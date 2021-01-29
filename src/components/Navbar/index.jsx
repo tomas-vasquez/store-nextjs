@@ -1,20 +1,26 @@
+import Link from "next/link";
 import React from "react";
+import { connect } from "react-redux";
 import Nav from "./Nav";
 
-export default function Navbar() {
+const Navbar = ({ car }) => {
   return (
     <header className="container mt-5">
       <div className="row">
         <div className="col-md-3">
-          <a href="/" className="logo">
-            <h1 className="text-dark">
-              <i className="text-secondary la la-plug"></i>
-              <span>
-                electróni<span className="text-secondary">cos.</span>
-              </span>
-            </h1>
-            <small className="text-dark">electronics shopping in latam.</small>
-          </a>
+          <Link href="/">
+            <a className="logo">
+              <h1 className="text-dark">
+                <i className="text-secondary la la-plug"></i>
+                <span>
+                  electróni<span className="text-secondary">cos.</span>
+                </span>
+              </h1>
+              <small className="text-dark">
+                electronics shopping in latam.
+              </small>
+            </a>
+          </Link>
         </div>
 
         <div className="col-md-5">
@@ -65,15 +71,21 @@ export default function Navbar() {
                 className="la la-shopping-cart d-inline-block"
                 style={{ fontSize: 42 }}
               >
-                <span className="cart-items" data-total_items>
-                  3
-                </span>
+                {car.products.length > 0 && (
+                  <span className="cart-items" data-total_items>
+                    {car.products.length}
+                  </span>
+                )}
               </i>
               &ensp;
               <div className="d-inline-block text-dark">
-                <span className="small d-block text-left">Your cart</span>
+                <span className="small d-block text-left">Tu carrito</span>
                 <span className="font-weight-bold" data-total>
-                  $3500.05
+                  {car.products.length > 0 && (
+                    <span className="cart-items" data-total_items>
+                      {car.products.length}
+                    </span>
+                  )}
                 </span>
               </div>
             </a>
@@ -105,7 +117,7 @@ export default function Navbar() {
                     <td className="text-center">
                       <button
                         type="button"
-                        onClick="cart.remove('1');"
+                        // onClick="cart.remove('1');"
                         data-toggle="tooltip"
                         title=""
                         className="btn btn-danger btn-sm"
@@ -136,7 +148,7 @@ export default function Navbar() {
                     <td className="text-center">
                       <button
                         type="button"
-                        onClick="cart.remove('2');"
+                        // onClick="cart.remove('2');"
                         data-toggle="tooltip"
                         title=""
                         className="btn btn-danger btn-sm"
@@ -168,7 +180,7 @@ export default function Navbar() {
                     <td className="text-center">
                       <button
                         type="button"
-                        onClick="cart.remove('3');"
+                        // onClick="cart.remove('3');"
                         data-toggle="tooltip"
                         title=""
                         className="btn btn-danger btn-sm"
@@ -227,7 +239,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div
+          {/* <div
             className="dropdown float-right"
             id="mini-user"
             data-component-user
@@ -259,10 +271,16 @@ export default function Navbar() {
                 Login
               </a>
             </div>
-          </div>
+          </div>*/}
         </div>
       </div>
       <Nav />
     </header>
   );
-}
+};
+
+const mapStateToProps = (state) => ({
+  car: state.car,
+});
+
+export default connect(mapStateToProps)(Navbar);

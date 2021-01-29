@@ -4,13 +4,13 @@ import Link from "next/link";
 
 var exchangeRate = "BS";
 
-export default function SingleProduct({ product }) {
+export default function Product({ product }) {
   let price = product.price.find((price) => exchangeRate === price.type)
     ?.amount;
   return (
     <article className="product d-flex shadow rounded">
       <div className=" mx-auto d-inline-block">
-        <Link href={`/${product.shortLink}`} data-url>
+        <Link href={`/${product.shortLink}`}>
           <Image src={product.images[0]} width={230} height={230} />
         </Link>
         <div className="px-2 pb-1">

@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Link from "next/link";
+import {
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
+
+import { categories } from "../../../site.data";
 
 export default function Nav() {
+  const [openDropdownCategories, setOpenDropdownCategories] = useState(false);
+
+  const toggle = () => setOpenDropdownCategories(!openDropdownCategories);
+
   return (
     <nav className="navbar navbar-light bg-white  rounded navbar-expand-md mt-4">
       <button
@@ -17,35 +30,24 @@ export default function Nav() {
 
       <div className="collapse navbar-collapse" id="containerNavbar">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item dropdown categories-dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="http://example.com"
-              id="dropdown04"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i className="la la-bars"></i>&ensp;Categories
-              <i className="la la-angle-down float-right"></i>
-            </a>
-            <div className="dropdown-menu" aria-labelledby="dropdown04">
-              <a className="dropdown-item" href="#">
-                <i className="la la-desktop"></i> Desktops
-              </a>
-              <a className="dropdown-item" href="#">
-                Another action
-              </a>
-              <a className="dropdown-item" href="#">
-                Something else here
-              </a>
-            </div>
+          <li>
+            <ButtonDropdown isOpen={openDropdownCategories} toggle={toggle}>
+              <DropdownToggle className="px-5">
+                Categorias
+                <i className="la la-angle-down ml-1" />
+              </DropdownToggle>
+              <DropdownMenu>
+                {categories.map((_categorie, index) => (
+                  <DropdownItem>{_categorie}</DropdownItem>
+                ))}
+              </DropdownMenu>
+            </ButtonDropdown>
           </li>
 
-          <li className="nav-item active">
-            <a className="nav-link" href="#">
-              inicio <span className="sr-only">(current)</span>
-            </a>
+          <li className="nav-item">
+            <Link href="/">
+              <a className="nav-link">Inicio</a>
+            </Link>
           </li>
 
           <li className="nav-item">
