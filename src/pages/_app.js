@@ -27,7 +27,12 @@ function MyApp({ Component, pageProps }) {
     <Provider store={store}>
       <Topbar />
       <Navbar />
-      <Component {...pageProps} />
+      <div className="content">
+        <div class="container">
+          <div class="thickline mb-3"></div>
+        </div>
+        <Component {...pageProps} />
+      </div>
       <Footer />
     </Provider>
   );

@@ -30,8 +30,10 @@ import {
   faExclamationTriangle,
   faPlus,
   faTrash,
-  faDoorClosed,
   faEye,
+  faCartPlus,
+  faCarAlt,
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -50,6 +52,12 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "carPlus":
+      return faCartPlus;
+
+    case "car":
+      return faShoppingCart;
+
     case "eye":
       return faEye;
 

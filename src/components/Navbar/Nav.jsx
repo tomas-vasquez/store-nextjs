@@ -11,11 +11,10 @@ import { categories } from "../../../site.data";
 
 export default function Nav() {
   const [openDropdownCategories, setOpenDropdownCategories] = useState(false);
-
   const toggle = () => setOpenDropdownCategories(!openDropdownCategories);
 
   return (
-    <nav className="navbar navbar-light bg-white  rounded navbar-expand-md mt-4">
+    <nav className="navbar navbar-light bg-white  rounded navbar-expand-md mt-3">
       <button
         className="navbar-toggler navbar-toggler-right"
         type="button"
@@ -32,7 +31,7 @@ export default function Nav() {
         <ul className="navbar-nav mr-auto">
           <li>
             <ButtonDropdown isOpen={openDropdownCategories} toggle={toggle}>
-              <DropdownToggle className="px-5">
+              <DropdownToggle className="px-5 rounded">
                 Categorias
                 <i className="la la-angle-down ml-1" />
               </DropdownToggle>

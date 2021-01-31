@@ -11972,12 +11972,13 @@ section.parallax.white h3 {
 }
 
 section.parallax.white div > .container > .btn {
-  /*	color:#333;
-	background:#fff;*/
+  color: #333;
+  background: #fff;
 }
 
 #parallax_1 {
-  background-image: url("../img/applewatch-wd-1200x600.jpg");
+  /* background: rgba(0, 0, 0, 0.62); */
+  background-image: url("/adafruit-2286778_1280.jpg");
   margin: 30px 0px 0px;
   margin-left: 0px;
   margin-right: 0px;
@@ -12175,3 +12176,8 @@ section.parallax.white div > .container > .btn {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.shadow2 {
+  border: solid 2px #5065df !important;
+  box-shadow: 0 0rem 0.2rem #5065df;
+}

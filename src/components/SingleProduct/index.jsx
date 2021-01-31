@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/Image";
 import { connect } from "react-redux";
 import {
@@ -20,33 +20,44 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
     removeProduct(product);
   };
 
+  const [currentImage, setCurrentImage] = useState(0);
+
   return (
     <div>
       <article className="product-details container" data-component-product="">
         <div className="row">
           <div className="col-md-8">
-            <div className="zoom-gallery row d-flex">
+            <div className="row d-flex">
               {product.images[1] && (
                 <ul className="list-unstyled product-gallery col-md-2">
                   {product.images.map((image, index) => (
-                    <li key={index} className="list-item">
-                      <a href="img/products/1.jpg">
-                        <Image
-                          src={image}
-                          className="img-fluid"
-                          height="100%"
-                          width="100%"
-                        />
-                      </a>
+                    <li
+                      key={index}
+                      style={{ cursor: "pointer" }}
+                      className={`list-item ${
+                        currentImage === index && " border-1 shadow2"
+                      }`}
+                    >
+                      <Image
+                        src={image}
+                        className="img-fluid"
+                        height="100%"
+                        width="100%"
+                        onClick={() => setCurrentImage(index)}
+                      />
                     </li>
                   ))}
                 </ul>
               )}
 
               <div className="col-md-10 m-auto d-flex">
-                <a href="img/products/5.jpg" className="m-auto">
-                  <Image src={product.images[0]} height={400} width={400} />
-                </a>
+                <div className="m-auto">
+                  <Image
+                    src={product.images[currentImage]}
+                    height={400}
+                    width={400}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -173,39 +184,7 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
               aria-labelledby="profile-tab"
               aria-expanded="false"
             >
-              <p>
-                Food truck fixie locavore, accusamus mcsweeney's marfa nulla
-                single-origin coffee squid. Exercitation +1 labore velit, blog
-                sartorial PBR leggings next level wes anderson artisan four loko
-                farm-to-table craft beer twee. Qui photo booth letterpress,
-                commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
-                vinyl cillum PBR. Homo nostrud organic, assumenda labore
-                aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr,
-                vero magna velit sapiente labore stumptown. Vegan fanny pack
-                odio cillum wes anderson 8-bit, sustainable jean shorts beard ut
-                DIY ethical culpa terry richardson biodiesel. Art party
-                scenester stumptown, tumblr butcher vero sint qui sapiente
-                accusamus tattooed echo park.
-              </p>
-            </div>
-            <div
-              className="tab-pane fade"
-              id="dropdown1"
-              role="tabpanel"
-              aria-labelledby="dropdown1-tab"
-            >
-              <p>
-                Etsy mixtape wayfarers, ethical wes anderson tofu before they
-                sold out mcsweeney's organic lomo retro fanny pack lo-fi
-                farm-to-table readymade. Messenger bag gentrify pitchfork
-                tattooed craft beer, iphone skateboard locavore carles etsy
-                salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
-                Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh
-                mi whatever gluten-free, carles pitchfork biodiesel fixie etsy
-                retro mlkshk vice blog. Scenester cred you probably haven't
-                heard of them, vinyl craft beer blog stumptown. Pitchfork
-                sustainable tofu synth chambray yr.
-              </p>
+              <p></p>
             </div>
           </div>
         </div>

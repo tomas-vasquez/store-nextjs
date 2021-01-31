@@ -5,10 +5,6 @@ import SingleProduct from "../components/SingleProduct";
 const Product = function ({ product }) {
   return (
     <div className="content">
-      <div className="container">
-        <div className="thickline"></div>
-      </div>
-
       <nav className="breadcrumb container">
         <a className="breadcrumb-item" href="#">
           Home
