@@ -6,6 +6,7 @@ import "../assets/css/style.css";
 
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
+import AdminNavbar from "../components/admin/Navbar";
 import Footer from "../components/Footer";
 
 //redux
@@ -13,7 +14,7 @@ import { Provider } from "react-redux";
 import store from "../store";
 
 //nprogress module
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css"; //styles of nprogress
 
@@ -23,17 +24,34 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   return (
     <Provider store={store}>
-      <Topbar />
-      <Navbar />
-      <div className="content">
-        <div class="container">
-          <div class="thickline mb-3"></div>
-        </div>
-        <Component {...pageProps} />
-      </div>
-      <Footer />
+      {router.route.includes("admin") ? (
+        <>
+          <Topbar />
+          <AdminNavbar />
+          <div className="content">
+            <div class="container">
+              <div class="thickline mb-3"></div>
+            </div>
+            <Component {...pageProps} />
+          </div>
+          <Footer />
+        </>
+      ) : (
+        <>
+          <Topbar />
+          <Navbar />
+          <div className="content">
+            <div class="container">
+              <div class="thickline mb-3"></div>
+            </div>
+            <Component {...pageProps} />
+          </div>
+          <Footer />
+        </>
+      )}
     </Provider>
   );
 }

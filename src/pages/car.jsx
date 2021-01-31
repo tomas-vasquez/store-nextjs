@@ -5,12 +5,12 @@ export default function Car() {
   return (
     <div className="container">
       <div className="row">
-        <div class="col-md-12 mt-2 mb-4">
+        <div className="col-md-12 mt-2 mb-4">
           <h2>
             <Icons icon="car" className="mr-3 text-primary" />
             Carrito de compras
           </h2>
-          <p class="well">
+          <p className="well">
             Aqui apareceran todos los productos que anadio a su carrito de
             compras. &nbsp;
             <a href="#" onclick="jQuery('.login-form').toggle();return false;">
@@ -65,7 +65,7 @@ export default function Car() {
                         <input
                           type="text"
                           name="quantity[YToxOntzOjEwOiJwcm9kdWN0X2lkIjtpOjQwO30=]"
-                          value="2"
+                          defaultValue="2"
                           size="1"
                           className="form-control"
                         />
@@ -123,7 +123,7 @@ export default function Car() {
                         <input
                           type="text"
                           name="quantity[YToxOntzOjEwOiJwcm9kdWN0X2lkIjtpOjQzO30=]"
-                          value="2"
+                          defaultValue="2"
                           size="1"
                           className="form-control"
                         />

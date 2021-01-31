@@ -11,7 +11,9 @@ export default function Product({ product }) {
     <article className="product d-flex shadow rounded">
       <div className=" mx-auto d-inline-block">
         <Link href={`/${product.shortLink}`}>
-          <Image src={product.images[0]} width={230} height={230} />
+          <a>
+            <Image src={product.images[0]} width={230} height={230} />
+          </a>
         </Link>
         <div className="px-2 pb-1">
           <h3>

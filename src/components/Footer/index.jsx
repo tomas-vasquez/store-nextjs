@@ -69,7 +69,7 @@ export default function Footer({ litle }) {
                     id="submitsubscribe"
                     name="send"
                     className="btn btn-soft-primary btn-block"
-                    value="Subscribe"
+                    defaultValue="Subscribe"
                   />
                 </div>
               </div>

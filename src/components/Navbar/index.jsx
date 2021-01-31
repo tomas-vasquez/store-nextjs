@@ -38,10 +38,10 @@ const Navbar = ({ car }) => {
               />
 
               <select className="custom-select input-group-append form-control-lg no-border-x default-font-size">
-                <option selected="">All categories</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option defaultValue="on">All categories</option>
+                <option defaultValue="1">One</option>
+                <option defaultValue="2">Two</option>
+                <option defaultValue="3">Three</option>
               </select>
 
               <div className="input-group-append">

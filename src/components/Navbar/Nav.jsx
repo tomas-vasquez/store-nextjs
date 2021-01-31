@@ -37,7 +37,7 @@ export default function Nav() {
               </DropdownToggle>
               <DropdownMenu>
                 {categories.map((_categorie, index) => (
-                  <DropdownItem>{_categorie}</DropdownItem>
+                  <DropdownItem key={index}>{_categorie}</DropdownItem>
                 ))}
               </DropdownMenu>
             </ButtonDropdown>
