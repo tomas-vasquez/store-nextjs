@@ -5,21 +5,8 @@ import { useAuth } from "reactfire";
 export default function Login() {
   const auth = useAuth;
   const uiConfig = {
-    callbacks: {
-      signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-        // var user = authResult.user;
-        // var credential = authResult.credential;
-        // var isNewUser = authResult.additionalUserInfo.isNewUser;
-        // var providerId = authResult.additionalUserInfo.providerId;
-        // var operationType = authResult.operationType;
-        // return true;
-        return true;
-      },
-      signInFailure: function (error) {},
-    },
     queryParameterForSignInSuccessUrl: "signInSuccessUrl",
     signInFlow: "popup",
-    signInSuccessUrl: "/admin/products",
     signInOptions: [
       auth.EmailAuthProvider.PROVIDER_ID,
       auth.GoogleAuthProvider.PROVIDER_ID,

@@ -1,4 +1,5 @@
 import "../assets/css/style.css";
+import { Suspense } from "react";
 
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
@@ -23,43 +24,44 @@ Router.events.on("routeChangeError", () => NProgress.done());
 import firebaseConfig from "../firebaseConfig";
 import { FirebaseAppProvider } from "reactfire";
 import "firebase/auth";
+import "firebase/firestore";
 import AuthWrapper from "../components/admin/AuthWrapper";
 import Login from "../components/admin/Login";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   return (
-    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <Provider store={store}>
-        {router.route.includes("admin") ? (
-          <div>
-            <Topbar />
-            <AdminNavbar />
-            <div className="content">
-              <div className="container">
-                <div className="thickline mb-3"></div>
-              </div>
-              <AuthWrapper fallback={Login}>
+    <Provider store={store}>
+      {router.route.includes("admin") ? (
+        <div>
+          <Topbar />
+          <AdminNavbar />
+          <div className="content">
+            <div className="container">
+              <div className="thickline mb-3"></div>
+            </div>
+            <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+              <AuthWrapper fallback={<Login />}>
                 <Component {...pageProps} />
               </AuthWrapper>
-            </div>
-            <AdminFooter />
+            </FirebaseAppProvider>
           </div>
-        ) : (
-          <>
-            <Topbar />
-            <Navbar />
-            <div className="content">
-              <div className="container">
-                <div className="thickline mb-3"></div>
-              </div>
-              <Component {...pageProps} />
+          <AdminFooter />
+        </div>
+      ) : (
+        <>
+          <Topbar />
+          <Navbar />
+          <div className="content">
+            <div className="container">
+              <div className="thickline mb-3"></div>
             </div>
-            <Footer />
-          </>
-        )}
-      </Provider>
-    </FirebaseAppProvider>
+            <Component {...pageProps} />
+          </div>
+          <Footer />
+        </>
+      )}
+    </Provider>
   );
 }
 
