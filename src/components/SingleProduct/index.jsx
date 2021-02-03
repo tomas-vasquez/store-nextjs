@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/Image";
+import Image from "next/image";
 import { connect } from "react-redux";
 import {
   addProduct as _addProduct,
