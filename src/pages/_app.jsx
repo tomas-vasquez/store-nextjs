@@ -1,13 +1,10 @@
-import Head from "next/head";
-
-// import "../assets/css/bootstrap.css";
 import "../assets/css/style.css";
-// import "../assets/css/stylesheet.css";
 
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import AdminNavbar from "../components/admin/Navbar";
 import Footer from "../components/Footer";
+import AdminFooter from "../components/admin/Footer";
 
 //redux
 import { Provider } from "react-redux";
@@ -18,41 +15,51 @@ import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css"; //styles of nprogress
 
-//Binding events.
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
+//firebase
+import firebaseConfig from "../firebaseConfig";
+import { FirebaseAppProvider } from "reactfire";
+import "firebase/auth";
+import AuthWrapper from "../components/admin/AuthWrapper";
+import Login from "../components/admin/Login";
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   return (
-    <Provider store={store}>
-      {router.route.includes("admin") ? (
-        <>
-          <Topbar />
-          <AdminNavbar />
-          <div className="content">
-            <div class="container">
-              <div class="thickline mb-3"></div>
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+      <Provider store={store}>
+        {router.route.includes("admin") ? (
+          <div>
+            <Topbar />
+            <AdminNavbar />
+            <div className="content">
+              <div className="container">
+                <div className="thickline mb-3"></div>
+              </div>
+              <AuthWrapper fallback={Login}>
+                <Component {...pageProps} />
+              </AuthWrapper>
             </div>
-            <Component {...pageProps} />
+            <AdminFooter />
           </div>
-          <Footer />
-        </>
-      ) : (
-        <>
-          <Topbar />
-          <Navbar />
-          <div className="content">
-            <div class="container">
-              <div class="thickline mb-3"></div>
+        ) : (
+          <>
+            <Topbar />
+            <Navbar />
+            <div className="content">
+              <div className="container">
+                <div className="thickline mb-3"></div>
+              </div>
+              <Component {...pageProps} />
             </div>
-            <Component {...pageProps} />
-          </div>
-          <Footer />
-        </>
-      )}
-    </Provider>
+            <Footer />
+          </>
+        )}
+      </Provider>
+    </FirebaseAppProvider>
   );
 }
 

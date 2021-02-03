@@ -86,7 +86,7 @@ export default function Footer({ litle }) {
             <a
               className="badge badge-dark"
               rel="noopener"
-              href="https://tomas-dev.vercel.app/"
+              href="https://tomas-vasquez.vercel.app/"
               aria-label="My GitHub"
             >
               Tomi
