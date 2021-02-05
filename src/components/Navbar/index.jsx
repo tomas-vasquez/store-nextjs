@@ -3,7 +3,7 @@ import React from "react";
 import Car from "./Car";
 import Nav from "./Nav";
 
-const Navbar = ({ car }) => {
+const Navbar = ({ car, products }) => {
   return (
     <header className="container mt-5">
       <div className="row">
@@ -90,7 +90,7 @@ const Navbar = ({ car }) => {
           </div>*/}
         </div>
       </div>
-      <Nav />
+      <Nav products={products} />
     </header>
   );
 };

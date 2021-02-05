@@ -7,9 +7,9 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-import { categories } from "../../../site.data";
+// import { categories } from "../../../site.data";
 
-export default function Nav() {
+export default function Nav(products) {
   const [openDropdownCategories, setOpenDropdownCategories] = useState(false);
   const toggle = () => setOpenDropdownCategories(!openDropdownCategories);
 
@@ -36,9 +36,9 @@ export default function Nav() {
                 <i className="la la-angle-down ml-1" />
               </DropdownToggle>
               <DropdownMenu>
-                {categories.map((_categorie, index) => (
+                {/* {categories.map((_categorie, index) => (
                   <DropdownItem key={index}>{_categorie}</DropdownItem>
-                ))}
+                ))} */}
               </DropdownMenu>
             </ButtonDropdown>
           </li>

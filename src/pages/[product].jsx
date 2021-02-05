@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { products } from "../../site.data";
 import SingleProduct from "../components/SingleProduct";
 
 // Firebase
 import firebase from "firebase/app";
 import firebaseConfig from "../firebaseConfig";
-
-// Add the Firebase services that you want to use
-import "firebase/auth";
 import "firebase/firestore";
 
 const Product = function ({ product }) {
@@ -30,15 +26,20 @@ const Product = function ({ product }) {
 };
 
 export async function getStaticPaths() {
-  firebase.initializeApp(firebaseConfig);
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  } else {
+    firebase.app(); // if already initialized, use that one
+  }
   var db = firebase.firestore();
-  db.collection("products")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-      });
-    });
+
+  let products = [];
+  const querySnapshot = await db.collection("products").get();
+
+  for (const doc of querySnapshot.docs) {
+    const product = doc.data();
+    products.push(product);
+  }
 
   return {
     paths: products.map((product) => `/${product.shortLink}`),
@@ -47,6 +48,20 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { product } }) {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  } else {
+    firebase.app(); // if already initialized, use that one
+  }
+  var db = firebase.firestore();
+
+  let products = [];
+  const querySnapshot = await db.collection("products").get();
+
+  for (const doc of querySnapshot.docs) {
+    const product = doc.data();
+    products.push(product);
+  }
   return {
     props: {
       product: products.find((_product) => _product.shortLink === product),

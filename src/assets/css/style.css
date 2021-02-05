@@ -11977,11 +11977,11 @@ section.parallax.white div > .container > .btn {
 }
 
 #parallax_1 {
-  /* background: rgba(0, 0, 0, 0.62); */
-  background-image: url("/adafruit-2286778_1280.jpg");
+  background-image: url("/parallax.jpg");
   margin: 30px 0px 0px;
   margin-left: 0px;
   margin-right: 0px;
+  /* filter: grayscale(0.2); */
 }
 
 #parallax_1 > div {

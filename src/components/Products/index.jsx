@@ -2,9 +2,7 @@ import React from "react";
 import Navigation from "./Navigation";
 import Product from "./Product";
 
-import { products } from "../../../site.data";
-
-export default function index() {
+export default function index({ products }) {
   return (
     <div className="container">
       <Navigation />

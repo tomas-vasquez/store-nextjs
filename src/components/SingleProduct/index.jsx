@@ -5,6 +5,8 @@ import {
   addProduct as _addProduct,
   removeProduct as _removeProduct,
 } from "../../store/car_store/actions";
+import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
+import classnames from "classnames";
 
 var exchangeRate = "BS";
 
@@ -21,6 +23,11 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
   };
 
   const [currentImage, setCurrentImage] = useState(0);
+
+  const [activeTab, setActiveTab] = useState("1");
+  const toggle = (tab) => {
+    if (activeTab !== tab) setActiveTab(tab);
+  };
 
   return (
     <div>
@@ -69,10 +76,7 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
 
             <ul className="list-unstyled text-muted">
               <li>
-                Brand: <span>Apple</span>
-              </li>
-              <li>
-                SKU: <span>333</span>
+                ID: <span>{product.id}</span>
               </li>
               <li>
                 Stock: <span>In stock</span>
@@ -137,57 +141,38 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
           </div>
         </div>
 
-        <div className="product-tabs clearfix" role="tabpanel">
-          <ul className="nav nav-tabs" id="myTab" role="tablist">
-            <li className="nav-item">
-              <a
-                className="nav-link active"
-                id="home-tab"
-                data-toggle="tab"
-                href="#home"
-                role="tab"
-                aria-controls="home"
-                aria-expanded="true"
-              >
-                Descripcion
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="profile-tab"
-                data-toggle="tab"
-                href="#profile"
-                role="tab"
-                aria-controls="profile"
-                aria-expanded="false"
-              >
-                Especificaciones
-              </a>
-            </li>
-          </ul>
-          <div className="tab-content" id="myTabContent">
-            <div
-              role="tabpanel"
-              className="tab-pane fade active show"
-              id="home"
-              aria-labelledby="home-tab"
-              aria-expanded="true"
-              data-description=""
+        <Nav tabs>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: activeTab === "1" })}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                toggle("1");
+              }}
             >
-              <p dangerouslySetInnerHTML={{ __html: product.description }} />
-            </div>
-            <div
-              className="tab-pane fade"
-              id="profile"
-              role="tabpanel"
-              aria-labelledby="profile-tab"
-              aria-expanded="false"
+              Descripcion
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: activeTab === "2" })}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                toggle("2");
+              }}
             >
-              <p></p>
-            </div>
-          </div>
-        </div>
+              Especificaciones
+            </NavLink>
+          </NavItem>
+        </Nav>
+        <TabContent activeTab={activeTab}>
+          <TabPane tabId="1" className="pt-4">
+            <div dangerouslySetInnerHTML={{ __html: product.description }} />
+          </TabPane>
+          <TabPane tabId="2" className="pt-4">
+            <div dangerouslySetInnerHTML={{ __html: product.specs }} />
+          </TabPane>
+        </TabContent>
       </article>
     </div>
   );

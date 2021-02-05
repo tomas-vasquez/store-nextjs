@@ -16,20 +16,24 @@ import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css"; //styles of nprogress
 
+// Firebase
+
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 //firebase
+import firebase from "firebase/app";
 import firebaseConfig from "../firebaseConfig";
 import { FirebaseAppProvider } from "reactfire";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
+
 import AuthWrapper from "../components/admin/AuthWrapper";
 import Login from "../components/admin/Login";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, products }) {
   const router = useRouter();
   return (
     <Provider store={store}>
@@ -52,7 +56,7 @@ function MyApp({ Component, pageProps }) {
       ) : (
         <>
           <Topbar />
-          <Navbar />
+          <Navbar products={products} />
           <div className="content">
             <div className="container">
               <div className="thickline mb-3"></div>
@@ -64,6 +68,30 @@ function MyApp({ Component, pageProps }) {
       )}
     </Provider>
   );
+}
+
+export async function getStaticProps({ params: { product } }) {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  } else {
+    firebase.app(); // if already initialized, use that one
+  }
+
+  var db = firebase.firestore();
+
+  let products = [];
+  const querySnapshot = await db.collection("products").get();
+
+  for (const doc of querySnapshot.docs) {
+    const product = doc.data();
+    products.push(product);
+  }
+
+  return {
+    props: {
+      product: products.find((_product) => _product.shortLink === product),
+    },
+  };
 }
 
 export default MyApp;
