@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 import { StorageImage } from "reactfire";
 import Icons from "../../common/Icons";
@@ -16,14 +17,18 @@ export default function SingleProduct({ product }) {
       <div className=" mx-auto d-inline-block">
         {product.images[0] ? (
           <a>
-            <StorageImage
-              storagePath={product.images[0]}
+            <img
+              src={product.images[0].imageUrl}
               style={{ width: "100%" }}
               alt={product.name}
             />
           </a>
         ) : (
-          <>noo image</>
+          <img
+            style={{ width: "100%" }}
+            src={"/600px-GHS-pictogram-unknown.svg.png"}
+            alt={product.name}
+          />
         )}
 
         <div className="px-2 pb-1">

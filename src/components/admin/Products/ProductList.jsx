@@ -4,14 +4,36 @@ import Icons from "../../common/Icons";
 import Loading from "../Loading";
 import { Button, Row, Col } from "reactstrap";
 import SingleProduct from "./SingleProduct";
-import ModalAppProduct from "./ModalAddProduct";
+import Alerts from "../../common/Alerts";
+
+const ExchangeTypes = ["BS", "USD"];
 
 export default function ProductList() {
   const [products, setProducts] = useState(null);
   const [isComplete, setIsComplete] = useState(false);
 
-  const [openModalAdd, setOpenModalAdd] = useState(false);
-  const toggleOpenModalAdd = () => setOpenModalAdd(!openModalAdd);
+  const handleAddPrduct = () => {
+    fireStore
+      .collection("products")
+      .doc()
+      .set({
+        images: [],
+        price: ExchangeTypes.map((type) => {
+          return {
+            type,
+            amount: 0,
+          };
+        }),
+        name: "no-definido",
+        shortLink: "no-definido",
+        description: "no-definido",
+        specs: "no-definido",
+      })
+      .then(function () {
+        Alerts.showSuccess();
+      });
+    Alerts.showLoading();
+  };
 
   const fireStore = useFirestore();
 
@@ -54,18 +76,10 @@ export default function ProductList() {
             </button>
           </div>
 
-          <Button
-            className="ml-auto"
-            color="primary"
-            onClick={toggleOpenModalAdd}
-          >
+          <Button className="ml-auto" color="primary" onClick={handleAddPrduct}>
             <Icons icon="plus" className="mr-2" />
             Anadir
           </Button>
-          <ModalAppProduct
-            openModalEdit={openModalAdd}
-            toggleOpenModalEdit={toggleOpenModalAdd}
-          />
         </div>
       </form>
 

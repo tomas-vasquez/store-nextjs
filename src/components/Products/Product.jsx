@@ -12,7 +12,20 @@ export default function Product({ product }) {
       <div className=" mx-auto d-inline-block">
         <Link href={`/${product.shortLink}`}>
           <a>
-            <Image src={product.images[0]} width={230} height={230} />
+            {product.images[0] ? (
+              <img
+                src={product.images[0].imageUrl}
+                width={230}
+                height={230}
+                alt={product.images[0].imageId}
+              />
+            ) : (
+              <Image
+                src={"/600px-GHS-pictogram-unknown.svg.png"}
+                width={230}
+                height={230}
+              />
+            )}
           </a>
         </Link>
         <div className="px-2 pb-1">

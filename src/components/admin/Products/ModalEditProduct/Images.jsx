@@ -11,28 +11,35 @@ export default function Images({ product, toggleOpenModalEdit }) {
 
   const uploadPic = (event) => {
     const file = event.target.files[0];
-    console.log(file);
-    const fileName = new Date().getMilliseconds() + "-" + file.name;
+    var fileName = new Date().getMilliseconds() + "-" + file.name;
     const newRef = storage.ref("products").child(fileName);
 
-    newRef.put(file).then((e) => {
-      let newProduct = {
-        ...product,
-        images: [...product.images, `/products/${fileName}`],
-      };
-      firestore.collection("products").doc(product.id).update(newProduct);
-      Alerts.showSuccess();
+    newRef.put(file).then(() => {
+      newRef.getDownloadURL().then((imageUrl) => {
+        let newProduct = {
+          ...product,
+          images: [
+            ...product.images,
+            {
+              imageId: `/products/${fileName}`,
+              imageUrl,
+            },
+          ],
+        };
+        firestore.collection("products").doc(product.id).update(newProduct);
+        Alerts.showSuccess();
+      });
     });
     Alerts.showLoading();
   };
 
-  const handleDelete = (fileName) => {
-    const newRef = storage.ref().child(fileName);
+  const handleDelete = (imageId) => {
+    const newRef = storage.ref().child(imageId);
 
     newRef.delete().then((e) => {
       let newProduct = {
         ...product,
-        images: product.images.filter((image) => image !== fileName),
+        images: product.images.filter((image) => image.imageId !== imageId),
       };
       firestore.collection("products").doc(product.id).update(newProduct);
       Alerts.showSuccess();
@@ -41,24 +48,12 @@ export default function Images({ product, toggleOpenModalEdit }) {
   };
 
   const SingleImage = ({ image }) => {
-    const [url, setUrl] = useState("/");
-
-    useEffect(() => {
-      storage
-        .ref()
-        .child(image)
-        .getDownloadURL()
-        .then((_url) => {
-          setUrl(_url);
-        });
-    }, []);
-
     return (
       <div className="shadow mr-3 border" style={{ width: 150, height: 150 }}>
-        <StorageImage
-          storagePath={image}
+        <img
+          src={image.imageUrl}
           style={{ width: 150, height: 150 }}
-          alt={image}
+          alt={image.imageId}
         />
         <ButtonGroup
           style={{
@@ -67,10 +62,14 @@ export default function Images({ product, toggleOpenModalEdit }) {
             top: -38,
           }}
         >
-          <a href={url} target="imagePreview" className="btn btn-secondary">
+          <a
+            href={image.imageUrl}
+            target="imagePreview"
+            className="btn btn-secondary"
+          >
             <Icons icon="eye" />
           </a>
-          <Button color="danger" onClick={() => handleDelete(image)}>
+          <Button color="danger" onClick={() => handleDelete(image.imageId)}>
             <Icons icon="trash" />
           </Button>
         </ButtonGroup>

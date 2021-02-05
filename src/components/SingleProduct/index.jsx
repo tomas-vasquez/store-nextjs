@@ -45,11 +45,9 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
                         currentImage === index && " border-1 shadow2"
                       }`}
                     >
-                      <Image
-                        src={image}
+                      <img
+                        src={image.imageUrl}
                         className="img-fluid"
-                        height="100%"
-                        width="100%"
                         onClick={() => setCurrentImage(index)}
                       />
                     </li>
@@ -59,8 +57,8 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
 
               <div className="col-md-10 m-auto d-flex">
                 <div className="m-auto">
-                  <Image
-                    src={product.images[currentImage]}
+                  <img
+                    src={product.images[currentImage].imageUrl}
                     height={400}
                     width={400}
                   />

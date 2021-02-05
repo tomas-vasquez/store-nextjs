@@ -7,7 +7,7 @@ const Navbar = ({ car, products }) => {
   return (
     <header className="container mt-5">
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <Link href="/">
             <a className="logo">
               <h1 className="text-dark">
@@ -53,9 +53,9 @@ const Navbar = ({ car, products }) => {
           </form>
         </div>
 
-        <div className="col-md-3">
+        <div className="col-md-4">
           <Car />
-          {/* <div
+          <div
             className="dropdown float-right"
             id="mini-user"
             data-component-user
@@ -87,7 +87,7 @@ const Navbar = ({ car, products }) => {
                 Login
               </a>
             </div>
-          </div>*/}
+          </div>
         </div>
       </div>
       <Nav products={products} />

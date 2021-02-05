@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import {
-  Button,
-  Popover,
-  PopoverHeader,
-  PopoverBody,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-} from "reactstrap";
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 
 const Car = function ({ car }) {
   const [popoverOpen, setPopoverOpen] = useState(false);
@@ -40,7 +32,7 @@ const Car = function ({ car }) {
             </span>
           </div>
         </DropdownToggle>
-        <DropdownMenu className="dropdown-menu-xl">
+        {/* <DropdownMenu className="dropdown-menu-xl">
           <table className="table table-striped ">
             <tbody>
               {car.products.length === 0 && (
@@ -86,7 +78,7 @@ const Car = function ({ car }) {
               </tbody>
             </table>
           )}
-        </DropdownMenu>
+        </DropdownMenu> */}
       </UncontrolledDropdown>
     </div>
   );
