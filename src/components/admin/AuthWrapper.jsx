@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Loading from "./Loading";
 import { useAuth } from "reactfire";
-import signOut from "../../context/singout";
 import SignOut from "../../context/singout";
 
 const AuthWrapper = ({ fallback, children }) => {

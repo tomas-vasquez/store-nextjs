@@ -25,6 +25,7 @@ import firebaseConfig from "../firebaseConfig";
 import { FirebaseAppProvider } from "reactfire";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage";
 import AuthWrapper from "../components/admin/AuthWrapper";
 import Login from "../components/admin/Login";
 

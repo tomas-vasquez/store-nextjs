@@ -35,6 +35,7 @@ import {
   faCarAlt,
   faShoppingCart,
   faHome,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -73,6 +74,9 @@ const getIcon = (icon) => {
 
     case "plus":
       return faPlus;
+
+    case "check":
+      return faCheck;
 
     case "alert":
       return faExclamationTriangle;

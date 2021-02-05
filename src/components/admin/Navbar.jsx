@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <header className="container my-5">
+    <header className="container my-3">
       <div className="row d-flex">
         <div className="col-md-4 mx-auto">
           <Link href="/">
