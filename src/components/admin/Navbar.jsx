@@ -3,9 +3,9 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <header className="container my-3">
+    <header className="container mt-3 mb-4">
       <div className="row d-flex">
-        <div className="col-md-4 mx-auto">
+        <div className="col-md-4">
           <Link href="/">
             <a className="logo">
               <h1 className="text-dark">
@@ -14,10 +14,6 @@ export default function Navbar() {
                   electróni<span className="text-secondary">cos</span>
                 </span>
               </h1>
-
-              <small className="text-dark">
-                electronics shopping in latam.
-              </small>
             </a>
           </Link>
         </div>

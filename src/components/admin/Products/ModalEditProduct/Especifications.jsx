@@ -5,6 +5,7 @@ import Icons from "../../../common/Icons";
 
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css"; // Add css for snow theme
+import Alerts from "../../../common/Alerts";
 
 export default function Especifications({ product, toggleOpenModalEdit }) {
   const firestore = useFirestore();
@@ -45,7 +46,14 @@ export default function Especifications({ product, toggleOpenModalEdit }) {
       ...product,
       specs: quill.container.firstChild.innerHTML,
     };
-    firestore.collection("products").doc(product.id).update(newProduct);
+    firestore
+      .collection("products")
+      .doc(product.id)
+      .update(newProduct)
+      .then(() => {
+        Alerts.showSuccess();
+      });
+    Alerts.showLoading();
   };
 
   useEffect(() => {

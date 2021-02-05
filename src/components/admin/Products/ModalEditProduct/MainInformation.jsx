@@ -1,6 +1,7 @@
 import React from "react";
 import { useFirestore } from "reactfire";
 import { FormGroup, Label, Input, Row, Col, Button } from "reactstrap";
+import Alerts from "../../../common/Alerts";
 import Icons from "../../../common/Icons";
 
 const ExchangeTypes = ["BS", "USD"];
@@ -20,7 +21,14 @@ export default function MainInformation({ product, toggleOpenModalEdit }) {
         };
       }),
     };
-    firestore.collection("products").doc(product.id).update(newProduct);
+    firestore
+      .collection("products")
+      .doc(product.id)
+      .update(newProduct)
+      .then(() => {
+        Alerts.showSuccess();
+      });
+    Alerts.showLoading();
   };
 
   return (

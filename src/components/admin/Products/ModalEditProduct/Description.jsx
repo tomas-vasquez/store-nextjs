@@ -1,10 +1,11 @@
 import { useFirestore } from "reactfire";
 import React, { useEffect, useState } from "react";
-import { Button, FormGroup, Input, Label } from "reactstrap";
+import { Alert, Button, FormGroup, Input, Label } from "reactstrap";
 import Icons from "../../../common/Icons";
 
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css"; // Add css for snow theme
+import Alerts from "../../../common/Alerts";
 
 export default function Description({ product, toggleOpenModalEdit }) {
   const firestore = useFirestore();
@@ -45,7 +46,14 @@ export default function Description({ product, toggleOpenModalEdit }) {
       ...product,
       description: quill.container.firstChild.innerHTML,
     };
-    firestore.collection("products").doc(product.id).update(newProduct);
+    firestore
+      .collection("products")
+      .doc(product.id)
+      .update(newProduct)
+      .then(() => {
+        Alerts.showSuccess();
+      });
+    Alerts.showLoading();
   };
 
   useEffect(() => {

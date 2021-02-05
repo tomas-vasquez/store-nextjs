@@ -28,20 +28,51 @@ export default function ProductList() {
 
   return (
     <div>
-      <div className="d-flex mb-4">
-        <Button
-          className="ml-auto"
-          color="primary"
-          onClick={toggleOpenModalAdd}
+      <form className="">
+        <div
+          className="input-group input-group-lg mb-3"
+          id="search-box"
+          data-component-category
         >
-          <Icons icon="plus" className="mr-2" />
-          Anadir
-        </Button>
-        <ModalAppProduct
-          openModalEdit={openModalAdd}
-          toggleOpenModalEdit={toggleOpenModalAdd}
-        />
+          <input
+            type="text"
+            className="form-control default-font-size"
+            placeholder="Search product"
+            aria-label="Search product"
+          />
+
+          <select className="custom-select input-group-append form-control-lg no-border-x default-font-size">
+            <option defaultValue="on">All categories</option>
+            <option defaultValue="1">One</option>
+            <option defaultValue="2">Two</option>
+            <option defaultValue="3">Three</option>
+          </select>
+
+          <div className="input-group-append mr-3">
+            <button className="btn btn-primary" type="button">
+              <i className="la la-search"></i>
+            </button>
+          </div>
+
+          <Button
+            className="ml-auto"
+            color="primary"
+            onClick={toggleOpenModalAdd}
+          >
+            <Icons icon="plus" className="mr-2" />
+            Anadir
+          </Button>
+          <ModalAppProduct
+            openModalEdit={openModalAdd}
+            toggleOpenModalEdit={toggleOpenModalAdd}
+          />
+        </div>
+      </form>
+
+      <div className="d-flex">
+        <p>mostrando ({products.length} productos):</p>
       </div>
+
       <Row>
         {products.map((product, index) => (
           <Col xs="12" sm="6" md="4" lg="3" key={index} className="mb-3">
