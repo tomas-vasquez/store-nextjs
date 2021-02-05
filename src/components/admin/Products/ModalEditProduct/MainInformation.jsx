@@ -17,7 +17,7 @@ export default function MainInformation({ product, toggleOpenModalEdit }) {
       price: ExchangeTypes.map((type) => {
         return {
           type,
-          amount: document.getElementById(`input-${type}`).value,
+          amount: parseInt(document.getElementById(`input-${type}`).value),
         };
       }),
     };
@@ -52,6 +52,7 @@ export default function MainInformation({ product, toggleOpenModalEdit }) {
               <Label for="exampleEmail">Valor en "{type}":</Label>
               <Input
                 name="shortLink"
+                type="number"
                 id={`input-${type}`}
                 defaultValue={
                   product.price.find((price) => type === price.type).amount
