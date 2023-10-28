@@ -44,25 +44,23 @@ export default function Nav(products) {
           </li>
 
           <li className="nav-item">
-            <Link href="/">
-              <a className="nav-link">Inicio</a>
+            <Link href="/"className="nav-link">Inicio</Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link" href="#">
+              Servicio de envio
             </Link>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Servicio de envio
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" href="#">
               Como comprar?
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item dropdown">
-            <a
+            <Link
               className="nav-link dropdown-toggle"
               href="http://example.com"
               id="dropdown04"
@@ -71,23 +69,23 @@ export default function Nav(products) {
               aria-expanded="false"
             >
               Acerca de
-            </a>
+            </Link>
             <div className="dropdown-menu" aria-labelledby="dropdown04">
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" href="#">
                 FAQ
-              </a>
-              <a className="dropdown-item" href="#">
+              </Link>
+              <Link className="dropdown-item" href="#">
                 Our Story
-              </a>
-              <a className="dropdown-item" href="#">
+              </Link>
+              <Link className="dropdown-item" href="#">
                 Something else here
-              </a>
+              </Link>
             </div>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" href="#">
               Contactanos
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

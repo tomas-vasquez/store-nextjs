@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { StorageImage } from "reactfire";
 import Icons from "../../common/Icons";
 import ModalEditProduct from "./ModalEditProduct";
+import Link from "next/link";
 var exchangeRate = "BS";
 
 export default function SingleProduct({ product }) {
@@ -16,13 +17,13 @@ export default function SingleProduct({ product }) {
     <article className="product d-flex shadow rounded mb-5">
       <div className=" mx-auto d-inline-block">
         {product.images[0] ? (
-          <a>
+          
             <img
               src={product.images[0].imageUrl}
               style={{ width: "100%" }}
               alt={product.name}
             />
-          </a>
+          
         ) : (
           <img
             style={{ width: "100%" }}
@@ -33,9 +34,9 @@ export default function SingleProduct({ product }) {
 
         <div className="px-2 pb-1">
           <h3>
-            <a href="product.html" data-product-url data-name data-url>
+            <Link  href="product.html" data-product-url data-name data-url>
               {product.name}
-            </a>
+            </Link>
           </h3>
 
           <div className="price-group">

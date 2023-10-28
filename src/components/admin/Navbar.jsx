@@ -7,14 +7,14 @@ export default function Navbar() {
       <div className="row d-flex">
         <div className="col-md-4">
           <Link href="/">
-            <a className="logo">
+            <Link className="logo">
               <h1 className="text-dark">
                 <i className="text-secondary la la-plug"></i>
                 <span>
                   electróni<span className="text-secondary">cos</span>
                 </span>
               </h1>
-            </a>
+            </Link>
           </Link>
         </div>
       </div>

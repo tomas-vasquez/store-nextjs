@@ -8,8 +8,7 @@ const Navbar = ({ car, products }) => {
     <header className="container mt-5">
       <div className="row">
         <div className="col-md-3">
-          <Link href="/">
-            <a className="logo">
+            <Link href="/" className="logo">
               <h1 className="text-dark">
                 <i className="text-secondary la la-plug"></i>
                 <span>
@@ -19,7 +18,6 @@ const Navbar = ({ car, products }) => {
               <small className="text-dark">
                 electronics shopping in latam.
               </small>
-            </a>
           </Link>
         </div>
 
@@ -60,7 +58,7 @@ const Navbar = ({ car, products }) => {
             id="mini-user"
             data-component-user
           >
-            <a
+            <Link
               className="btn btn-link dropdown-toggle bg-faded p-0 chevron-big"
               href="https://example.com"
               id="dropdownMenuLink"
@@ -77,15 +75,15 @@ const Navbar = ({ car, products }) => {
                 <span className="small d-block text-left">My account</span>
                 <span className="font-weight-bold">Login/Register</span>
               </div>
-            </a>
+            </Link>
 
             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" href="#">
                 Register
-              </a>
-              <a className="dropdown-item" href="#">
+              </Link>
+              <Link className="dropdown-item" href="#">
                 Login
-              </a>
+              </Link>
             </div>
           </div>
         </div>

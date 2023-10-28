@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function index() {
@@ -19,32 +20,32 @@ export default function index() {
         <div className="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link text-muted" href="#">
+              <Link className="nav-link text-muted" href="#">
                 <i className="la la-heart"></i>{" "}
                 <span className="hidden-xs hidden-sm hidden-md">
                   Wish List (0)
                 </span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-muted" href="#">
+              <Link className="nav-link text-muted" href="#">
                 <i className="la la-shopping-cart"></i>{" "}
                 <span className="hidden-xs hidden-sm hidden-md">
                   Shopping Cart
                 </span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-muted" href="#">
+              <Link className="nav-link text-muted" href="#">
                 <i className="la la-share"></i>{" "}
                 <span className="hidden-xs hidden-sm hidden-md">Checkout</span>
-              </a>
+              </Link>
             </li>
           </ul>
 
           <ul className="navbar-nav float-right" data-component-currency>
             <li className="nav-item dropdown float-right">
-              <a
+              <Link
                 className="nav-link dropdown-toggle text-muted"
                 href="http://example.com"
                 data-toggle="dropdown"
@@ -52,18 +53,18 @@ export default function index() {
                 aria-expanded="false"
               >
                 <i className="la la-dollar"></i>&ensp;USD
-              </a>
+              </Link>
 
               <div className="dropdown-menu" aria-labelledby="dropdown01">
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" href="#">
                   Action
-                </a>
-                <a className="dropdown-item" href="#">
+                </Link>
+                <Link className="dropdown-item" href="#">
                   Another action
-                </a>
-                <a className="dropdown-item" href="#">
+                </Link>
+                <Link className="dropdown-item" href="#">
                   Something else here
-                </a>
+                </Link>
               </div>
             </li>
 
@@ -71,7 +72,7 @@ export default function index() {
               className="nav-item dropdown float-right"
               data-component-language
             >
-              <a
+              <Link
                 className="nav-link dropdown-toggle text-muted"
                 href="http://example.com"
                 data-toggle="dropdown"
@@ -79,18 +80,18 @@ export default function index() {
                 aria-expanded="false"
               >
                 <i className="la la-flag"></i>&ensp;EN
-              </a>
+              </Link>
 
               <div className="dropdown-menu" aria-labelledby="dropdown01">
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" href="#">
                   Action
-                </a>
-                <a className="dropdown-item" href="#">
+                </Link>
+                <Link className="dropdown-item" href="#">
                   Another action
-                </a>
-                <a className="dropdown-item" href="#">
+                </Link>
+                <Link className="dropdown-item" href="#">
                   Something else here
-                </a>
+                </Link>
               </div>
             </li>
           </ul>

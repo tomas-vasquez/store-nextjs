@@ -13,9 +13,9 @@ export default function Car() {
           <p className="well">
             Aqui apareceran todos los productos que anadio a su carrito de
             compras. &nbsp;
-            <a href="#" onclick="jQuery('.login-form').toggle();return false;">
+            <Link href="#" onclick="jQuery('.login-form').toggle();return false;">
               I am a returning customer
-            </a>
+            </Link>
           </p>
         </div>
         <div className="col-12">
@@ -35,7 +35,7 @@ export default function Car() {
                 <tbody>
                   <tr data-product>
                     <td className="text-center">
-                      <a
+                      <Link
                         href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=40"
                         data-url
                       >
@@ -45,15 +45,15 @@ export default function Car() {
                           title="iPhone"
                           data-img
                         />
-                      </a>
+                      </Link>
                     </td>
                     <td className="text-left">
-                      <a
+                      <Link
                         href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=40"
                         data-name
                       >
                         iPhone 5
-                      </a>
+                      </Link>
                       <span className="text-danger">***</span>
                     </td>
                     <td className="text-left">product 11</td>
@@ -98,18 +98,18 @@ export default function Car() {
 
                   <tr>
                     <td className="text-center">
-                      <a href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=43">
+                      <Link href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=43">
                         <img
                           src="https://demo.opencart.com/image/cache/catalog/demo/macbook_1-47x47.jpg"
                           alt="MacBook"
                           title="MacBook"
                         />
-                      </a>
+                      </Link>
                     </td>
                     <td className="text-left">
-                      <a href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=43">
+                      <Link href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=43">
                         MacBook
-                      </a>
+                      </Link>
                       <span className="text-danger">***</span>
                       <br />
                       <small>Reward Points: 1200</small>

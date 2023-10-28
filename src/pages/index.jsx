@@ -1,36 +1,37 @@
 import Banner from "../components/Banner";
 import Products from "../components/Products";
 
-// Firebase
-import firebase from "firebase/app";
-import firebaseConfig from "../firebaseConfig";
+// // Firebase
+// import firebase from "firebase/app";
+// import firebaseConfig from "../firebaseConfig";
 import "firebase/firestore";
+
+// Firebase
+import app from "../myFirebase";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function Home({ products }) {
   return (
     <>
       <Banner />
-      <Products products={products} />
+      {/* <Products products={products} /> */}
+      <>{JSON.stringify(products)}</>
     </>
   );
 }
 
 export async function getStaticProps() {
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  } else {
-    firebase.app(); // if already initialized, use that one
-  }
-
-  var db = firebase.firestore();
+  const db = app.firestore();
 
   let products = [];
-  const querySnapshot = await db.collection("products").get();
 
-  for (const doc of querySnapshot.docs) {
+  const querySnapshot = await getDocs(collection(db, "products"));
+  querySnapshot.forEach((doc) => {
     const product = doc.data();
     products.push(product);
-  }
+  });
+
+  console.log(products)
 
   return {
     props: {

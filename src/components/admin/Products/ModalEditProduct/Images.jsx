@@ -4,6 +4,7 @@ import { StorageImage, useFirestore, useStorage } from "reactfire";
 import { Button, ButtonGroup } from "reactstrap";
 import Alerts from "../../../common/Alerts";
 import Icons from "../../../common/Icons";
+import Link from "next/link";
 
 export default function Images({ product, toggleOpenModalEdit }) {
   const storage = useStorage();
@@ -62,13 +63,13 @@ export default function Images({ product, toggleOpenModalEdit }) {
             top: -38,
           }}
         >
-          <a
-            href={image.imageUrl}
+          <Link
+            href={image.imageUrl||""}
             target="imagePreview"
             className="btn btn-secondary"
           >
             <Icons icon="eye" />
-          </a>
+          </Link>
           <Button color="danger" onClick={() => handleDelete(image.imageId)}>
             <Icons icon="trash" />
           </Button>

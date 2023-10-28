@@ -9,7 +9,7 @@ export default function Footer({ litle }) {
       <div className="container">
         <div className="row">
           <div className="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-            <a href="/" className="logo">
+            <Link href="/" className="logo">
               <h1 className="text-dark">
                 <i className="text-secondary la la-plug"></i>
                 <span className="text-white">
@@ -17,15 +17,15 @@ export default function Footer({ litle }) {
                 </span>
               </h1>
               <small className="text-white">electronics shopping.</small>
-            </a>
+            </Link>
 
             <p className="mt-4">{footer.aboutText}</p>
             <ul className="list-unstyled  mb-0 mt-4">
               {socialIcons.map((icon, index) => (
                 <li className="list-inline-item" key={index}>
-                  <a href="" className="text-foot">
+                  <Link href="" className="text-foot">
                     <Icons className="fa-1x mx-2" icon={icon.icon} />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -36,10 +36,10 @@ export default function Footer({ litle }) {
             <ul className="list-unstyled footer-list mt-4">
               {footer.links.map((link, index) => (
                 <li key={index}>
-                  <a href={link.url} className="text-foot">
+                  <Link href={link.url} className="text-foot">
                     <Icons icon="dot" className="mr-1" />
                     {link.title}l
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -83,14 +83,14 @@ export default function Footer({ litle }) {
           <p className={litle ? "mb-0 text-center" : "mb-0"}>
             {/* © 2019-{new Date().getFullYear()} cursos-online.com.  */}
             Made with <Icons icon="heart" /> by{" "}
-            <a
+            <Link
               className="badge badge-dark"
               rel="noopener"
               href="https://tomas-vasquez.vercel.app/"
               aria-label="My GitHub"
             >
               Tomi
-            </a>
+            </Link>
           </p>
         </div>
       </div>

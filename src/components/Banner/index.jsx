@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Link from "next/link";
 
 export default function index() {
   return (
@@ -38,13 +39,13 @@ export default function index() {
                   with gorgeous display
                 </p>
                 <p>
-                  <a
+                  <Link
                     className="btn btn-md btn-outline-primary font-weight-bold px-5 py-2"
                     href="#"
                     role="button"
                   >
                     Añadir al carrito <i className="la la-arrow-right"></i>
-                  </a>
+                  </Link>
                 </p>
               </div>
               <div className="col-lg-8">

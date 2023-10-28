@@ -15,8 +15,7 @@ const Product = function ({ product, products }) {
     <>
       <div className="content">
         <nav className="breadcrumb container">
-          <Link href="/">
-            <a className="breadcrumb-item">Inicio</a>
+          <Link href="/"className="breadcrumb-item">Inicio
           </Link>
 
           <span className="breadcrumb-item active">{route.query.product}</span>
