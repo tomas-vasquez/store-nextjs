@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
         <FirebaseContext.Provider value={myFirebase}>
           <div>
             <Topbar />
-            <AdminNavbar />
+            {/* <AdminNavbar /> */}
             <div className="content">
               <div className="container">
                 <div className="thickline mb-3"></div>

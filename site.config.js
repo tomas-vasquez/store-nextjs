@@ -131,6 +131,23 @@ const footer = {
 };
 
 module.exports = {
+  exchangeRates: [
+    {
+      id: "BOB",
+      text: "BS",
+      conuntry: "Bolivia",
+    },
+    {
+      id: "USS",
+      text: "$",
+      conuntry: "UUEE",
+    },
+    {
+      id: "EUR",
+      text: "€",
+      conuntry: "",
+    },
+  ],
   links,
   socialIcons,
   siteMetadata,

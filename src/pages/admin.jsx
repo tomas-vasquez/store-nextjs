@@ -12,9 +12,11 @@ export default function Admin() {
   const { data: user } = useUser();
 
   const credentialsRef = useFirestore().collection("credentials").doc(user.uid);
-  let { isComplete, data: credential, hasEmitted } = useFirestoreDocData(
-    credentialsRef
-  );
+  let {
+    isComplete,
+    data: credential,
+    hasEmitted,
+  } = useFirestoreDocData(credentialsRef);
 
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
@@ -26,44 +28,45 @@ export default function Admin() {
 
   if (credential.role) {
     return (
-      <div className="container ">
-        <div>
-          <Nav tabs>
-            <NavItem>
-              <NavLink
-                className={classnames({ active: activeTab === "1" })}
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  toggle("1");
-                }}
-              >
-                Productos
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                className={classnames({ active: activeTab === "2" })}
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  toggle("2");
-                }}
-              >
-                Reportes de pago
-              </NavLink>
-            </NavItem>
-          </Nav>
-          <TabContent activeTab={activeTab}>
-            <TabPane tabId="1" className="pt-4">
-              <Products />
-            </TabPane>
-            <TabPane tabId="2" className="pt-4">
-              <PaymentReports />
-            </TabPane>
-          </TabContent>
-        </div>
-      </div>
+      // <div className="container ">
+      //   <div>
+      //     {/* <Nav tabs>
+      //       <NavItem>
+      //         <NavLink
+      //           className={classnames({ active: activeTab === "1" })}
+      //           style={{ cursor: "pointer" }}
+      //           onClick={() => {
+      //             toggle("1");
+      //           }}
+      //         >
+      //           Productos
+      //         </NavLink>
+      //       </NavItem>
+      //       <NavItem>
+      //         <NavLink
+      //           className={classnames({ active: activeTab === "2" })}
+      //           style={{ cursor: "pointer" }}
+      //           onClick={() => {
+      //             toggle("2");
+      //           }}
+      //         >
+      //           Reportes de pago
+      //         </NavLink>
+      //       </NavItem>
+      //     </Nav> */}
+      //     <TabContent activeTab={activeTab}>
+      //       <TabPane tabId="1" className="pt-4">
+      //         {/* <Products /> */}
+      //       </TabPane>
+      //       <TabPane tabId="2" className="pt-4">
+      //         {/* <PaymentReports /> */}
+      //       </TabPane>
+      //     </TabContent>
+      //   </div>
+      // </div>
+      <></>
     );
   }
 
-  return <Intruder />;
+  // return <Intruder />;
 }

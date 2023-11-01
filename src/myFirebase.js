@@ -1,6 +1,13 @@
 import getConfig from "next/config";
 const { publicRuntimeConfig: prc } = getConfig();
 
+//store
+import store from "./store";
+import {
+  setCurrentUser,
+  deleteCurrentUser,
+} from "./store/setting_store/actions";
+
 //firebase
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
@@ -19,13 +26,14 @@ const firebaseConfig = {
     process.env.FIREBASE_MEASUREMENT_ID || prc.FIREBASE_MEASUREMENT_ID,
 };
 
-console.log(firebaseConfig);
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
-// firebase.auth().onAuthStateChanged(() => {
-//   var user = firebase.auth().currentUser;
-//   if (user) store.dispatch(setCurrentUser({ ...user._delegate }));
-//   else store.dispatch(deleteCurrentUser());
-// });
+firebase.auth().onAuthStateChanged(() => {
+  var user = firebase.auth().currentUser;
+  if (user) store.dispatch(setCurrentUser({ ...user._delegate }));
+  else store.dispatch(deleteCurrentUser());
+});
 
 export default firebase;

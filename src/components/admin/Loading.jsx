@@ -11,7 +11,7 @@ export default function Loading({ texto }) {
       }}
     >
       <div className="m-auto text-center">
-        <Loader type="TailSpin" color="#6950df" height={60} width={60} />
+        {/* <Loader type="TailSpin" color="#6950df" height={60} width={60} /> */}
         <p className="mt-4">{texto}</p>
       </div>
     </div>
