@@ -19,8 +19,6 @@ export default function Product({ product }) {
     (price) => currentExchangeRate.type === price.type
   )?.amount;
 
-  console.log(">>>>", product.price);
-
   const addCarButtonOnClick = () => {
     dispatch(
       addProductToCart({

@@ -27,7 +27,7 @@ export default function index() {
           <DropdownMenu className="dropdown-menu-xl">
             <ul className="navbar-nav">
               {settings.exchangeRates.map((exchangeRate, index) => (
-                <li className="nav-item dropdown float-right" id={index}>
+                <li className="nav-item dropdown float-right" key={index}>
                   <Link
                     className="dropdown-item"
                     href="#"

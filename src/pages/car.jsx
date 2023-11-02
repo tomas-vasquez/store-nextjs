@@ -2,7 +2,42 @@ import React from "react";
 import Icons from "../components/common/Icons";
 import Link from "next/link";
 
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increaseProductCuantity,
+  reduceProductCuantity,
+  removeProductToCart,
+} from "../store/slices/carSlice";
+
 export default function Car() {
+  const car = useSelector((state) => state.car);
+  const settings = useSelector((state) => state.settings);
+  const dispatch = useDispatch();
+
+  const currentExchangeRate =
+    settings.exchangeRates[settings.currentExchangeRateIndex];
+
+  let totalToPay = car.reduce((a, item) => {
+    const itemPrice = item.price.find(
+      (price) => currentExchangeRate.type === price.type
+    )?.amount;
+    return a + itemPrice * item.itemAmount;
+  }, 0);
+
+  const increaseProductCuantityButtonHandler = (e, product) => {
+    e.preventDefault();
+    dispatch(increaseProductCuantity(product));
+  };
+  const reduceProductCuantityButtonHandler = (e, product) => {
+    e.preventDefault();
+    dispatch(reduceProductCuantity(product));
+  };
+
+  const removeProductToCartButtonHandler = (e, product) => {
+    e.preventDefault();
+    dispatch(removeProductToCart(product));
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -14,153 +49,115 @@ export default function Car() {
           <p className="well">
             Aqui apareceran todos los productos que anadio a su carrito de
             compras. &nbsp;
-            <Link
-              href="#"
-              onclick="jQuery('.login-form').toggle();return false;"
-            >
-              I am a returning customer
-            </Link>
+            <Link href="#">I am a returning customer</Link>
           </p>
         </div>
         <div className="col-12">
-          <form action="" method="post" enctype="multipart/form-data">
-            <div className="table-responsive">
-              <table className="table table-bordered" data-cart>
-                <thead>
-                  <tr>
-                    <td className="text-center"></td>
-                    <td className="text-left">Nombre del producto</td>
-                    <td className="text-left">Modelo</td>
-                    <td className="text-left">Cantidad</td>
-                    <td className="text-right">Precio por unidad</td>
-                    <td className="text-right">Total</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr data-product>
+          <div className="table-responsive">
+            <table className="table table-bordered" data-cart>
+              <thead>
+                <tr>
+                  <td className="text-center"></td>
+                  <td className="text-left">Nombre del producto</td>
+                  <td className="text-left">Cantidad</td>
+                  <td className="text-right">Actions</td>
+                  <td className="text-right">Precio por unidad</td>
+                  <td className="text-right">Total</td>
+                </tr>
+              </thead>
+              <tbody>
+                {car.map((product, index) => (
+                  <tr data-product key={index}>
                     <td className="text-center">
-                      <Link
-                        href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=40"
-                        data-url
-                      >
-                        <img
-                          src="https://demo.opencart.com/image/cache/catalog/demo/iphone_1-47x47.jpg"
-                          alt="iPhone"
-                          title="iPhone"
-                          data-img
-                        />
-                      </Link>
+                      <img
+                        src={product.images[0].imageUrl}
+                        width={30}
+                        height={30}
+                        alt={product.images[0].imageId}
+                      />
                     </td>
                     <td className="text-left">
-                      <Link
-                        href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=40"
-                        data-name
-                      >
-                        iPhone 5
-                      </Link>
-                      <span className="text-danger">***</span>
+                      <span className="text-secondary text-md">
+                        {product.name}
+                      </span>
+                      {/* <span className="text-danger">***</span> */}
                     </td>
-                    <td className="text-left">product 11</td>
-                    <td className="text-left">
-                      <div
-                        className="input-group btn-block"
-                        style={{ maxWidth: 200 }}
-                      >
+                    <td className="text-left" style={{ maxWidth: 100 }}>
+                      <div className="input-group">
+                        <div className="input-group-prepend">
+                          <button
+                            className="btn "
+                            type="button"
+                            disabled={product.itemAmount === 1}
+                            onClick={(e) => {
+                              reduceProductCuantityButtonHandler(e, product);
+                            }}
+                          >
+                            -
+                          </button>
+                        </div>
                         <input
-                          type="text"
-                          name="quantity[YToxOntzOjEwOiJwcm9kdWN0X2lkIjtpOjQwO30=]"
-                          defaultValue="2"
-                          size="1"
+                          type="number"
+                          value={product.itemAmount}
+                          onChange={(e) => {
+                            e.preventDefault();
+                          }}
                           className="form-control"
                         />
-                        <span className="input-group-btn">
+                        <div className="input-group-append">
                           <button
-                            type="submit"
-                            data-toggle="tooltip"
-                            title=""
-                            className="btn btn-primary"
-                            data-original-title="Update"
-                          >
-                            <i className="la la-refresh"></i>
-                          </button>
-                          <button
+                            className="btn"
                             type="button"
-                            data-toggle="tooltip"
-                            title=""
-                            className="btn btn-danger"
-                            onclick="cart.remove('YToxOntzOjEwOiJwcm9kdWN0X2lkIjtpOjQwO30=');"
-                            data-original-title="Remove"
+                            onClick={(e) => {
+                              increaseProductCuantityButtonHandler(e, product);
+                            }}
                           >
-                            <i className="la la-times-circle"></i>
+                            +
                           </button>
-                        </span>
+                        </div>
                       </div>
                     </td>
-                    <td className="text-right">$123.20</td>
-                    <td className="text-right">$246.40</td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={(e) => {
+                          removeProductToCartButtonHandler(e, product);
+                        }}
+                      >
+                        <i className="la la-times" />
+                      </button>
+                    </td>
+                    <td className="text-right">
+                      {currentExchangeRate.type}
+                      {
+                        product.price.find(
+                          (price) => currentExchangeRate.type === price.type
+                        )?.amount
+                      }
+                    </td>
+                    <td className="text-right">
+                      {currentExchangeRate.type}
+                      {product.price.find(
+                        (price) => currentExchangeRate.type === price.type
+                      )?.amount * product.itemAmount}
+                    </td>
                   </tr>
+                ))}
+                <tr data-product>
+                  <td className="border-0"></td>
+                  <td className="border-0"></td>
+                  <td className="border-0"></td>
+                  <td className="border-0"></td>
 
-                  <tr>
-                    <td className="text-center">
-                      <Link href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=43">
-                        <img
-                          src="https://demo.opencart.com/image/cache/catalog/demo/macbook_1-47x47.jpg"
-                          alt="MacBook"
-                          title="MacBook"
-                        />
-                      </Link>
-                    </td>
-                    <td className="text-left">
-                      <Link href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=43">
-                        MacBook
-                      </Link>
-                      <span className="text-danger">***</span>
-                      <br />
-                      <small>Reward Points: 1200</small>
-                    </td>
-                    <td className="text-left">Product 16</td>
-                    <td className="text-left">
-                      <div
-                        className="input-group btn-block"
-                        style={{ maxWidth: 200 }}
-                      >
-                        <input
-                          type="text"
-                          name="quantity[YToxOntzOjEwOiJwcm9kdWN0X2lkIjtpOjQzO30=]"
-                          defaultValue="2"
-                          size="1"
-                          className="form-control"
-                        />
-                        <span className="input-group-btn">
-                          <button
-                            type="submit"
-                            data-toggle="tooltip"
-                            title=""
-                            className="btn btn-primary"
-                            data-original-title="Update"
-                          >
-                            <i className="la la-refresh"></i>
-                          </button>
-                          <button
-                            type="button"
-                            data-toggle="tooltip"
-                            title=""
-                            className="btn btn-danger"
-                            onclick="cart.remove('YToxOntzOjEwOiJwcm9kdWN0X2lkIjtpOjQzO30=');"
-                            data-original-title="Remove"
-                          >
-                            <i className="la la-times-circle"></i>
-                          </button>
-                        </span>
-                      </div>
-                    </td>
-                    <td className="text-right">$602.00</td>
-                    <td className="text-right">$1,204.00</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </form>
+                  <td className="text-right">
+                    {currentExchangeRate.type}
+                    {totalToPay}
+                  </td>
+                  <td className="border-0"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
