@@ -4,7 +4,7 @@ import Product from "./Product";
 
 export default function index({ products }) {
   return (
-    <div className="container">
+    <>
       <Navigation />
       <div className="row">
         {products.map((product, index) => (
@@ -13,6 +13,6 @@ export default function index({ products }) {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }

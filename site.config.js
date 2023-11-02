@@ -133,19 +133,25 @@ const footer = {
 module.exports = {
   exchangeRates: [
     {
-      id: "BOB",
-      text: "BS",
-      conuntry: "Bolivia",
+      type: "USD",
+      country: "UUEE",
     },
     {
-      id: "USS",
-      text: "$",
-      conuntry: "UUEE",
+      type: "BS",
+      country: "Bolivia",
+    },
+  ],
+
+  currentExchangeRateIndex: 0,
+
+  shippingCost: [
+    {
+      amount: 77,
+      type: "BS",
     },
     {
-      id: "EUR",
-      text: "€",
-      conuntry: "",
+      amount: 11,
+      type: "USD",
     },
   ],
   links,

@@ -1,17 +1,16 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import carStore from "./car_store/reducer";
-import productStore from "./product_store/reducer";
-import settingsStore from "../store/setting_store/reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import loggerMiddleware from "redux-logger";
 
-import logger from "redux-logger";
+import carReducer from "./slices/carSlice";
+import whiteListReducer from "./slices/whiteListSlice";
+import settingSlice from "./slices/settingSlice";
 
-const store = createStore(
-  combineReducers({
-    settings: settingsStore,
-    car: carStore,
-    product: productStore,
-  })
-  // applyMiddleware(logger)
-);
-
-export default store;
+export const store = configureStore({
+  reducer: {
+    car: carReducer,
+    whiteList: whiteListReducer,
+    settings: settingSlice,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(loggerMiddleware),
+});

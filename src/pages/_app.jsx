@@ -8,7 +8,7 @@ import AdminFooter from "../components/admin/Footer";
 
 //redux
 import { Provider as ReduxProvider } from "react-redux";
-import store from "../store";
+import { store } from "../store";
 
 //nprogress module
 import Router, { useRouter } from "next/router";
@@ -30,6 +30,8 @@ import Login from "../components/admin/Login";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+
+  // console.log(">>>>>>", store());
   return (
     <ReduxProvider store={store}>
       {router.route.includes("admin") ? (
@@ -49,8 +51,7 @@ function MyApp({ Component, pageProps }) {
           </div>
         </FirebaseContext.Provider>
       ) : (
-        <>
-          <Topbar />
+        <div className="container">
           <Navbar />
           <div className="content">
             <div className="container">
@@ -59,7 +60,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </div>
           <Footer />
-        </>
+        </div>
       )}
     </ReduxProvider>
   );

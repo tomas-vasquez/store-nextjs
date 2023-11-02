@@ -14,7 +14,7 @@ export default function Nav(products) {
   const toggle = () => setOpenDropdownCategories(!openDropdownCategories);
 
   return (
-    <nav className="navbar navbar-light bg-white  rounded navbar-expand-md mt-3">
+    <nav className="navbar navbar-light bg-white  rounded navbar-expand-md ">
       <button
         className="navbar-toggler navbar-toggler-right"
         type="button"
@@ -39,12 +39,15 @@ export default function Nav(products) {
                 {/* {categories.map((_categorie, index) => (
                   <DropdownItem key={index}>{_categorie}</DropdownItem>
                 ))} */}
+                <></>
               </DropdownMenu>
             </ButtonDropdown>
           </li>
 
           <li className="nav-item">
-            <Link href="/"className="nav-link">Inicio</Link>
+            <Link href="/" className="nav-link">
+              Inicio
+            </Link>
           </li>
 
           <li className="nav-item">

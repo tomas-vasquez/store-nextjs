@@ -52,8 +52,11 @@ export default function index() {
                 <Image
                   src="/ipad.png"
                   className="float-right col-md-8"
-                  width={700}
-                  height={300}
+                  alt="dsd"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto" }} // optional
                 />
               </div>
             </div>

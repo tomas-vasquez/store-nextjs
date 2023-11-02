@@ -1,91 +1,119 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import Link from "next/link";
+import React from "react";
+import { useSelector } from "react-redux";
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 
-const Car = function ({ car }) {
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  const toggle = () => setPopoverOpen(!popoverOpen);
+export default function Car() {
+  const car = useSelector((state) => state.car);
+  const settings = useSelector((state) => state.settings);
+
+  const currentExchangeRate =
+    settings.exchangeRates[settings.currentExchangeRateIndex];
+
+  let totalToPay = car.reduce((a, item) => {
+    const itemPrice = item.price.find(
+      (price) => currentExchangeRate.type === price.type
+    )?.amount;
+    return a + itemPrice * item.itemAmount;
+  }, 0);
+  let totalItems = car.reduce((a, item) => {
+    return a + item.itemAmount;
+  }, 0);
+
+  let shippingCost = settings.shippingCost.find(
+    (price) => currentExchangeRate.type === price.type
+  )?.amount;
 
   return (
-    <div className="float-right" id="mini-cart">
-      <UncontrolledDropdown size="lg">
-        <DropdownToggle nav>
-          <i
-            className="la la-shopping-cart d-inline-block"
-            style={{ fontSize: 42 }}
-          >
-            {car.products.length > 0 && (
+    <UncontrolledDropdown size="lg">
+      <DropdownToggle nav className="dropdown-toggle chevron-big">
+        <i
+          className="la la-shopping-cart d-inline-block"
+          style={{ fontSize: 42 }}
+        ></i>
+        &ensp;
+        <div className="d-inline-block text-dark">
+          <span className="small d-block text-left">Shopping cart</span>
+          <span className="font-weight-bold" data-total>
+            <div className="d-inline-block text-dark" data-if="login">
               <span className="cart-items" data-total_items>
-                {car.products.length}
+                {totalItems} items
               </span>
+            </div>
+          </span>
+        </div>
+      </DropdownToggle>
+      <DropdownMenu className="dropdown-menu-xl" end>
+        <table className="table table-striped ">
+          <tbody>
+            {car.length === 0 && (
+              <tr>
+                <td className="text-center">El carrito esta vacio.</td>
+              </tr>
             )}
-          </i>
-          &ensp;
-          <div className="d-inline-block text-dark">
-            <span className="small d-block text-left">Tu carrito</span>
-            <span className="font-weight-bold" data-total>
-              {car.products.length > 0 && (
-                <span className="cart-items" data-total_items>
-                  {car.products.length}
-                </span>
-              )}
-            </span>
-          </div>
-        </DropdownToggle>
-        {/* <DropdownMenu className="dropdown-menu-xl">
-          <table className="table table-striped ">
+            {car.map((product, index) => (
+              <tr key={index}>
+                <td className="text-left">
+                  <img
+                    src={product.images[0].imageUrl}
+                    width={50}
+                    height={50}
+                    alt={product.images[0].imageId}
+                  />
+                </td>
+                <td>
+                  {product.name}
+                  <br />x{product.itemAmount}{" "}
+                  <span className="ml-2 text-secondary">
+                    {currentExchangeRate.type}
+                    {
+                      product.price.find(
+                        (price) => currentExchangeRate.type === price.type
+                      )?.amount
+                    }
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {car.length !== 0 && (
+          <table className="table table-sm table-bordered">
             <tbody>
-              {car.products.length === 0 && (
-                <tr>
-                  <td className="text-center">El carrito esta vacio.</td>
-                </tr>
-              )}
-              {car.products.map((product, index) => (
-                <tr key={index}>
-                  <td className="text-left">
-                    <a href="http://opencart3100.givan.ro/index.php?route=product/product&amp;language=en-gb&amp;product_id=40">
-                      {product.name}
-                    </a>
-                  </td>
-                  <td className="text-right">x1</td>
-                  <td className="text-right">$123</td>
-                </tr>
-              ))}
+              <tr>
+                <td className="text-right">
+                  <strong>Sub-Total</strong>
+                </td>
+                <td className="text-right">
+                  {currentExchangeRate.type + totalToPay}
+                </td>
+              </tr>
+
+              <tr>
+                <td className="text-right">
+                  <strong>Envio </strong>
+                </td>
+                <td className="text-right">
+                  {currentExchangeRate.type + shippingCost}
+                </td>
+              </tr>
+              <tr>
+                <td className="text-right">
+                  <strong>Total</strong>
+                </td>
+                <td className="text-right">
+                  {currentExchangeRate.type + (totalToPay + shippingCost)}
+                </td>
+              </tr>
             </tbody>
           </table>
-          {car.products.length !== 0 && (
-            <table className="table table-sm table-bordered">
-              <tbody>
-                <tr>
-                  <td className="text-right">
-                    <strong>Sub-Total</strong>
-                  </td>
-                  <td className="text-right">$681.00</td>
-                </tr>
-
-                <tr>
-                  <td className="text-right">
-                    <strong>Envio (20Bs)</strong>
-                  </td>
-                  <td className="text-right">$136.20</td>
-                </tr>
-                <tr>
-                  <td className="text-right">
-                    <strong>Total</strong>
-                  </td>
-                  <td className="text-right">$823.20</td>
-                </tr>
-              </tbody>
-            </table>
-          )}
-        </DropdownMenu> */}
-      </UncontrolledDropdown>
-    </div>
+        )}
+        <div className="d-flex">
+          <Link className="btn btn-secondary ml-auto mr-2" href="/car">
+            See cart <i className="la la-arrow-right"></i>
+          </Link>
+        </div>
+      </DropdownMenu>
+    </UncontrolledDropdown>
   );
-};
-
-const mapStateToProps = (state) => ({
-  car: state.car,
-});
-
-export default connect(mapStateToProps)(Car);
+}

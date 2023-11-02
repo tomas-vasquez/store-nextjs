@@ -8,7 +8,7 @@ import classnames from "classnames";
 import Products from "../components/admin/Products";
 import PaymentReports from "../components/admin/PaymentReports";
 
-export default function Admin() {
+function Admin() {
   const { data: user } = useUser();
 
   const credentialsRef = useFirestore().collection("credentials").doc(user.uid);
@@ -70,3 +70,4 @@ export default function Admin() {
 
   // return <Intruder />;
 }
+export default Admin;

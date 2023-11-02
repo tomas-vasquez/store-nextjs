@@ -91,7 +91,7 @@ class Alerts {
   showToast = (message) => {
     swal.fire({
       title: message,
-      icon: "default",
+      icon: "success",
       position: "bottom",
       timer: 3000,
       toast: true,

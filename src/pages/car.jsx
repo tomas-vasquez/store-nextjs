@@ -1,5 +1,6 @@
 import React from "react";
 import Icons from "../components/common/Icons";
+import Link from "next/link";
 
 export default function Car() {
   return (
@@ -13,7 +14,10 @@ export default function Car() {
           <p className="well">
             Aqui apareceran todos los productos que anadio a su carrito de
             compras. &nbsp;
-            <Link href="#" onclick="jQuery('.login-form').toggle();return false;">
+            <Link
+              href="#"
+              onclick="jQuery('.login-form').toggle();return false;"
+            >
               I am a returning customer
             </Link>
           </p>

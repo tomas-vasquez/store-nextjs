@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-firebase/auth": "^0.2.10",
+    "@reduxjs/toolkit": "^1.9.7",
     "classnames": "^2.3.2",
     "dotenv": "^16.3.1",
     "firebase": "^10.5.0",
@@ -34,6 +35,8 @@
     "reactstrap": "^9.2.0",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
-    "sweetalert2": "^11.7.32"
+    "redux-persist": "^6.0.0",
+    "sweetalert2": "^11.7.32",
+    "uuid": "^9.0.1"
   }
 }

@@ -8,7 +8,6 @@ export default function Home({ products }) {
     <>
       <Banner />
       <Products products={products} />
-      <code>{JSON.stringify(products)}</code>
     </>
   );
 }
