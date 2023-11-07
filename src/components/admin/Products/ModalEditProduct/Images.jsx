@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { StorageImage, useFirestore, useStorage } from "reactfire";
 import { Button, ButtonGroup } from "reactstrap";
-import Alerts from "../../../common/Alerts";
+import Alerts from "../../../../utils/Alerts";
 import Icons from "../../../common/Icons";
 import Link from "next/link";
 
@@ -64,7 +64,7 @@ export default function Images({ product, toggleOpenModalEdit }) {
           }}
         >
           <Link
-            href={image.imageUrl||""}
+            href={image.imageUrl || ""}
             target="imagePreview"
             className="btn btn-secondary"
           >

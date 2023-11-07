@@ -24,7 +24,7 @@ const Navbar = ({ car, products }) => {
         </div>
       </nav>
 
-      <header className="container mt-5">
+      <header className="container mt-2">
         <Nav products={products} />
       </header>
     </>

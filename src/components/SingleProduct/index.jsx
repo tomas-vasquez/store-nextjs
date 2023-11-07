@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { connect } from "react-redux";
-import {
-  addProduct as _addProduct,
-  removeProduct as _removeProduct,
-} from "../../store/car_store/actions";
+// import {
+//   addProduct as _addProduct,
+//   removeProduct as _removeProduct,
+// } from "../../store/car_store/actions";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import classnames from "classnames";
 
 var exchangeRate = "BS";
 
 const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
-  let price = product.price.find((price) => exchangeRate === price.type)
-    ?.amount;
+  let price = product.price.find(
+    (price) => exchangeRate === price.type
+  )?.amount;
 
   const pushProductToCart = () => {
-    addProduct(product);
+    // addProduct(product);
   };
 
   const removeProductToCart = () => {
-    removeProduct(product);
+    // removeProduct(product);
   };
 
   const [currentImage, setCurrentImage] = useState(0);

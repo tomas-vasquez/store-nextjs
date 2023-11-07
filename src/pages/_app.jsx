@@ -20,7 +20,7 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 //firebase
-import myFirebase from "../myFirebase";
+import firebase from "../myFirebase";
 import FirebaseContext from "../context/FirebaseContext";
 import "firebase/auth";
 import "firebase/firestore";
@@ -33,9 +33,9 @@ function MyApp({ Component, pageProps }) {
 
   // console.log(">>>>>>", store());
   return (
-    <ReduxProvider store={store}>
-      {router.route.includes("admin") ? (
-        <FirebaseContext.Provider value={myFirebase}>
+    <FirebaseContext.Provider value={firebase}>
+      <ReduxProvider store={store}>
+        {router.route.includes("admin") ? (
           <div>
             <Topbar />
             {/* <AdminNavbar /> */}
@@ -43,26 +43,26 @@ function MyApp({ Component, pageProps }) {
               <div className="container">
                 <div className="thickline mb-3"></div>
               </div>
-              <AuthWrapper fallback={<Login />}>
-                <Component {...pageProps} />
-              </AuthWrapper>
+              {/* <AuthWrapper fallback={<Login />}> */}
+              <Component {...pageProps} />
+              {/* </AuthWrapper> */}
             </div>
             <AdminFooter />
           </div>
-        </FirebaseContext.Provider>
-      ) : (
-        <div className="container">
-          <Navbar />
-          <div className="content">
-            <div className="container">
-              <div className="thickline mb-3"></div>
+        ) : (
+          <div className="container">
+            <Navbar />
+            <div className="content">
+              <div className="container">
+                <div className="thickline mb-3"></div>
+              </div>
+              <Component {...pageProps} />
             </div>
-            <Component {...pageProps} />
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      )}
-    </ReduxProvider>
+        )}
+      </ReduxProvider>
+    </FirebaseContext.Provider>
   );
 }
 

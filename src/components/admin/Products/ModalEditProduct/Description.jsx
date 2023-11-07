@@ -5,7 +5,7 @@ import Icons from "../../../common/Icons";
 
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css"; // Add css for snow theme
-import Alerts from "../../../common/Alerts";
+import Alerts from "../../../../utils/Alerts";
 
 export default function Description({ product, toggleOpenModalEdit }) {
   const firestore = useFirestore();

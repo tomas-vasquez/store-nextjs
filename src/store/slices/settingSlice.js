@@ -4,14 +4,23 @@ import setting from "../../../site.config";
 
 const settingSlice = createSlice({
   name: "settings",
-  initialState: setting,
+  initialState: { currentUser: null, ...setting },
   reducers: {
     setCurrentExchangeRateIndex: (state, action) => {
-      console.log(action);
       state.currentExchangeRateIndex = action.payload;
+    },
+    setCurrentUser: (state, action) => {
+      state.currentUser = action.payload;
+    },
+    deleteCurrentUser: (state) => {
+      state.currentUser = null;
     },
   },
 });
 
-export const { setCurrentExchangeRateIndex } = settingSlice.actions;
+export const {
+  setCurrentExchangeRateIndex,
+  setCurrentUser,
+  deleteCurrentUser,
+} = settingSlice.actions;
 export default settingSlice.reducer;

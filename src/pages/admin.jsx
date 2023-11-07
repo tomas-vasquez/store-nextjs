@@ -23,8 +23,7 @@ function Admin() {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  if (!isComplete && !hasEmitted)
-    return <Loading texto="verificando credenciales....." />;
+  if (!isComplete) return <Loading texto="verificando credenciales....." />;
 
   if (credential.role) {
     return (

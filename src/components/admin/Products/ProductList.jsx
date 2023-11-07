@@ -4,7 +4,7 @@ import Icons from "../../common/Icons";
 import Loading from "../Loading";
 import { Button, Row, Col } from "reactstrap";
 import SingleProduct from "./SingleProduct";
-import Alerts from "../../common/Alerts";
+import Alerts from "../../../utils/Alerts";
 
 const ExchangeTypes = ["BS", "USD"];
 

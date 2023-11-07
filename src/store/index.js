@@ -11,6 +11,6 @@ export const store = configureStore({
     whiteList: whiteListReducer,
     settings: settingSlice,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(loggerMiddleware),
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(loggerMiddleware),
 });

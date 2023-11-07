@@ -1,7 +1,7 @@
 import React from "react";
 import { useFirestore } from "reactfire";
 import { FormGroup, Label, Input, Row, Col, Button } from "reactstrap";
-import Alerts from "../../../common/Alerts";
+import Alerts from "../../../../utils/Alerts";
 import Icons from "../../../common/Icons";
 
 const ExchangeTypes = ["BS", "USD"];
