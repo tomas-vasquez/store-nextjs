@@ -25,10 +25,4 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-firebase.auth().onAuthStateChanged(() => {
-  var user = firebase.auth().currentUser;
-  if (user) store.dispatch(setCurrentUser({ ...user._delegate }));
-  else store.dispatch(deleteCurrentUser());
-});
-
 export default firebase;

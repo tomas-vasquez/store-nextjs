@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import { useAuth } from "reactfire";
+import FirebaseContext from "../../context/FirebaseContext";
 
 export default function Login() {
-  const auth = useAuth;
+  const firebase = useContext(FirebaseContext);
+  const auth = firebase.auth;
   const uiConfig = {
     queryParameterForSignInSuccessUrl: "signInSuccessUrl",
     signInFlow: "popup",

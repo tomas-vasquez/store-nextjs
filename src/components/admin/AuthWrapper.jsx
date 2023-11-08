@@ -1,35 +1,44 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Loading from "./Loading";
-import { useAuth } from "reactfire";
-import SignOut from "../../context/singout";
+import FirebaseContext from "../../context/FirebaseContext";
+import { useSelector } from "react-redux";
+import Intruder from "./Intruder";
 
 const AuthWrapper = ({ fallback, children }) => {
-  const auth = useAuth();
-  const [user, setUser] = useState(null);
-  const [finished, setFinished] = useState(false);
+  const firebase = useContext(FirebaseContext);
+  const currentUser = useSelector((state) => state.settings.currentUser);
 
-  var signOut = () => {
-    auth.signOut().then(() => {
-      setUser(null);
-      setFinished(false);
-    });
-  };
+  const [isComplete, setIsComplete] = useState(false);
+  const [credential, setCredential] = useState(null);
 
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      setUser(user);
+  useEffect(() => {
+    if (currentUser) {
+      const firestore = firebase.firestore();
+      firestore
+        .collection("credentials")
+        .doc(currentUser.uid)
+        .onSnapshot((res) => {
+          const credential = res.data();
+          setCredential({ ...credential });
+          console.log(credential);
+          setIsComplete(true);
+        });
     }
-    setFinished(true);
-  });
+  }, [currentUser]);
 
-  if (finished) {
-    if (user) {
-      return <SignOut.Provider value={signOut}>{children}</SignOut.Provider>;
+  if (currentUser) {
+    if (isComplete) {
+      if (credential.role === "admin") {
+        return children;
+      } else {
+        return <Intruder />;
+      }
+    } else {
+      return <Loading texto="verifying credentials...." />;
     }
+  } else {
     return fallback;
   }
-
-  return <Loading texto="cargando...." />;
 };
 
 export default AuthWrapper;
