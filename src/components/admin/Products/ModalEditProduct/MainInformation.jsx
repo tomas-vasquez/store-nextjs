@@ -1,13 +1,14 @@
-import React from "react";
-import { useFirestore } from "reactfire";
+import React, { useContext } from "react";
 import { FormGroup, Label, Input, Row, Col, Button } from "reactstrap";
 import Alerts from "../../../../utils/Alerts";
 import Icons from "../../../common/Icons";
+import FirebaseContext from "../../../../context/FirebaseContext";
 
 const ExchangeTypes = ["BS", "USD"];
 
 export default function MainInformation({ product, toggleOpenModalEdit }) {
-  const firestore = useFirestore();
+  const firebase = useContext(FirebaseContext);
+  const firestore = firebase.firestore();
 
   const saveChanges = () => {
     let newProduct = {
@@ -43,6 +44,14 @@ export default function MainInformation({ product, toggleOpenModalEdit }) {
           name="shortLink"
           id="input-shortLink"
           defaultValue={product.shortLink}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for="exampleEmail">Categoria:</Label>
+        <Input
+          name="shortLink"
+          id="input-shortLink"
+          defaultValue={product.categorie}
         />
       </FormGroup>
       <Row>

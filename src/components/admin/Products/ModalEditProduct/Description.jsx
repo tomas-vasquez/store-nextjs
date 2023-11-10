@@ -1,14 +1,16 @@
-import { useFirestore } from "reactfire";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Alert, Button, FormGroup, Input, Label } from "reactstrap";
 import Icons from "../../../common/Icons";
 
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css"; // Add css for snow theme
 import Alerts from "../../../../utils/Alerts";
+import FirebaseContext from "../../../../context/FirebaseContext";
 
 export default function Description({ product, toggleOpenModalEdit }) {
-  const firestore = useFirestore();
+  const firebase = useContext(FirebaseContext);
+  const firestore = firebase.firestore();
+
   const theme = "snow";
   // const theme = 'bubble';
 

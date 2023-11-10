@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useFirestore } from "reactfire";
+import React, { useContext, useEffect, useState } from "react";
 import Icons from "../../common/Icons";
 import Loading from "../Loading";
 import { Button, Row, Col } from "reactstrap";
 import SingleProduct from "./SingleProduct";
 import Alerts from "../../../utils/Alerts";
+import FirebaseContext from "../../../context/FirebaseContext";
+import { getAllProductsNotAsync } from "../../../utils/products";
 
 const ExchangeTypes = ["BS", "USD"];
 
 export default function ProductList() {
   const [products, setProducts] = useState(null);
   const [isComplete, setIsComplete] = useState(false);
+
+  const firebase = useContext(FirebaseContext);
+  const fireStore = firebase.firestore();
 
   const handleAddPrduct = () => {
     fireStore
@@ -35,12 +39,8 @@ export default function ProductList() {
     Alerts.showLoading();
   };
 
-  const fireStore = useFirestore();
-
   useEffect(() => {
-    fireStore.collection("products").onSnapshot((snapshot) => {
-      const products = [];
-      snapshot.forEach((doc) => products.push({ ...doc.data(), id: doc.id }));
+    getAllProductsNotAsync(firebase, (products) => {
       setProducts(products);
       setIsComplete(true);
     });

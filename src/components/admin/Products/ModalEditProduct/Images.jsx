@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { StorageImage, useFirestore, useStorage } from "reactfire";
+import React, { useContext, useEffect } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import Alerts from "../../../../utils/Alerts";
 import Icons from "../../../common/Icons";
 import Link from "next/link";
+import FirebaseContext from "../../../../context/FirebaseContext";
 
 export default function Images({ product, toggleOpenModalEdit }) {
-  const storage = useStorage();
-  const firestore = useFirestore();
+  const firebase = useContext(FirebaseContext);
+  const storage = firebase.storage();
+  const firestore = firebase.firestore();
 
   const uploadPic = (event) => {
     const file = event.target.files[0];
