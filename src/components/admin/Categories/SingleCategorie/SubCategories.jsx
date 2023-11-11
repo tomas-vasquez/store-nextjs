@@ -4,6 +4,7 @@ import FirebaseContext from "../../../../context/FirebaseContext";
 import Alerts from "../../../../utils/Alerts";
 import { Button } from "reactstrap";
 import Icons from "../../../common/Icons";
+import SingleSubCategorie from "./SubCategories/SingleSubCategorie";
 
 export default function SubCategories({ categorie }) {
   const firebase = useContext(FirebaseContext);

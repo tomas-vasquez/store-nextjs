@@ -1,8 +1,8 @@
 import "../assets/css/style.css";
 
-import Topbar from "../components/Topbar";
+import Topbar from "../components/common/Topbar";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Footer from "../components/common/Footer";
 import AdminFooter from "../components/admin/Footer";
 
 //redux
@@ -49,36 +49,40 @@ function MyApp({ Component, pageProps }) {
 
   // console.log(">>>>>>", store());
   return (
-    <FirebaseContext.Provider value={firebase}>
-      <ReduxProvider store={store}>
-        {router.route.includes("admin") ? (
-          <div>
-            <Topbar />
-            {/* <AdminNavbar /> */}
-            <div className="content">
-              <div className="container">
-                <div className="thickline mb-3"></div>
+    <>
+      <FirebaseContext.Provider value={firebase}>
+        <ReduxProvider store={store}>
+          <Topbar />
+          {router.route.includes("admin") ? (
+            <div>
+              {/* <AdminNavbar /> */}
+              <div className="content">
+                <div className="container">
+                  <div className="thickline mb-3"></div>
+                </div>
+                <AuthWrapper fallback={<Login />}>
+                  <Component {...pageProps} />
+                </AuthWrapper>
               </div>
-              <AuthWrapper fallback={<Login />}>
-                <Component {...pageProps} />
-              </AuthWrapper>
+              <AdminFooter />
             </div>
-            <AdminFooter />
-          </div>
-        ) : (
-          <div className="container">
-            <Navbar />
-            <div className="content">
+          ) : (
+            <>
               <div className="container">
-                <div className="thickline mb-3"></div>
+                <Navbar />
+                <div className="content">
+                  <div className="container">
+                    <div className="thickline mb-3"></div>
+                  </div>
+                  <Component {...pageProps} />
+                </div>
               </div>
-              <Component {...pageProps} />
-            </div>
-            <Footer />
-          </div>
-        )}
-      </ReduxProvider>
-    </FirebaseContext.Provider>
+              <Footer />
+            </>
+          )}
+        </ReduxProvider>
+      </FirebaseContext.Provider>
+    </>
   );
 }
 

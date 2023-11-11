@@ -1,7 +1,7 @@
-import Icons from "../../components/common/Icons";
+import Icons from "../Icons";
 import Link from "next/link";
 import React from "react";
-import { socialIcons, footer, siteMetadata } from "../../../site.config";
+import { socialIcons, footer, siteMetadata } from "../../../../site.config";
 
 export default function Footer({ litle }) {
   return (

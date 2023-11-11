@@ -4,7 +4,7 @@ import React from "react";
 import { DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentExchangeRateIndex } from "../../store/slices/settingSlice";
+import { setCurrentExchangeRateIndex } from "../../../store/slices/settingSlice";
 
 export default function index() {
   const settings = useSelector((state) => state.settings);

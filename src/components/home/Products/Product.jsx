@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import Alerts from "../../utils/Alerts";
+import Alerts from "../../../utils/Alerts";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { addProductToCart } from "../../store/slices/carSlice";
-import { addProductToWhiteList } from "../../store/slices/whiteListSlice";
+import { addProductToCart } from "../../../store/slices/carSlice";
+import { addProductToWhiteList } from "../../../store/slices/whiteListSlice";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();

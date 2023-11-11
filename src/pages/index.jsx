@@ -1,13 +1,17 @@
-import Banner from "../components/Banner";
-import Products from "../components/Products";
+import Categories from "../components/home/Categories";
+import Banner from "../components/home/Banner";
 
-import { getAllProducts } from "../utils/fetcher";
+import { getAllCategoriesAsync, getAllProducts } from "../utils/fetcher";
 
-export default function Home({ products }) {
+export default function Home({ products, categories }) {
   return (
     <>
       <Banner />
-      <Products products={products} />
+      <div className="text-center  my-5">
+        <h2>Navega por categorias:</h2>
+        <p>Encuentra mas facilmente lo que buscas:</p>
+      </div>
+      <Categories basePath={""} categories={categories} />
     </>
   );
 }
@@ -16,6 +20,7 @@ export async function getStaticProps() {
   return {
     props: {
       products: await getAllProducts(),
+      categories: await getAllCategoriesAsync(),
     },
   };
 }
