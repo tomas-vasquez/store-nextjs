@@ -13,7 +13,6 @@ export default function User() {
     firebase.auth().signOut();
   };
 
-  console.log("currentUser>>", currentUser);
   return currentUser ? (
     <UncontrolledDropdown size="lg" key="123">
       <DropdownToggle nav className="dropdown-toggle chevron-big">

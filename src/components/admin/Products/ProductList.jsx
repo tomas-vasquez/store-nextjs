@@ -5,7 +5,7 @@ import { Button, Row, Col } from "reactstrap";
 import SingleProduct from "./SingleProduct";
 import Alerts from "../../../utils/Alerts";
 import FirebaseContext from "../../../context/FirebaseContext";
-import { getAllProductsNotAsync } from "../../../utils/products";
+import { addProduct, getAllProductsNotAsync } from "../../../utils/fetcher";
 
 const ExchangeTypes = ["BS", "USD"];
 
@@ -14,30 +14,6 @@ export default function ProductList() {
   const [isComplete, setIsComplete] = useState(false);
 
   const firebase = useContext(FirebaseContext);
-  const fireStore = firebase.firestore();
-
-  const handleAddPrduct = () => {
-    fireStore
-      .collection("products")
-      .doc()
-      .set({
-        images: [],
-        price: ExchangeTypes.map((type) => {
-          return {
-            type,
-            amount: 0,
-          };
-        }),
-        name: "no-definido",
-        shortLink: "no-definido",
-        description: "no-definido",
-        specs: "no-definido",
-      })
-      .then(function () {
-        Alerts.showSuccess();
-      });
-    Alerts.showLoading();
-  };
 
   useEffect(() => {
     getAllProductsNotAsync(firebase, (products) => {
@@ -45,6 +21,30 @@ export default function ProductList() {
       setIsComplete(true);
     });
   }, []);
+
+  //button actions
+
+  const handleAddProduct = () => {
+    const newProduct = {
+      images: [],
+      price: ExchangeTypes.map((type) => {
+        return {
+          type,
+          amount: 0,
+        };
+      }),
+      name: "product-" + (products.length + 1),
+      shortLink: "product-" + products.length + 1,
+      description: "no-description",
+      specs: "no-definido",
+    };
+
+    Alerts.showLoading();
+
+    addProduct(firebase, newProduct, () => {
+      Alerts.showSuccess();
+    });
+  };
 
   if (!isComplete) return <Loading texto="cargando productos....." />;
 
@@ -76,7 +76,11 @@ export default function ProductList() {
             </button>
           </div>
 
-          <Button className="ml-auto" color="primary" onClick={handleAddPrduct}>
+          <Button
+            className="ml-auto"
+            color="primary"
+            onClick={handleAddProduct}
+          >
             <Icons icon="plus" className="mr-2" />
             Anadir
           </Button>
@@ -88,8 +92,8 @@ export default function ProductList() {
       </div>
 
       <Row>
-        {products.map((product, index) => (
-          <Col xs="12" sm="6" md="4" lg="3" key={index} className="mb-3">
+        {products.map((product) => (
+          <Col xs="12" sm="6" md="4" lg="3" key={product.id} className="mb-3">
             <SingleProduct product={product} />
           </Col>
         ))}

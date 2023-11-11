@@ -4,7 +4,7 @@ import React from "react";
 import SingleProduct from "../components/SingleProduct";
 import Products from "../components/Products";
 
-import { getAllProducts } from "../utils/products";
+import { getAllProducts } from "../utils/fetcher";
 
 const Product = function ({ product, products }) {
   const route = useRouter();

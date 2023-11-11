@@ -18,9 +18,9 @@ class Alerts {
         showCancelButton: true,
         allowOutsideClick: backdropDismiss,
         buttonsStyling: false,
-        confirmButtonText: 'Sí, continuar <i class="fa fa-check"></i>',
+        confirmButtonText: 'Sí, continuar <i className="fa fa-check"></i>',
         confirmButtonClass: "btn btn-default",
-        cancelButtonText: 'cancelar <i class="fa fa-times"></i>',
+        cancelButtonText: 'cancelar <i className="fa fa-times"></i>',
         cancelButtonClass: "btn btn-secundary",
       })
       .then((result) => {
@@ -75,12 +75,12 @@ class Alerts {
   };
 
   //alerta normal
-  showSuccess = (message, title = "Perfecto!") => {
+  showSuccess = (message, title = "Perfect!") => {
     swal.fire({
       title: title,
       text: message,
       icon: "success",
-      timer: 2000,
+      timer: 600,
       showConfirmButton: false,
       buttonsStyling: false,
       confirmButtonClass: "btn btn-default",
@@ -114,8 +114,8 @@ class Alerts {
         buttonsStyling: false,
         confirmButtonClass: "btn btn-default ml-2",
         cancelButtonClass: "btn btn-default",
-        confirmButtonText: 'reintentar <i class="fa fa-redo"></i>',
-        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
+        confirmButtonText: 'reintentar <i className="fa fa-redo"></i>',
+        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
       })
       .then((result) => {
         if (result.value) {
@@ -137,8 +137,8 @@ class Alerts {
         buttonsStyling: false,
         confirmButtonClass: "btn btn-default mr-2",
         cancelButtonClass: "btn btn-default",
-        confirmButtonText: 'reintentar <i class="fa fa-redo"></i>',
-        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
+        confirmButtonText: 'reintentar <i className="fa fa-redo"></i>',
+        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
       })
       .then((result) => {
         if (result.value) {
@@ -148,23 +148,16 @@ class Alerts {
   };
 
   //dialogo de carga de contenido
-  showLoading = (isShow = true, message = "Consultando...") => {
-    if (isShow) {
-      swal.fire({
-        allowOutsideClick: false,
-        // title: message,
-        html:
-          '<div class="pt-1 mx-auto lds-dual-ring"></div><h2 class="text-default mb-0">' +
-          message +
-          "</h2>",
-        showConfirmButton: false,
-        onBeforeOpen: () => {
-          swal.showLoading();
-        },
-      });
-    } else {
-      swal.close();
-    }
+  showLoading = (message = "consulting server") => {
+    swal.fire({
+      allowOutsideClick: false,
+      title: message,
+      html: "Loading please....",
+      showConfirmButton: false,
+      didOpen: () => {
+        swal.showLoading();
+      },
+    });
   };
 
   setUplodingPercentage = (percentage) => {
@@ -179,15 +172,15 @@ class Alerts {
         allowOutsideClick: false,
         // title: message,
         html:
-          '<h2 class="display-4 text-default mb-0">' +
+          '<h2 className="display-4 text-default mb-0">' +
           message +
           "</h2>" +
-          '<div class="">' +
+          '<div className="">' +
           "<br></br>" +
-          '<span id="swal-progress-p" class="mr-2">0%</span>' +
+          '<span id="swal-progress-p" className="mr-2">0%</span>' +
           "<div>" +
-          '<div class="progress" style="width: 100%;height: 10px">' +
-          '<div id="swal-progress-bar" class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>' +
+          '<div className="progress" style="width: 100%;height: 10px">' +
+          '<div id="swal-progress-bar" className="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>' +
           "</div>" +
           "</div>" +
           "</div>",
@@ -195,7 +188,7 @@ class Alerts {
         showCancelButton: true,
         buttonsStyling: false,
 
-        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
+        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
         cancelButtonClass: "btn btn-default",
         // onBeforeOpen: () => {
         //     swal.showLoading()

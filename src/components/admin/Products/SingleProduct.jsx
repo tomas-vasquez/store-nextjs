@@ -1,8 +1,11 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Icons from "../../common/Icons";
 import ModalEditProduct from "./ModalEditProduct";
 import Link from "next/link";
+import { deleteProduct } from "../../../utils/fetcher";
+import FirebaseContext from "../../../context/FirebaseContext";
+import Alerts from "../../../utils/Alerts";
 var exchangeRate = "BS";
 
 export default function SingleProduct({ product }) {
@@ -12,6 +15,16 @@ export default function SingleProduct({ product }) {
 
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const toggleOpenModalEdit = () => setOpenModalEdit(!openModalEdit);
+
+  const firebase = useContext(FirebaseContext);
+
+  const buttonDeleteClickHandler = () => {
+    const productId = product.id;
+    Alerts.showLoading();
+    deleteProduct(firebase, productId, () => {
+      Alerts.showSuccess();
+    });
+  };
 
   return (
     <div className="product d-flex card shadow mb-5">
@@ -67,9 +80,7 @@ export default function SingleProduct({ product }) {
             <button
               type="button"
               className="btn btn-sm btn-danger"
-              title="Add to Cart"
-              data-product-cart-url
-              data-vvveb-action="addCart"
+              onClick={buttonDeleteClickHandler}
             >
               <Icons icon="trash" /> Borrar
             </button>

@@ -1,36 +1,67 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Row, Col } from "reactstrap";
-import SingleCategorie from "./SingleCategori";
+import SingleCategorie from "./SingleCategorie";
+import FirebaseContext from "../../../context/FirebaseContext";
+import { addCategorie, getAllCategories } from "../../../utils/fetcher";
+import Loading from "../Loading";
+import Alerts from "../../../utils/Alerts";
 
 const Categories = () => {
-  const [tags, setTags] = useState([]);
-  const [tag, setTag] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [isComplete, setIsComplete] = useState(false);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const firebase = useContext(FirebaseContext);
 
-  const toggle = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    getAllCategories(firebase, (categories) => {
+      setCategories(categories);
+      setIsComplete(true);
+    });
+  }, []);
 
-  return (
-    <>
-      <Row>
-        {["", "", "", "", "", "", "", ""].map(() => (
-          <Col xs="4">
-            <SingleCategorie />
-          </Col>
-        ))}
-      </Row>
+  //button actions
 
-      <div className="card shadow">
-        <div className="card-body">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary">
-              Add category
-            </button>
+  const bottonClickHAndler = () => {
+    const newCategorie = {
+      name: "no-name",
+      subCategories: [],
+      images: [],
+    };
+
+    Alerts.showLoading();
+
+    addCategorie(firebase, newCategorie, () => {
+      Alerts.showSuccess();
+    });
+  };
+
+  if (!isComplete) return <Loading texto="cargando productos....." />;
+  else
+    return (
+      <>
+        <Row>
+          {categories.map((categorie) => (
+            <Col xs="4" key={categorie.id}>
+              <SingleCategorie categorie={categorie} />
+            </Col>
+          ))}
+        </Row>
+
+        <div className="card shadow mb-5">
+          <div className="card-body">
+            <div className="btn-group">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={bottonClickHAndler}
+              >
+                Add category
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
 };
 
 export default Categories;

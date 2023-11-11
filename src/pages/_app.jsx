@@ -2,7 +2,6 @@ import "../assets/css/style.css";
 
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
-import AdminNavbar from "../components/admin/Navbar";
 import Footer from "../components/Footer";
 import AdminFooter from "../components/admin/Footer";
 

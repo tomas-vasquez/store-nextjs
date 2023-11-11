@@ -13,7 +13,7 @@ function Admin() {
   };
 
   return (
-    <div className="container ">
+    <div className="container">
       <div>
         <Nav tabs>
           <NavItem>

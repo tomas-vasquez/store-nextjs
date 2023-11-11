@@ -1,7 +1,7 @@
 import Banner from "../components/Banner";
 import Products from "../components/Products";
 
-import { getAllProducts } from "../utils/products";
+import { getAllProducts } from "../utils/fetcher";
 
 export default function Home({ products }) {
   return (
