@@ -112,3 +112,15 @@ export const getShortLink = (link) => {
   newString = newString.replace(/¿/g, "");
   return newString;
 };
+
+export const getCategorieList = (categories) => {
+  let list = [];
+  categories.forEach((categorie) => {
+    categorie.subCategories.forEach((subCategorie) => {
+      list.push(
+        getShortLink(categorie.name) + "/" + getShortLink(subCategorie.name)
+      );
+    });
+  });
+  return list;
+};

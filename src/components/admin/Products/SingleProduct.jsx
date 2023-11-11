@@ -8,7 +8,7 @@ import FirebaseContext from "../../../context/FirebaseContext";
 import Alerts from "../../../utils/Alerts";
 var exchangeRate = "BS";
 
-export default function SingleProduct({ product }) {
+export default function SingleProduct({ product, categorieList }) {
   let price = product.price.find(
     (price) => exchangeRate === price.type
   )?.amount;
@@ -73,6 +73,7 @@ export default function SingleProduct({ product }) {
             {openModalEdit && (
               <ModalEditProduct
                 product={product}
+                categorieList={categorieList}
                 openModalEdit={openModalEdit}
                 toggleOpenModalEdit={toggleOpenModalEdit}
               />

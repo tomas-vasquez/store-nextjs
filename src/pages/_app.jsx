@@ -1,4 +1,5 @@
 import "../assets/css/style.css";
+import "react-autocomplete-input/dist/bundle.css";
 
 import Topbar from "../components/common/Topbar";
 import Navbar from "../components/Navbar";

@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FormGroup, Label, Input, Row, Col, Button } from "reactstrap";
 import Alerts from "../../../../utils/Alerts";
 import Icons from "../../../common/Icons";
 import FirebaseContext from "../../../../context/FirebaseContext";
+import TextInput from "react-autocomplete-input";
+import { getAllCategories, getCategorieList } from "../../../../utils/fetcher";
 
 const ExchangeTypes = ["BS", "USD"];
 
@@ -10,11 +12,22 @@ export default function MainInformation({ product, toggleOpenModalEdit }) {
   const firebase = useContext(FirebaseContext);
   const firestore = firebase.firestore();
 
+  const [categorieList, setCategorieList] = useState([]);
+
+  useEffect(() => {
+    getAllCategories(firebase, (categories) => {
+      setCategorieList(getCategorieList(categories));
+    });
+  }, [categorieList]);
+
   const saveChanges = () => {
+    "".normalize;
     let newProduct = {
       ...product,
-      name: document.getElementById("input-name").value,
-      shortLink: document.getElementById("input-shortLink").value,
+      name: document.getElementById("input-name-" + product.id).value,
+      categorie: document
+        .getElementById("input-categorie-" + product.id)
+        .value.trim(),
       price: ExchangeTypes.map((type) => {
         return {
           type,
@@ -36,22 +49,22 @@ export default function MainInformation({ product, toggleOpenModalEdit }) {
     <div>
       <FormGroup>
         <Label for="exampleEmail">Nombre del producto:</Label>
-        <Input name="name" id="input-name" defaultValue={product.name} />
-      </FormGroup>
-      <FormGroup>
-        <Label for="exampleEmail">Enlace corto:</Label>
         <Input
-          name="shortLink"
-          id="input-shortLink"
-          defaultValue={product.shortLink}
+          name="name"
+          id={"input-name-" + product.id}
+          defaultValue={product.name}
         />
       </FormGroup>
+
       <FormGroup>
-        <Label for="exampleEmail">Categoria:</Label>
-        <Input
-          name="shortLink"
-          id="input-shortLink"
+        <Label for="exampleEmail">Categorie:</Label>
+        <TextInput
+          Component="input"
+          className="form-control"
           defaultValue={product.categorie}
+          id={"input-categorie-" + product.id}
+          options={categorieList}
+          trigger={[""]}
         />
       </FormGroup>
       <Row>

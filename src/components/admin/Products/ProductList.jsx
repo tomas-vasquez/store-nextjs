@@ -1,23 +1,35 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import Icons from "../../common/Icons";
 import Loading from "../Loading";
-import { Button, Row, Col } from "reactstrap";
+import { Button, Row, Col, Input } from "reactstrap";
 import SingleProduct from "./SingleProduct";
 import Alerts from "../../../utils/Alerts";
 import FirebaseContext from "../../../context/FirebaseContext";
-import { addProduct, getAllProductsNotAsync } from "../../../utils/fetcher";
+import {
+  addProduct,
+  getAllCategories,
+  getAllProductsNotAsync,
+  getCategorieList,
+} from "../../../utils/fetcher";
 
 const ExchangeTypes = ["BS", "USD"];
 
 export default function ProductList() {
   const [products, setProducts] = useState(null);
   const [isComplete, setIsComplete] = useState(false);
+  const [categorieList, setCategorieList] = useState([]);
+  const [currentCategorie, setCurrentCategorie] = useState("");
 
   const firebase = useContext(FirebaseContext);
 
   useEffect(() => {
     getAllProductsNotAsync(firebase, (products) => {
+      getAllCategories(firebase, (categories) => {
+        setCategorieList(getCategorieList(categories));
+      });
+
       setProducts(products);
+
       setIsComplete(true);
     });
   }, []);
@@ -34,7 +46,7 @@ export default function ProductList() {
         };
       }),
       name: "product-" + (products.length + 1),
-      shortLink: "product-" + products.length + 1,
+      categorie: currentCategorie,
       description: "no-description",
       specs: "no-definido",
       createdAt: new Date().getTime(),
@@ -48,6 +60,15 @@ export default function ProductList() {
   };
 
   if (!isComplete) return <Loading texto="cargando productos....." />;
+
+  let leakedProducts = products;
+
+  if (currentCategorie != "all categories") {
+    leakedProducts = leakedProducts.filter((product) => {
+      console.log(product.categorie == currentCategorie);
+      return product.categorie === currentCategorie;
+    });
+  }
 
   return (
     <div>
@@ -64,12 +85,20 @@ export default function ProductList() {
             aria-label="Search product"
           />
 
-          <select className="custom-select input-group-append form-control-lg no-border-x default-font-size">
-            <option defaultValue="on">All categories</option>
-            <option defaultValue="1">One</option>
-            <option defaultValue="2">Two</option>
-            <option defaultValue="3">Three</option>
-          </select>
+          <Input
+            type="select"
+            style={{ width: 350 }}
+            value={currentCategorie}
+            className="custom-select input-group-append form-control-lg no-border-x"
+            onChange={(e) => {
+              setCurrentCategorie(e.target.value);
+            }}
+          >
+            <option>all categories</option>
+            {categorieList.map((categerie) => (
+              <option key={categerie}>{categerie}</option>
+            ))}
+          </Input>
 
           <div className="input-group-append mr-3">
             <button className="btn btn-primary" type="button">
@@ -89,11 +118,11 @@ export default function ProductList() {
       </form>
 
       <div className="d-flex">
-        <p>mostrando ({products.length} productos):</p>
+        <p>mostrando ({leakedProducts.length} productos):</p>
       </div>
 
       <Row>
-        {products.map((product) => (
+        {leakedProducts.map((product) => (
           <Col xs="12" sm="6" md="4" lg="3" key={product.id} className="mb-3">
             <SingleProduct product={product} />
           </Col>
