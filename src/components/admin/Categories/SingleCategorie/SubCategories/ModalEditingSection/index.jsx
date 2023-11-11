@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Modal } from "reactstrap";
-import Alerts from "../../../../../utils/Alerts";
-import { updateCategorie } from "../../../../../utils/fetcher";
-import FirebaseContext from "../../../../../context/FirebaseContext";
+import Alerts from "../../../../../../utils/Alerts";
+import { updateCategorie } from "../../../../../../utils/fetcher";
+import FirebaseContext from "../../../../../../context/FirebaseContext";
+import Images from "./Images";
 
 export default function ModalEditingSection({
   showModal,
@@ -48,7 +49,7 @@ export default function ModalEditingSection({
           <div className="card-body">
             <div className="input-group mb-3">
               <label>
-                <i className="la la-play"></i> Categorie name:
+                <i className="la la-play"></i> Subcategorie name:
               </label>
               <div className="input-group mb-3">
                 <input
@@ -72,6 +73,10 @@ export default function ModalEditingSection({
                 </button>
               </div>
             </div>
+            <label>
+              <i className="la la-play"></i> Subcategorie images:
+            </label>
+            <Images categorie={categorie} subcategorie={subcategorie} />
           </div>
           <div className="card-footer d-flex">
             <button

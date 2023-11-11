@@ -37,6 +37,7 @@ export default function ProductList() {
       shortLink: "product-" + products.length + 1,
       description: "no-description",
       specs: "no-definido",
+      createdAt: new Date().getTime(),
     };
 
     Alerts.showLoading();

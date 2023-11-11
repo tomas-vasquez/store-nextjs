@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import { Button, ButtonGroup } from "reactstrap";
-import Alerts from "../../../../utils/Alerts";
-import Icons from "../../../common/Icons";
+import Alerts from "../../../../../../utils/Alerts";
+import Icons from "../../../../../common/Icons";
 import Link from "next/link";
-import FirebaseContext from "../../../../context/FirebaseContext";
+import FirebaseContext from "../../../../../../context/FirebaseContext";
 import {
   deleteFile,
   updateCategorie,
   uploadFile,
-} from "../../../../utils/fetcher";
+} from "../../../../../../utils/fetcher";
 
-export default function Images({ categorie }) {
+export default function Images({ categorie, subcategorie }) {
   const firebase = useContext(FirebaseContext);
 
   const uploadPic = (event) => {
@@ -19,39 +19,58 @@ export default function Images({ categorie }) {
     Alerts.showLoading();
 
     uploadFile(firebase, file, "categories", ({ fileName, FileUrl }) => {
-      let newCategorie = {
-        ...categorie,
-        images: [
-          ...categorie.images,
-          {
-            imageId: `/categories/${fileName}`,
-            imageUrl: FileUrl,
-            alternate: fileName,
-          },
-        ],
+      const newImage = {
+        imageId: `/categories/${fileName}`,
+        imageUrl: FileUrl,
+        alternate: fileName,
       };
 
-      updateCategorie(firebase, newCategorie, () => {
+      let updatedimageList = subcategorie.images;
+      updatedimageList.push(newImage);
+
+      const updatedSubcategories = categorie.subCategories.map(
+        (_subcategorie) => {
+          if (subcategorie.id === _subcategorie.id)
+            return { ..._subcategorie, images: updatedimageList };
+          return _subcategorie;
+        }
+      );
+
+      const updatedCategorie = {
+        ...categorie,
+        subCategories: updatedSubcategories,
+      };
+
+      updateCategorie(firebase, updatedCategorie, () => {
         Alerts.showSuccess();
       });
     });
-
-    Alerts.showLoading();
   };
 
   const handleDelete = (image) => {
     Alerts.showLoading();
+
     deleteFile(firebase, image.imageId, () => {
+      let updatedimageList = subcategorie.images;
+      updatedimageList = updatedimageList.filter(
+        (_image) => image.imageId !== _image.imageId
+      );
+
+      const updatedSubcategories = categorie.subCategories.map(
+        (_subcategorie) => {
+          if (subcategorie.id === _subcategorie.id)
+            return { ..._subcategorie, images: updatedimageList };
+          return _subcategorie;
+        }
+      );
+
       let updatedCategorie = {
         ...categorie,
-        images: categorie.images.filter(
-          (_image) => image.imageId !== _image.imageId
-        ),
+        subCategories: updatedSubcategories,
       };
       updateCategorie(firebase, updatedCategorie, () => {
         Alerts.showSuccess();
       });
-      Alerts.showSuccess();
     });
   };
 
@@ -87,12 +106,12 @@ export default function Images({ categorie }) {
 
   return (
     <div className="row mb-3">
-      {categorie.images.map((image) => (
+      {subcategorie.images.map((image) => (
         <SingleImage image={image} key={image.imageId} />
       ))}
       <div className="col-auto">
         <input
-          id={categorie.name + "imageInput"}
+          id={categorie.name + "imageInput2"}
           className="d-none"
           type="file"
           accept="image/png, image/jpeg"
@@ -103,7 +122,7 @@ export default function Images({ categorie }) {
           color="default"
           className="shadow "
           onClick={() => {
-            document.getElementById(categorie.name + "imageInput").click();
+            document.getElementById(categorie.name + "imageInput2").click();
           }}
         >
           <Icons icon="plus" className="mr-2" />

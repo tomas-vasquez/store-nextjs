@@ -26,6 +26,7 @@ const Categories = () => {
       name: "no-name",
       subCategories: [],
       images: [],
+      createdAt: new Date().getTime(),
     };
 
     Alerts.showLoading();

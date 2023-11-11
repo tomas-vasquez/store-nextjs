@@ -77,10 +77,11 @@ class Alerts {
   //alerta normal
   showSuccess = (message, title = "Perfect!") => {
     swal.fire({
-      title: title,
-      text: message,
+      title: message,
       icon: "success",
-      timer: 600,
+      position: "bottom",
+      timer: 3000,
+      toast: true,
       showConfirmButton: false,
       buttonsStyling: false,
       confirmButtonClass: "btn btn-default",
@@ -90,7 +91,7 @@ class Alerts {
   //alerta normal
   showToast = (message) => {
     swal.fire({
-      title: message,
+      title: "success",
       icon: "success",
       position: "bottom",
       timer: 3000,
