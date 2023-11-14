@@ -11,7 +11,7 @@ export default function Home({ products, categories }) {
         <h2>Navega por categorias:</h2>
         <p>Encuentra mas facilmente lo que buscas:</p>
       </div>
-      <Categories basePath={""} categories={categories} />
+      <Categories categories={categories} />
     </>
   );
 }

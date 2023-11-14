@@ -109,18 +109,24 @@ export const getShortLink = (link) => {
   newString = newString.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   newString = newString.replace(/ /g, "_");
   newString = newString.replace(/\?/g, "");
+  newString = newString.replace(/\//g, "");
   newString = newString.replace(/¿/g, "");
   return newString;
 };
 
 export const getCategorieList = (categories) => {
   let list = [];
+
   categories.forEach((categorie) => {
-    categorie.subCategories.forEach((subCategorie) => {
-      list.push(
-        getShortLink(categorie.name) + "/" + getShortLink(subCategorie.name)
-      );
-    });
+    if (categorie.hasSubcategories) {
+      categorie.subCategories.forEach((subCategorie) => {
+        list.push(
+          getShortLink(categorie.name) + "/" + getShortLink(subCategorie.name)
+        );
+      });
+    } else {
+      list.push(getShortLink(categorie.name));
+    }
   });
   return list;
 };

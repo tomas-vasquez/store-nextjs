@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { updateCategorie } from "../../../../utils/fetcher";
 import FirebaseContext from "../../../../context/FirebaseContext";
 import Alerts from "../../../../utils/Alerts";
-import { Button } from "reactstrap";
+import { Button, Collapse } from "reactstrap";
 import Icons from "../../../common/Icons";
 import SingleSubCategorie from "./SubCategories/SingleSubCategorie";
 
@@ -32,18 +32,45 @@ export default function SubCategories({ categorie }) {
     });
   };
 
+  const checkboxInputClickHandler = (e) => {
+    const updatedCategorie = {
+      ...categorie,
+      hasSubcategories: e.target.checked,
+    };
+
+    Alerts.showLoading();
+    updateCategorie(firebase, updatedCategorie, () => {
+      Alerts.showSuccess();
+    });
+  };
+
   return (
     <>
-      {categorie.subCategories.map((subcategorie) => (
-        <SingleSubCategorie categorie={categorie} subcategorie={subcategorie} />
-      ))}
-      <div className="p-1 d-flex">
-        <div className="ml-auto">
-          <Button className="py-1" onClick={addButtonClickHandler}>
-            <Icons icon="plus" /> add subcategory
-          </Button>
+      <p>
+        has subcategories?
+        <input
+          className="ml-3"
+          type="checkbox"
+          name=""
+          id=""
+          onClick={checkboxInputClickHandler}
+        />
+      </p>
+      <Collapse isOpen={categorie.hasSubcategories}>
+        {categorie.subCategories.map((subcategorie) => (
+          <SingleSubCategorie
+            categorie={categorie}
+            subcategorie={subcategorie}
+          />
+        ))}
+        <div className="p-1 d-flex">
+          <div className="ml-auto">
+            <Button className="py-1" onClick={addButtonClickHandler}>
+              <Icons icon="plus" /> add subcategory
+            </Button>
+          </div>
         </div>
-      </div>
+      </Collapse>
     </>
   );
 }

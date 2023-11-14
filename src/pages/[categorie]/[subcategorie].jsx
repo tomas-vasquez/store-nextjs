@@ -4,44 +4,70 @@ import {
   getAllProducts,
   getShortLink,
 } from "../../utils/fetcher";
+import Products from "../../components/home/Products";
 
-export default function Subcategorie({ products, categorie, subCategorie }) {
-  return (
-    <div>
-      {categorie + "" + subCategorie}
-      {JSON.stringify(products)}
-    </div>
+export default function Subcategorie({ products, product, categorie }) {
+  return categorie.hasSubcategories ? (
+    <Products products={products} />
+  ) : (
+    <>single product{JSON.stringify(product)}</>
   );
 }
 
-export async function getStaticPaths(param) {
+export async function getStaticPaths() {
   let categories = await getAllCategoriesAsync();
-  let links = [];
+  let products = await getAllProducts();
+  let paths = [];
 
   categories.forEach((categorie) => {
-    categorie.subCategories.forEach((subCategorie) => {
-      links.push(
-        "/" +
-          getShortLink(categorie.name) +
+    if (categorie.hasSubcategories) {
+      categorie.subCategories.forEach((subCategorie) => {
+        paths.push(
           "/" +
-          getShortLink(subCategorie.name)
-      );
-    });
+            getShortLink(categorie.name) +
+            "/" +
+            getShortLink(subCategorie.name)
+        );
+      });
+    } else {
+      products.forEach((product) => {
+        if (product.categorie == getShortLink(categorie.name))
+          paths.push(
+            "/" +
+              getShortLink(categorie.name) +
+              "/" +
+              getShortLink(product.name)
+          );
+      });
+    }
   });
 
+  console.log(">>>>", paths);
   return {
-    paths: links,
+    paths: paths,
     fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
   let products = await getAllProducts();
-  console.log(">>>>>>>>>", params);
+  let categories = await getAllCategoriesAsync();
 
-  const { categorie, subcategorie } = params;
+  const categorie = categories.find((categorie) => {
+    return getShortLink(categorie.name) == params.categorie;
+  });
+
+  let product = null;
+  if (!categorie.hasSubcategories)
+    product = products.find((_product) => {
+      return getShortLink(_product.name) === params.subcategorie;
+    });
+
+  const filteredProducts = products.filter((product) => {
+    return product.categorie == params.categorie + "/" + params.subcategorie;
+  });
 
   return {
-    props: { products, categorie, subCategorie: subcategorie },
+    props: { categorie, product, products: filteredProducts },
   };
 }

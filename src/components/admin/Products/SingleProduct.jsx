@@ -45,9 +45,9 @@ export default function SingleProduct({ product, categorieList }) {
 
         <div className="p-2">
           <h5>
-            <Link href="product.html" data-product-url data-name data-url>
-              {product.name}
-            </Link>
+            {/* <Link href="product.html" data-product-url data-  name data-url> */}
+            {product.name}
+            {/* </Link> */}
           </h5>
 
           <div className="price-group">

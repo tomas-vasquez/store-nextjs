@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { addProductToCart } from "../../../store/slices/carSlice";
 import { addProductToWhiteList } from "../../../store/slices/whiteListSlice";
+import { getShortLink } from "../../../utils/fetcher";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ export default function Product({ product }) {
   return (
     <article className="product d-flex shadow rounded">
       <div className=" mx-auto d-inline-block">
-        <Link href={`/${product.shortLink}`}>
+        <Link href={`/${product.categorie}/${getShortLink(product.name)}`}>
           {product.images[0] ? (
             <img
               src={product.images[0].imageUrl}

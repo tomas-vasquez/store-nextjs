@@ -47,8 +47,8 @@ export default function ProductList() {
       }),
       name: "product-" + (products.length + 1),
       categorie: currentCategorie,
-      description: "no-description",
-      specs: "no-definido",
+      description: "",
+      specs: "",
       createdAt: new Date().getTime(),
     };
 
@@ -69,6 +69,11 @@ export default function ProductList() {
       return product.categorie === currentCategorie;
     });
   }
+
+  leakedProducts = leakedProducts.sort((a, b) => {
+    console.log("aaaa", a.createdAt);
+    return a.createdAt - b.createdAt;
+  });
 
   return (
     <div>

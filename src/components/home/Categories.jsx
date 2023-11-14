@@ -3,9 +3,17 @@ import Link from "next/link";
 import React from "react";
 import { getShortLink } from "../../utils/fetcher";
 
-export default function Categories({ basePath, categories = "" }) {
+export default function Categories({ basePath = "", categories, categorie }) {
   return (
     <>
+      {categorie !== undefined && (
+        <div className="text-center  my-5">
+          <h2>{categorie.name}:</h2>
+
+          <p>Encuentra mas facilmente lo que buscasss:</p>
+        </div>
+      )}
+
       <div className="row">
         {categories.map((categorie, index) => (
           <div key={index} className="col-6 col-md-3 mb-5">
