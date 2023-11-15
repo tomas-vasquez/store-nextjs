@@ -49,7 +49,7 @@ export default function ModalEditingSection({
           <div className="card-body">
             <div className="input-group mb-3">
               <label>
-                <i className="la la-play"></i> Subcategorie name:
+                <i className="fas fa-play"></i> Subcategorie name:
               </label>
               <div className="input-group mb-3">
                 <input
@@ -69,12 +69,12 @@ export default function ModalEditingSection({
                   id="button-addon2"
                   onClick={bottonClickHandler}
                 >
-                  <i className="la la-save" />
+                  <i className="fas fa-save" />
                 </button>
               </div>
             </div>
             <label>
-              <i className="la la-play"></i> Subcategorie images:
+              <i className="fas fa-play"></i> Subcategorie images:
             </label>
             <Images categorie={categorie} subcategorie={subcategorie} />
           </div>

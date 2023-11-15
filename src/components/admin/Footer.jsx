@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Icons from "../../components/common/Icons";
 import React from "react";
 
 export default function Footer({ litle }) {
@@ -9,7 +8,7 @@ export default function Footer({ litle }) {
         <div className="text-center">
           <p className={litle ? "mb-0 text-center" : "mb-0"}>
             {/* © 2019-{new Date().getFullYear()} cursos-online.com.  */}
-            Made with <Icons icon="heart" /> by{" "}
+            Made withby{" "}
             <Link
               rel="noopener"
               href="https://tomas-vasquez.vercel.app/"

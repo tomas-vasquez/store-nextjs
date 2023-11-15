@@ -28,15 +28,17 @@ export default function index() {
           },
         }}
       >
-        {["a", "a", "a", "a", "a", "a"].map((course, index) => (
+        {["a"].map((course, index) => (
           <div className="container" key={`ca-${index}`}>
             <div className="row">
-              <div className="col-lg-4 p-5">
-                <h1 className="font-weight-bold">iMac Pro 2.</h1>
+              <div className="col-lg-7 p-5">
+                <h1 className="font-weight-bold">Arduino</h1>
                 <p className="font-weight-normal pb-4">
-                  Mobile ready, outstanding performance
-                  <br />
-                  with gorgeous display
+                  Desata tu creatividad con Arduino. Desde proyectos simples
+                  hasta ideas innovadoras, haz realidad tus sueños de
+                  electrónica con la versatilidad y facilidad de Arduino.
+                  ¡Convierte la imaginación en realidad, uno de tus proyectos a
+                  la vez!
                 </p>
                 <p>
                   <Link
@@ -44,18 +46,17 @@ export default function index() {
                     href="#"
                     role="button"
                   >
-                    Añadir al carrito <i className="la la-arrow-right"></i>
+                    Ver categoria<i className="fas fa-arrow-right"></i>
                   </Link>
                 </p>
               </div>
-              <div className="col-lg-8">
+              <div className="col-lg-5">
                 <Image
-                  src="/ipad.png"
+                  src="/arduino.png"
                   className="float-right col-md-8"
                   alt="dsd"
                   width={0}
                   height={0}
-                  sizes="100vw"
                   style={{ width: "100%", height: "auto" }} // optional
                 />
               </div>

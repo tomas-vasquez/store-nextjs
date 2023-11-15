@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Button, FormGroup, Label } from "reactstrap";
-import Icons from "../../../common/Icons";
 
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css"; // Add css for snow theme
@@ -72,8 +71,7 @@ export default function Especifications({ product, toggleOpenModalEdit }) {
       </FormGroup>
       <div className="border-top pt-3 text-right">
         <Button color="primary" className="mr-2" onClick={saveChanges}>
-          <Icons icon="check" className="mr-2" />
-          Guardar cambios
+          <i className="fas fa-check" /> Guardar cambios
         </Button>
         <Button color="secondary" onClick={toggleOpenModalEdit}>
           Cancel

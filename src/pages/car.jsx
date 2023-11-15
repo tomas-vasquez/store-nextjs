@@ -44,6 +44,7 @@ export default function Car() {
       <div className="row">
         <div className="col-md-12 mt-2 mb-4">
           <h2>
+            <i className="fas fa-car" />
             <Icons icon="car" className="mr-3 text-primary" />
             Carrito de compras
           </h2>
@@ -125,7 +126,7 @@ export default function Car() {
                           removeProductToCartButtonHandler(e, product);
                         }}
                       >
-                        <i className="la la-times" />
+                        <i className="fas fa-times" />
                       </button>
                     </td>
                     <td className="text-right">

@@ -35,7 +35,7 @@ export default function User() {
       <DropdownMenu className="dropdown-menu-xl" end>
         <div className="d-flex">
           <button className="btn mx-auto" onClick={buttonLogoutClickHandler}>
-            logout <i className="la la-arrow-rigth" />
+            logout <i className="fas fa-arrow-rigth" />
           </button>
         </div>
       </DropdownMenu>
@@ -43,7 +43,7 @@ export default function User() {
   ) : (
     <UncontrolledDropdown key="345">
       <DropdownToggle nav className="dropdown-toggle chevron-big">
-        <i className="la la-user d-inline-block" style={{ fontSize: 42 }}></i>
+        <i className="fas fa-user d-inline-block" style={{ fontSize: 42 }}></i>
         &ensp;
         <div className="d-inline-block text-dark" data-if="login">
           <span className="small d-block text-left">My account</span>

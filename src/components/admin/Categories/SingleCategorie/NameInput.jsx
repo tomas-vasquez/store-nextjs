@@ -38,7 +38,7 @@ export default function NameInput({ categorie }) {
         id="button-addon2"
         onClick={bottonClickHandler}
       >
-        <i className="la la-save" />
+        <i className="fas fa-save" />
       </button>
     </div>
   );

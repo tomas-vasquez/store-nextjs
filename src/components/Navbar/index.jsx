@@ -7,12 +7,12 @@ import User from "./User";
 const Navbar = ({ categories }) => {
   return (
     <>
-      <nav className="navbar bg-body-tertiary">
+      <nav className="navbar bg-body-tertiary mt-3">
         <div className="container-fluid">
           <Link className="navbar-brand logo m-0" href="/">
             <h1 className="text-dark">
-              <i className="text-secondary la la-plug"></i>
-              electróni<span className="text-secondary">cos.</span>
+              <i className="text-secondary fas fa-plug " /> electróni
+              <span className="text-secondary">cos.</span>
             </h1>
           </Link>
           <div className="d-flex">

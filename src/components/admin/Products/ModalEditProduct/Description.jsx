@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Alert, Button, FormGroup, Input, Label } from "reactstrap";
-import Icons from "../../../common/Icons";
-
+import React, { useContext, useEffect } from "react";
+import { Button, FormGroup, Label } from "reactstrap";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css"; // Add css for snow theme
 import Alerts from "../../../../utils/Alerts";
@@ -72,7 +70,7 @@ export default function Description({ product, toggleOpenModalEdit }) {
       </FormGroup>
       <div className="border-top pt-3 text-right">
         <Button color="primary" className="mr-2" onClick={saveChanges}>
-          <Icons icon="check" className="mr-2" />
+          <i className="fas fa-check" />
           Guardar cambios
         </Button>
         <Button color="secondary" onClick={toggleOpenModalEdit}>

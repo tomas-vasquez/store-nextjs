@@ -1,7 +1,7 @@
 const apiUrl = process.env.API_URL || "http://localhost:3001";
 
 const siteMetadata = {
-  title: "tu-academia",
+  title: "Electronicos",
   author: {
     name: "Tomas Vasquez",
     summary: "who works building clean user interfaces with React.",
@@ -12,18 +12,6 @@ const siteMetadata = {
   social: {
     twitter: "tomasdetloging",
   },
-};
-
-const links = {
-  search: "busqueda",
-};
-
-const apiLinks = {
-  apiLoginUrl: apiUrl + "/login",
-  apiSignupUrl: apiUrl + "/signup",
-  testsUrl: apiUrl + "/academy/tests",
-  getAllCourses: apiUrl + "/academy/courses",
-  getItems: apiUrl + "/academy/items/",
 };
 
 const socialIcons = [
@@ -54,55 +42,6 @@ const socialIcons = [
   },
 ];
 
-const navbarLinks = [
-  { title: "Inicio", url: "/" },
-  { title: "Cursos", url: "/courses" },
-  { title: "Blog", url: "/blog" },
-
-  // {
-  //   title: "Cursos",
-  //   submenu: [
-  //     { title: "Inicio", url: "/" },
-  //     { title: "Courses", url: "/courses" },
-  //   ],
-  // },
-];
-
-const hero = {
-  mainTitle: "Inicia tu aprendizaje online con",
-  subTitle: "bla bla bla bla bla",
-  searchPlaceholder: "Buscar...",
-};
-
-const allCourses = {
-  title: "Cursos",
-  subTitle: "bla bla bla bla bla",
-  searchPlaceholder: "Buscar...",
-  bestCourses: {
-    title: "Mejores cursos",
-    subTitle: "bla bla bla bla bla",
-  },
-  courses: {
-    title: "Todos los cursos",
-    subTitle: "bla bla bla bla bla",
-  },
-};
-
-const singleCourse = {
-  buttonStartText: "Empezar",
-  description: {
-    descriptionTitleText: "Descripcion del curso",
-    contentTitleText: "Contenido del curso",
-    requiredTitleText: "Requisitos del curso",
-    required: [],
-  },
-};
-
-const popularCourses = {
-  title: "Cursos mas populares",
-  subTitle: "bla bla bla bla bla",
-};
-
 const search = {
   title: "Resultados de la busqueda",
   searchPlaceholder: "Buscar...",
@@ -131,6 +70,10 @@ const footer = {
 };
 
 module.exports = {
+  contact: {
+    email: "tomasdetloging@gmail.com",
+    phone: "(+591) 60008852",
+  },
   exchangeRates: [
     {
       type: "USD",
@@ -142,7 +85,7 @@ module.exports = {
     },
   ],
 
-  currentExchangeRateIndex: 0,
+  currentExchangeRateIndex: 1,
 
   shippingCost: [
     {
@@ -154,16 +97,9 @@ module.exports = {
       type: "USD",
     },
   ],
-  links,
   socialIcons,
   siteMetadata,
-  apiUrl,
-  apiLinks,
-  navbarLinks,
-  hero,
-  singleCourse,
-  allCourses,
-  popularCourses,
+
   footer,
   search,
 };

@@ -1,5 +1,4 @@
 import React, { use, useContext, useEffect, useState } from "react";
-import Icons from "../../common/Icons";
 import Loading from "../Loading";
 import { Button, Row, Col, Input } from "reactstrap";
 import SingleProduct from "./SingleProduct";
@@ -107,7 +106,7 @@ export default function ProductList() {
 
           <div className="input-group-append mr-3">
             <button className="btn btn-primary" type="button">
-              <i className="la la-search"></i>
+              <i className="fas fa-search"></i>
             </button>
           </div>
 
@@ -116,8 +115,7 @@ export default function ProductList() {
             color="primary"
             onClick={handleAddProduct}
           >
-            <Icons icon="plus" className="mr-2" />
-            Anadir
+            <i className="fas fa-plus" /> Anadir
           </Button>
         </div>
       </form>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import Alerts from "../../../../utils/Alerts";
-import Icons from "../../../common/Icons";
 import Link from "next/link";
 import FirebaseContext from "../../../../context/FirebaseContext";
 
@@ -68,10 +67,10 @@ export default function Images({ product, toggleOpenModalEdit }) {
             target="imagePreview"
             className="btn btn-secondary"
           >
-            <Icons icon="eye" />
+            <i className="fas fa-eye" />
           </Link>
           <Button color="danger" onClick={() => handleDelete(image.imageId)}>
-            <Icons icon="trash" />
+            <i className="fas fa-trash" />
           </Button>
         </ButtonGroup>
       </div>
@@ -92,8 +91,7 @@ export default function Images({ product, toggleOpenModalEdit }) {
             document.getElementById("input-pic").click();
           }}
         >
-          <Icons icon="plus" className="mr-2" />
-          Anadir
+          <i className="fas fa-plus" /> Anadir
         </Button>
       </div>
 

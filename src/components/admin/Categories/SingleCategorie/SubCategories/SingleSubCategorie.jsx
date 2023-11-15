@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import FirebaseContext from "../../../../../context/FirebaseContext";
 import { Button } from "reactstrap";
-import Icons from "../../../../common/Icons";
 import Alerts from "../../../../../utils/Alerts";
 import { updateCategorie } from "../../../../../utils/fetcher";
 import ModalEditingSection from "./ModalEditingSection";
@@ -48,7 +47,7 @@ export default function SingleSubCategorie({ categorie, subcategorie }) {
                 setShowModal(!showModal);
               }}
             >
-              <Icons icon="pencil" />
+              <i className="fas fa-pencil" />
             </Button>
 
             <Button
@@ -56,7 +55,7 @@ export default function SingleSubCategorie({ categorie, subcategorie }) {
               color="danger"
               onClick={deleteButtonClickHandler}
             >
-              <Icons icon="trash" />
+              <i className="fas fa-trash" />
             </Button>
           </div>
         </div>

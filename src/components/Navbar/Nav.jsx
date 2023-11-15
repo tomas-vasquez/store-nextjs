@@ -34,7 +34,7 @@ export default function Nav({ categories }) {
             <ButtonDropdown isOpen={openDropdownCategories} toggle={toggle}>
               <DropdownToggle className="px-5 rounded">
                 Categorias
-                <i className="la la-angle-down ml-1" />
+                <i className="fas fa-angle-down ml-1" />
               </DropdownToggle>
               <DropdownMenu>
                 {categories.map((_categorie, index) => (
@@ -48,16 +48,20 @@ export default function Nav({ categories }) {
               </DropdownMenu>
             </ButtonDropdown>
           </li>
-
-          <li className="nav-item">
+          <li className="nav-item ml-3">
             <Link href="/" className="nav-link">
               Inicio
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" href="#">
+              Lista de deseos
             </Link>
           </li>
 
           <li className="nav-item">
             <Link className="nav-link" href="#">
-              Lista de deseos
+              preguntas?
             </Link>
           </li>
 
@@ -66,7 +70,6 @@ export default function Nav({ categories }) {
               Acerca de
             </Link>
           </li>
-
           <li className="nav-item">
             <Link className="nav-link" href="#">
               Contactanos

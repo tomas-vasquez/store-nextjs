@@ -1,28 +1,42 @@
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
 
-import { DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
+// import { DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 
-import { useDispatch, useSelector } from "react-redux";
-import { setCurrentExchangeRateIndex } from "../../../store/slices/settingSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import { setCurrentExchangeRateIndex } from "../../../store/slices/settingSlice";
+import { contact } from "../../../../site.config";
 
 export default function index() {
-  const settings = useSelector((state) => state.settings);
-  const dispatch = useDispatch();
+  // const settings = useSelector((state) => state.settings);
+  // const dispatch = useDispatch();
 
-  const currentExchangeRate =
-    settings.exchangeRates[settings.currentExchangeRateIndex];
+  // const currentExchangeRate =
+  //   settings.exchangeRates[settings.currentExchangeRateIndex];
 
-  const onClickHandler = (index) => {
-    dispatch(setCurrentExchangeRateIndex(index));
-  };
-
+  // const onClickHandler = (index) =>
+  //   dispatch(setCurrentExchangeRateIndex(index));
+  // };
   return (
-    <div id="top-nav" className="bg-light smaller-font-size text-muted">
-      <nav className="navbar-expand-md container px-3">
+    <div id="top-nav" className="bg-light small-font-size text-muted">
+      <div className="container text-right py-1">
+        <span>
+          {contact.email && (
+            <>
+              <i className="fas fa-envelope" /> {contact.email}
+            </>
+          )}
+          {contact.phone && (
+            <>
+              <i className="fas fa-phone ml-5" /> {contact.phone}
+            </>
+          )}
+        </span>
+      </div>
+      {/* <nav className="navbar-expand-md container px-3">
         <UncontrolledDropdown size="lg">
           <DropdownToggle nav className="dropdown-toggle chevron-big">
-            <i className="la la-dollar"></i>&ensp;{currentExchangeRate.type}
+            <i className="fas fa-dollar"></i>&ensp;{currentExchangeRate.type}
           </DropdownToggle>
           <DropdownMenu className="dropdown-menu-xl">
             <ul className="navbar-nav">
@@ -42,7 +56,6 @@ export default function index() {
                 </li>
               ))}
             </ul>
-            {/* {JSON.stringify(settings.exchangeRates)} */}
           </DropdownMenu>
         </UncontrolledDropdown>
 
@@ -50,7 +63,7 @@ export default function index() {
           className="collapse navbar-collapse"
           id="navbarsExampleDefault"
         ></div>
-      </nav>
+      </nav> */}
     </div>
   );
 }

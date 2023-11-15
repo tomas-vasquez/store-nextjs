@@ -1,4 +1,3 @@
-import Icons from "../Icons";
 import Link from "next/link";
 import React from "react";
 import { socialIcons, footer, siteMetadata } from "../../../../site.config";
@@ -11,7 +10,7 @@ export default function Footer({ litle }) {
           <div className="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
             <Link href="/" className="logo">
               <h1 className="text-dark">
-                <i className="text-secondary la la-plug"></i>
+                <i className="text-secondary fas fa-plug"></i>
                 <span className="text-white">
                   Bol<span className="text-secondary">o.</span>
                 </span>
@@ -21,13 +20,13 @@ export default function Footer({ litle }) {
 
             <p className="mt-4">{footer.aboutText}</p>
             <ul className="list-unstyled  mb-0 mt-4">
-              {socialIcons.map((icon, index) => (
+              {/* {socialIcons.map((icon, index) => (
                 <li className="list-inline-item" key={index}>
                   <Link href="" className="text-foot">
                     <Icons className="fa-1x mx-2" icon={icon.icon} />
                   </Link>
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
 
@@ -37,7 +36,7 @@ export default function Footer({ litle }) {
               {footer.links.map((link, index) => (
                 <li key={index}>
                   <Link href={link.url} className="text-foot">
-                    <Icons icon="dot" className="mr-1" />
+                    <i className="fas fa-sm fa-circle" />
                     {link.title}l
                   </Link>
                 </li>
@@ -82,7 +81,7 @@ export default function Footer({ litle }) {
         <div className="text-center">
           <p className={litle ? "mb-0 text-center" : "mb-0"}>
             {/* © 2019-{new Date().getFullYear()} cursos-online.com.  */}
-            Made with <Icons icon="heart" /> by{" "}
+            Made with <i className="fas fa-heart" /> by{"   "}
             <Link
               className="badge badge-dark"
               rel="noopener"

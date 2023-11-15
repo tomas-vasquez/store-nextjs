@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React, { useContext, useState } from "react";
-import Icons from "../../common/Icons";
 import ModalEditProduct from "./ModalEditProduct";
 import Link from "next/link";
 import { deleteProduct } from "../../../utils/fetcher";
@@ -68,7 +67,7 @@ export default function SingleProduct({ product, categorieList }) {
               data-vvveb-action="addCart"
               onClick={() => setOpenModalEdit(true)}
             >
-              <Icons icon="pencil" /> Editar
+              <i className="fas fa-pencil" /> Editar
             </button>
             {openModalEdit && (
               <ModalEditProduct
@@ -83,7 +82,7 @@ export default function SingleProduct({ product, categorieList }) {
               className="btn btn-sm btn-danger"
               onClick={buttonDeleteClickHandler}
             >
-              <Icons icon="trash" /> Borrar
+              <i className="fas fa-trash" /> Borrar
             </button>
           </div>
         </div>

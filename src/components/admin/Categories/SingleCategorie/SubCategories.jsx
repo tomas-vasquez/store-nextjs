@@ -3,7 +3,6 @@ import { updateCategorie } from "../../../../utils/fetcher";
 import FirebaseContext from "../../../../context/FirebaseContext";
 import Alerts from "../../../../utils/Alerts";
 import { Button, Collapse } from "reactstrap";
-import Icons from "../../../common/Icons";
 import SingleSubCategorie from "./SubCategories/SingleSubCategorie";
 
 export default function SubCategories({ categorie }) {
@@ -66,7 +65,7 @@ export default function SubCategories({ categorie }) {
         <div className="p-1 d-flex">
           <div className="ml-auto">
             <Button className="py-1" onClick={addButtonClickHandler}>
-              <Icons icon="plus" /> add subcategory
+              <i className="fas fa-plus" /> add subcategory
             </Button>
           </div>
         </div>

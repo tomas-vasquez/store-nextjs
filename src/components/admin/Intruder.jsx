@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
-import Icons from "../common/Icons";
 import FirebaseContext from "../../context/FirebaseContext";
 
 export default function Intruder() {
@@ -26,12 +25,12 @@ export default function Intruder() {
             router.replace("/");
           }}
         >
-          <Icons icon="home" className="mr-2" />
+          <i className="fas fa-plus mr-2" />
           Volver al inicio
         </button>
 
         <button className="btn btn-primary" onClick={buttonLogoutClickHandler}>
-          <Icons icon="sign" className="mr-2" />
+          <i className="fas fa-sign mr-2" />
           Iniciar sesion con otra cuenta
         </button>
       </div>

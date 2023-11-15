@@ -84,7 +84,7 @@ export default function Product({ product }) {
               title="Add to Cart"
               onClick={addCarButtonOnClick}
             >
-              <i className="la la-shopping-cart"></i> Añadir al carrito
+              <i className="fas fa-shopping-cart"></i> Añadir al carrito
             </button>
 
             <button
@@ -93,7 +93,7 @@ export default function Product({ product }) {
               title="Add to favorites"
               onClick={addWhiteListButtonOnClick}
             >
-              <i className="la la-heart"></i>
+              <i className="fas fa-heart"></i>
             </button>
           </div>
         </div>

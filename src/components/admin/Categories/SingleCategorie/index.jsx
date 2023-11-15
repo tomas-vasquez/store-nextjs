@@ -15,15 +15,15 @@ const SingleCategorie = ({ categorie }) => {
       </div>
       <div className="card-body p-3">
         <label>
-          <i className="la la-play"></i> Categorie name:
+          <i className="fas fa-play"></i> Categorie name:
         </label>
         <NameInput categorie={categorie} />
         <label>
-          <i className="la la-play"></i> Categorie images:
+          <i className="fas fa-play"></i> Categorie images:
         </label>
         <Images categorie={categorie} />
         <label>
-          <i className="la la-play"></i> Subcategories:
+          <i className="fas fa-play"></i> Subcategories:
         </label>
 
         <SubCategories categorie={categorie} />

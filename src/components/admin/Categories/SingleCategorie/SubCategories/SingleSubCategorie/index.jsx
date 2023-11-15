@@ -28,7 +28,7 @@ export default function SingleSubCategorie({ categorie, subcategorie }) {
           <span className="my-auto ml-2">s{subcategorie.name}</span>
           <div className="ml-auto">
             <Button className="py-1">
-              <Icons icon="pencil" />
+              <i className="fas fa-pencil" />
             </Button>
 
             <Button
@@ -36,7 +36,7 @@ export default function SingleSubCategorie({ categorie, subcategorie }) {
               color="danger"
               onClick={deleteButtonClickHandler}
             >
-              <Icons icon="trash" />
+              <i className="fas fa-trash" />
             </Button>
           </div>
         </div>

@@ -1,5 +1,6 @@
-import "../assets/css/style.css";
+import "../assets/scss/default.scss";
 import "react-autocomplete-input/dist/bundle.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import Topbar from "../components/common/Topbar";
 import Navbar from "../components/Navbar";
@@ -32,6 +33,8 @@ import "firebase/storage";
 import AuthWrapper from "../components/admin/AuthWrapper";
 import Login from "../components/admin/Login";
 import { useEffect } from "react";
+import Head from "../components/common/Head";
+import Parallax from "../components/home/Parallax";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -50,6 +53,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Head />
       <FirebaseContext.Provider value={firebase}>
         <ReduxProvider store={store}>
           <Topbar />
@@ -77,6 +81,7 @@ function MyApp({ Component, pageProps }) {
                   <Component {...pageProps} />
                 </div>
               </div>
+              <Parallax />
               <Footer />
             </>
           )}

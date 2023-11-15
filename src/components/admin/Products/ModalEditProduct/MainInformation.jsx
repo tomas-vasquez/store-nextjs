@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FormGroup, Label, Input, Row, Col, Button } from "reactstrap";
 import Alerts from "../../../../utils/Alerts";
-import Icons from "../../../common/Icons";
 import FirebaseContext from "../../../../context/FirebaseContext";
 import TextInput from "react-autocomplete-input";
 import { getAllCategories, getCategorieList } from "../../../../utils/fetcher";
@@ -86,7 +85,7 @@ export default function MainInformation({ product, toggleOpenModalEdit }) {
       </Row>
       <div className="border-top pt-3 text-right">
         <Button color="primary" className="mr-2" onClick={saveChanges}>
-          <Icons icon="check" className="mr-2" />
+          <i className="fas fa-check" />
           Guardar cambios
         </Button>
         <Button color="secondary" onClick={toggleOpenModalEdit}>

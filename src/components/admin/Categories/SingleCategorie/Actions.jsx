@@ -17,7 +17,7 @@ export default function Actions({ categorie }) {
   return (
     <div className="d-flex">
       <Button className="ml-auto" color="danger" onClick={onClickHandler}>
-        <i className="la la-trash"></i> Delete
+        <i className="fas fa-trash"></i> Delete
       </Button>
     </div>
   );

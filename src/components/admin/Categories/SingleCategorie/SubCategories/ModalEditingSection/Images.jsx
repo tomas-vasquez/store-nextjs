@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import Alerts from "../../../../../../utils/Alerts";
-import Icons from "../../../../../common/Icons";
 import Link from "next/link";
 import FirebaseContext from "../../../../../../context/FirebaseContext";
 import {
@@ -94,10 +93,10 @@ export default function Images({ categorie, subcategorie }) {
             target="imagePreview"
             className="btn btn-secondary"
           >
-            <Icons icon="eye" />
+            <i className="fas fa-eye" />
           </Link>
           <Button color="danger" onClick={() => handleDelete(image)}>
-            <Icons icon="trash" />
+            <i className="fas fa-trash" />
           </Button>
         </ButtonGroup>
       </div>
@@ -125,7 +124,7 @@ export default function Images({ categorie, subcategorie }) {
             document.getElementById(categorie.name + "imageInput2").click();
           }}
         >
-          <Icons icon="plus" className="mr-2" />
+          <i className="fas fa-plus" />
           add
         </Button>
       </div>

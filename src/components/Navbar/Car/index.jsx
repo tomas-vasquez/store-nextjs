@@ -28,8 +28,8 @@ export default function Car() {
     <UncontrolledDropdown size="lg">
       <DropdownToggle nav className="dropdown-toggle chevron-big">
         <i
-          className="la la-shopping-cart d-inline-block"
-          style={{ fontSize: 42 }}
+          className="fas fa-shopping-cart d-inline-block"
+          style={{ fontSize: 35 }}
         ></i>
         &ensp;
         <div className="d-inline-block text-dark">
@@ -56,8 +56,8 @@ export default function Car() {
                 <td className="text-left">
                   <img
                     src={product.images[0].imageUrl}
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     alt={product.images[0].imageId}
                   />
                 </td>
@@ -110,7 +110,7 @@ export default function Car() {
         )}
         <div className="d-flex">
           <Link className="btn btn-secondary ml-auto mr-2" href="/car">
-            See cart <i className="la la-arrow-right"></i>
+            See cart <i className="fas fa-arrow-right"></i>
           </Link>
         </div>
       </DropdownMenu>

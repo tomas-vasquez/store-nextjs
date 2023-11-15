@@ -144,7 +144,7 @@ const SingleProduct = function ({ product }) {
                 className="btn btn-danger btn-block btn-icon"
                 onClick={removeProductToCart}
               >
-                <i className="la la-car"></i> sacar del carrito
+                <i className="fas fa-car"></i> sacar del carrito
               </button>
             ) : (
               <button
@@ -152,7 +152,7 @@ const SingleProduct = function ({ product }) {
                 className="btn btn-primary btn-block btn-icon"
                 onClick={pushProductToCart}
               >
-                <i className="la la-cart-plus"></i> añadir al carrito
+                <i className="fas fa-cart-plus"></i> añadir al carrito
               </button>
             )} */}
 
@@ -160,7 +160,7 @@ const SingleProduct = function ({ product }) {
               type="button"
               className="btn btn-outline-secondary btn-block  btn-icon"
             >
-              <i className="la la-shopping-cart"></i> Comprar ahora!
+              <i className="fas fa-shopping-cart"></i> Comprar ahora!
             </button>
           </div>
         </div>
