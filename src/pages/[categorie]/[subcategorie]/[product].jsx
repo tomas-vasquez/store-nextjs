@@ -4,10 +4,10 @@ import {
   getAllProducts,
   getShortLink,
 } from "../../../utils/fetcher";
-import Products from "../../../components/home/Products";
+import SingleProduct from "../../../components/SingleProduct";
 
 export default function Product({ product }) {
-  return <>single product{JSON.stringify(product)}</>;
+  return <SingleProduct product={product} />;
 }
 
 export async function getStaticPaths() {
@@ -45,6 +45,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   let products = await getAllProducts();
+  const categories = await getAllCategoriesAsync();
 
   let product = null;
   product = products.find((_product) => {
@@ -52,6 +53,6 @@ export async function getStaticProps({ params }) {
   });
 
   return {
-    props: { product },
+    props: { product, categories },
   };
 }

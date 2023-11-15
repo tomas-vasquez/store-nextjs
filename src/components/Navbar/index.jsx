@@ -4,7 +4,7 @@ import Car from "./Car";
 import Nav from "./Nav";
 import User from "./User";
 
-const Navbar = ({ car, products }) => {
+const Navbar = ({ categories }) => {
   return (
     <>
       <nav className="navbar bg-body-tertiary">
@@ -23,7 +23,7 @@ const Navbar = ({ car, products }) => {
       </nav>
 
       <header className="container mt-2">
-        <Nav products={products} />
+        <Nav categories={categories} />
       </header>
     </>
   );

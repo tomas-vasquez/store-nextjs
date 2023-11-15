@@ -114,6 +114,13 @@ export const getShortLink = (link) => {
   return newString;
 };
 
+export const revert_getShortLink = (link) => {
+  let newString = link;
+  newString = newString = newString.replace(/_/g, " ");
+
+  return newString;
+};
+
 export const getCategorieList = (categories) => {
   let list = [];
 

@@ -10,7 +10,7 @@ import classnames from "classnames";
 
 var exchangeRate = "BS";
 
-const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
+const SingleProduct = function ({ product }) {
   let price = product.price.find(
     (price) => exchangeRate === price.type
   )?.amount;
@@ -34,9 +34,9 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
     <div>
       <article className="product-details container" data-component-product="">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-6">
             <div className="row d-flex">
-              {product.images[1] && (
+              {product.images[0] && (
                 <ul className="list-unstyled product-gallery col-md-2">
                   {product.images.map((image, index) => (
                     <li
@@ -72,23 +72,12 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
             <h1 className="product-heading" data-name="">
               {product.name}
             </h1>
-
-            <ul className="list-unstyled text-muted">
-              <li>
-                ID: <span>{product.id}</span>
-              </li>
-              <li>
-                Stock: <span>In stock</span>
-              </li>
-            </ul>
-
             <div className="old-price">
               <span data-price="">{price + 15}</span>{" "}
               <span className="currency" data-currency="">
                 {exchangeRate}
               </span>
             </div>
-
             <div className="price h3">
               <span data-price="">{price}</span>{" "}
               <span className="currency" data-currency="">
@@ -96,8 +85,44 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
               </span>
             </div>
 
-            <hr />
+            <Nav tabs>
+              <NavItem>
+                <NavLink
+                  className={classnames({ active: activeTab === "1" })}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    toggle("1");
+                  }}
+                >
+                  Descripcion
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  className={classnames({ active: activeTab === "2" })}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    toggle("2");
+                  }}
+                >
+                  Especificaciones
+                </NavLink>
+              </NavItem>
+            </Nav>
+            <TabContent activeTab={activeTab}>
+              <TabPane tabId="1" className="pt-2">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: product.description.trim(),
+                  }}
+                />
+              </TabPane>
+              <TabPane tabId="2" className="pt-2">
+                <div dangerouslySetInnerHTML={{ __html: product.specs }} />
+              </TabPane>
+            </TabContent>
 
+            <hr />
             <div className="form-group row">
               <label htmlFor="productQuantity" className="col-form-label col-4">
                 Cantidad:
@@ -113,7 +138,7 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
               />
             </div>
 
-            {car.products.find((_product) => _product === product) ? (
+            {/* {car.products.find((_product) => _product === product) ? (
               <button
                 type="button"
                 className="btn btn-danger btn-block btn-icon"
@@ -129,7 +154,7 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
               >
                 <i className="la la-cart-plus"></i> añadir al carrito
               </button>
-            )}
+            )} */}
 
             <button
               type="button"
@@ -139,51 +164,9 @@ const SingleProduct = function ({ product, car, addProduct, removeProduct }) {
             </button>
           </div>
         </div>
-
-        <Nav tabs>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: activeTab === "1" })}
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                toggle("1");
-              }}
-            >
-              Descripcion
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: activeTab === "2" })}
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                toggle("2");
-              }}
-            >
-              Especificaciones
-            </NavLink>
-          </NavItem>
-        </Nav>
-        <TabContent activeTab={activeTab}>
-          <TabPane tabId="1" className="pt-4">
-            <div dangerouslySetInnerHTML={{ __html: product.description }} />
-          </TabPane>
-          <TabPane tabId="2" className="pt-4">
-            <div dangerouslySetInnerHTML={{ __html: product.specs }} />
-          </TabPane>
-        </TabContent>
       </article>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  car: state.car,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  addProduct: (product) => dispatch(_addProduct(product)),
-  removeProduct: (product) => dispatch(_removeProduct(product)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct);
+export default SingleProduct;

@@ -6,10 +6,11 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import { getShortLink } from "../../utils/fetcher";
 
 // import { categories } from "../../../site.data";
 
-export default function Nav(products) {
+export default function Nav({ categories }) {
   const [openDropdownCategories, setOpenDropdownCategories] = useState(false);
   const toggle = () => setOpenDropdownCategories(!openDropdownCategories);
 
@@ -36,9 +37,13 @@ export default function Nav(products) {
                 <i className="la la-angle-down ml-1" />
               </DropdownToggle>
               <DropdownMenu>
-                {/* {categories.map((_categorie, index) => (
-                  <DropdownItem key={index}>{_categorie}</DropdownItem>
-                ))} */}
+                {categories.map((_categorie, index) => (
+                  <DropdownItem key={index}>
+                    <Link href={"/" + getShortLink(_categorie.name)}>
+                      {_categorie.name}
+                    </Link>
+                  </DropdownItem>
+                ))}
                 <></>
               </DropdownMenu>
             </ButtonDropdown>
@@ -52,39 +57,16 @@ export default function Nav(products) {
 
           <li className="nav-item">
             <Link className="nav-link" href="#">
-              Servicio de envio
+              Lista de deseos
             </Link>
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" href="#">
-              Como comprar?
+            <Link className="nav-link " href="/">
+              Acerca de
             </Link>
           </li>
 
-          <li className="nav-item dropdown">
-            <Link
-              className="nav-link dropdown-toggle"
-              href="http://example.com"
-              id="dropdown04"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Acerca de
-            </Link>
-            <div className="dropdown-menu" aria-labelledby="dropdown04">
-              <Link className="dropdown-item" href="#">
-                FAQ
-              </Link>
-              <Link className="dropdown-item" href="#">
-                Our Story
-              </Link>
-              <Link className="dropdown-item" href="#">
-                Something else here
-              </Link>
-            </div>
-          </li>
           <li className="nav-item">
             <Link className="nav-link" href="#">
               Contactanos

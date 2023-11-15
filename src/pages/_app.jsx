@@ -48,7 +48,6 @@ function MyApp({ Component, pageProps }) {
     });
   }, []);
 
-  // console.log(">>>>>>", store());
   return (
     <>
       <FirebaseContext.Provider value={firebase}>
@@ -70,7 +69,7 @@ function MyApp({ Component, pageProps }) {
           ) : (
             <>
               <div className="container">
-                <Navbar />
+                <Navbar {...pageProps} />
                 <div className="content">
                   <div className="container">
                     <div className="thickline mb-3"></div>

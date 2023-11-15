@@ -5,12 +5,13 @@ import {
   getShortLink,
 } from "../../utils/fetcher";
 import Products from "../../components/home/Products";
+import SingleProduct from "../../components/SingleProduct";
 
 export default function Subcategorie({ products, product, categorie }) {
   return categorie.hasSubcategories ? (
     <Products products={products} />
   ) : (
-    <>single product{JSON.stringify(product)}</>
+    <SingleProduct product={product} />
   );
 }
 
@@ -42,7 +43,6 @@ export async function getStaticPaths() {
     }
   });
 
-  console.log(">>>>", paths);
   return {
     paths: paths,
     fallback: false,
@@ -68,6 +68,6 @@ export async function getStaticProps({ params }) {
   });
 
   return {
-    props: { categorie, product, products: filteredProducts },
+    props: { categories, categorie, product, products: filteredProducts },
   };
 }

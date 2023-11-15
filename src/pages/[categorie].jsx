@@ -31,9 +31,6 @@ const Product = function ({ categorie, products }) {
 export async function getStaticPaths() {
   let categories = await getAllCategoriesAsync();
 
-  console.log(
-    categories.map((categorie) => `/${getShortLink(categorie.name)}`)
-  );
   return {
     paths: categories.map((categorie) => `/${getShortLink(categorie.name)}`),
     fallback: false,
@@ -56,6 +53,7 @@ export async function getStaticProps(props) {
     props: {
       products: leakedProducts,
       categorie,
+      categories,
     },
   };
 }

@@ -8,6 +8,7 @@ import {
   reduceProductCuantity,
   removeProductToCart,
 } from "../store/slices/carSlice";
+import { getAllCategoriesAsync } from "../utils/fetcher";
 
 export default function Car() {
   const car = useSelector((state) => state.car);
@@ -162,4 +163,11 @@ export default function Car() {
       </div>
     </div>
   );
+}
+export async function getStaticProps() {
+  return {
+    props: {
+      categories: await getAllCategoriesAsync(),
+    },
+  };
 }
