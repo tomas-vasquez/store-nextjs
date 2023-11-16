@@ -2,9 +2,19 @@ import { getShortLink } from "/src/utils/fetcher";
 import SingleProduct from "/src/components/SingleProduct";
 
 import * as mainData from "/mainData.json";
+import Header from "../../../components/common/Header";
+import Products from "../../../components/home/Products";
 
-export default function Product({ product }) {
-  return <SingleProduct product={product} />;
+export default function Product({ product, products }) {
+  return (
+    <>
+      <Header title={product.name} />
+      <SingleProduct product={product} />
+      <div className="mt-5">
+        <Products products={products} />
+      </div>
+    </>
+  );
 }
 
 export async function getStaticPaths() {
@@ -49,6 +59,6 @@ export async function getStaticProps({ params }) {
   });
 
   return {
-    props: { product, categories },
+    props: { product, categories, products },
   };
 }

@@ -3,12 +3,20 @@ import Products from "../../components/home/Products";
 import SingleProduct from "../../components/SingleProduct";
 
 import * as mainData from "/mainData.json";
+import Header from "../../components/common/Header";
 
 export default function Subcategorie({ categorie, products, product }) {
   return categorie.hasSubcategories ? (
-    <Products products={products} />
+    <>
+      <Header title={categorie.name} />
+      <Products products={products} />
+    </>
   ) : (
-    <SingleProduct product={product} />
+    <>
+      <Header title={product.name} />
+      <Products products={products} />
+      <SingleProduct product={product} />
+    </>
   );
 }
 

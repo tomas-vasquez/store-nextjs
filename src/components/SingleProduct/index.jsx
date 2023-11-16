@@ -32,7 +32,7 @@ const SingleProduct = function ({ product }) {
 
   return (
     <div>
-      <article className="product-details container" data-component-product="">
+      <article className="product-details" data-component-product="">
         <div className="row">
           <div className="col-md-6">
             <div className="row d-flex">
@@ -68,22 +68,16 @@ const SingleProduct = function ({ product }) {
             </div>
           </div>
 
-          <div className="col-md-4">
-            <h1 className="product-heading" data-name="">
+          <div className="col-md-6">
+            {/* <h1 className="product-heading" data-name="">
               {product.name}
-            </h1>
-            <div className="old-price">
+            </h1> */}
+            {/* <div className="old-price">
               <span data-price="">{price + 15}</span>{" "}
               <span className="currency" data-currency="">
                 {exchangeRate}
               </span>
-            </div>
-            <div className="price h3">
-              <span data-price="">{price}</span>{" "}
-              <span className="currency" data-currency="">
-                {exchangeRate}
-              </span>
-            </div>
+            </div> */}
 
             <Nav tabs>
               <NavItem>
@@ -121,8 +115,14 @@ const SingleProduct = function ({ product }) {
                 <div dangerouslySetInnerHTML={{ __html: product.specs }} />
               </TabPane>
             </TabContent>
-
             <hr />
+            <div className="price h3">
+              <span data-price="">{price}</span>{" "}
+              <span className="currency" data-currency="">
+                {exchangeRate}
+              </span>
+            </div>
+
             <div className="form-group row">
               <label htmlFor="productQuantity" className="col-form-label col-4">
                 Cantidad:

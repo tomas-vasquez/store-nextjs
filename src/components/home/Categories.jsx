@@ -2,22 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { getShortLink } from "../../utils/fetcher";
+import * as mainData from "/mainData.json";
 
-export default function Categories({ basePath = "", categories, categorie }) {
+export default function Categories({ basePath = "", categories }) {
+  const { products } = mainData;
+
+  const getPrductsCounter = (categorie) => {
+    let c = 0;
+    products.forEach((product) => {
+      if (product.categorie.includes(getShortLink(categorie.name))) c = c + 1;
+    });
+    return c;
+  };
+
   return (
     <>
-      {categorie !== undefined && (
-        <div className="text-center  my-5">
-          <h2>{categorie.name}:</h2>
-
-          <p>Encuentra mas facilmente lo que buscasss:</p>
-        </div>
-      )}
-
       <div className="row">
-        {categories.map((categorie, index) => (
-          <div key={index} className="col-6 col-md-3 mb-5">
-            <article className="product d-flex shadow rounded p-0">
+        {categories.map((categorie) => (
+          <div key={categorie.name} className="col-6 col-md-3 mb-5">
+            <article className="product d-flex p-0">
               <div className=" mx-auto d-inline-block">
                 <Link href={basePath + `/${getShortLink(categorie.name)}`}>
                   {categorie.images[0] ? (
@@ -25,7 +28,7 @@ export default function Categories({ basePath = "", categories, categorie }) {
                       src={categorie.images[0].imageUrl}
                       width={230}
                       height={230}
-                      alt={categorie.images[0].imageId}
+                      alt={categorie.name}
                     />
                   ) : (
                     <Image
@@ -35,9 +38,10 @@ export default function Categories({ basePath = "", categories, categorie }) {
                       height={230}
                     />
                   )}
-                  <h5 className="text-dark m-2">{categorie.name}</h5>
+                  <h6 className="m-2">
+                    {categorie.name} ({getPrductsCounter(categorie)})
+                  </h6>
                 </Link>
-                {/* {JSON.stringify(categorie)} */}
               </div>
             </article>
           </div>

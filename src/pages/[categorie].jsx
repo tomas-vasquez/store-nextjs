@@ -3,19 +3,26 @@ import { getAllCategoriesAsync, getShortLink } from "../utils/fetcher";
 import Categories from "../components/home/Categories";
 import Products from "../components/home/Products";
 import * as mainData from "/mainData.json";
+import Header from "../components/common/Header";
 
 const Product = function ({ categorie, products }) {
   return (
     <>
       <div className="mt-5">
         {categorie.hasSubcategories ? (
-          <Categories
-            basePath={getShortLink(categorie.name)}
-            categorie={categorie}
-            categories={categorie.subCategories}
-          />
+          <>
+            <Header title={categorie.name} subtitle="" />
+            <Categories
+              basePath={getShortLink(categorie.name)}
+              categorie={categorie}
+              categories={categorie.subCategories}
+            />
+          </>
         ) : (
-          <Products products={products} categorie={categorie} />
+          <>
+            <Header title={categorie.name} subtitle="" />
+            <Products products={products} categorie={categorie} />
+          </>
         )}
       </div>
     </>
