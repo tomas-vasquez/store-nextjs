@@ -2,9 +2,11 @@ import Categories from "../components/home/Categories";
 import Banner from "../components/home/Banner";
 import Header from "../components/common/Header";
 
-import { getAllCategoriesAsync, getAllProducts } from "../utils/fetcher";
+import * as mainData from "/mainData.json";
 
-export default function Home({ products, categories }) {
+export default function Home() {
+  const { categories } = mainData;
+
   return (
     <>
       <Banner />
@@ -16,13 +18,4 @@ export default function Home({ products, categories }) {
       <Categories categories={categories} />
     </>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {
-      products: await getAllProducts(),
-      categories: await getAllCategoriesAsync(),
-    },
-  };
 }

@@ -1,0 +1,101 @@
+{
+    "products": [
+        {
+            "images": [
+                {
+                    "imageId": "/products/708-Sensor de Color TCS34725.jpeg",
+                    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/store-aaee4.appspot.com/o/products%2F708-Sensor%20de%20Color%20TCS34725.jpeg?alt=media&token=dc5a3e73-c84f-46ec-ab13-ac0eb2cb1f47"
+                },
+                {
+                    "imageId": "/products/567-Seguidor de Línea 5CH y Evasor de Obstáculos.jpeg",
+                    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/store-aaee4.appspot.com/o/products%2F567-Seguidor%20de%20L%C3%ADnea%205CH%20y%20Evasor%20de%20Obst%C3%A1culos.jpeg?alt=media&token=39161df3-b429-4a75-baad-a6a0dfd96e93"
+                },
+                {
+                    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/store-aaee4.appspot.com/o/products%2F345-Balanza%20de%205Kg%20con%20HX711.jpg?alt=media&token=88f92e01-87e4-4b97-b3c3-c6a1e78da2da",
+                    "imageId": "/products/345-Balanza de 5Kg con HX711.jpg"
+                }
+            ],
+            "description": "<p><br></p><p>El sensor magnético efecto Hall KY-03 utiliza el principio del efecto Hall para detectar campos magnéticos. Este sensor es comúnmente utilizado en proyectos electrónicos y sistemas de control magnético. Con su diseño compacto y sensibilidad ajustable, es ideal para aplicaciones como interruptores magnéticos, control de motores y posicionamiento magnético.</p><p><br></p>",
+            "categorie": "shields",
+            "name": "produc 123",
+            "specs": "<p> Tensión de Operación: 4.5V - 24V</p><p>- Salida de Señal Digital (0 o 1)</p><p>- Sensibilidad Ajustable</p><p>- Diseño Compacto y Fácil de Integrar</p><p>- Ideal para Proyectos de Interruptores Magnéticos, Control de Motores y Posicionamiento Magnético.</p><p><br></p>",
+            "id": "XYOwtRQx2YhaL9GpW1Ia",
+            "price": [
+                {
+                    "type": "BS",
+                    "amount": 12
+                },
+                {
+                    "amount": 0,
+                    "type": "USD"
+                }
+            ],
+            "createdAt": 1699994027998
+        },
+        {
+            "categorie": "placas/arduino",
+            "images": [
+                {
+                    "imageId": "/products/961-pngwing.com.png",
+                    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/store-aaee4.appspot.com/o/products%2F961-pngwing.com.png?alt=media&token=39a30009-c5a7-4a84-95b5-a391c7876189"
+                }
+            ],
+            "name": "product-4",
+            "createdAt": 1700044889939,
+            "price": [
+                {
+                    "type": "BS",
+                    "amount": 0
+                },
+                {
+                    "type": "USD",
+                    "amount": 0
+                }
+            ],
+            "id": "ggOD66Fa2Lg8XTSUGLDj",
+            "description": "",
+            "specs": ""
+        }
+    ],
+    "categories": [
+        {
+            "createdAt": 1699993913316,
+            "hasSubcategories": true,
+            "subCategories": [
+                {
+                    "images": [],
+                    "id": "65804143c9dcd8",
+                    "name": "arduino"
+                },
+                {
+                    "images": [],
+                    "id": "70fd4f1b149968",
+                    "name": "rasp"
+                }
+            ],
+            "id": "82sRejF1bVDPvU7sf7SP",
+            "name": "placas",
+            "images": [
+                {
+                    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/store-aaee4.appspot.com/o/categories%2F255-pngwing.com.png?alt=media&token=1e1c0e4e-f97e-4967-b040-cf8c71ca887a",
+                    "imageId": "/categories/255-pngwing.com.png",
+                    "alternate": "255-pngwing.com.png"
+                }
+            ]
+        },
+        {
+            "images": [],
+            "name": "shields",
+            "createdAt": 1699993915689,
+            "hasSubcategories": false,
+            "subCategories": [
+                {
+                    "name": "no-defined",
+                    "images": [],
+                    "id": "4c1801bf70f018"
+                }
+            ],
+            "id": "eyohVGvdWCKoZ3MS2t9y"
+        }
+    ]
+}

@@ -9,10 +9,13 @@ import {
 import { getShortLink } from "../../utils/fetcher";
 
 import { navbar } from "../../../site.config";
+import * as mainData from "../../../mainData.json";
 
-export default function Nav({ categories = [] }) {
+export default function Nav() {
   const [openDropdownCategories, setOpenDropdownCategories] = useState(false);
   const toggle = () => setOpenDropdownCategories(!openDropdownCategories);
+
+  const { categories } = mainData;
 
   return (
     <nav className="navbar navbar-light bg-white  rounded navbar-expand-md ">

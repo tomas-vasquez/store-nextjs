@@ -1,13 +1,10 @@
-import React from "react";
-import {
-  getAllCategoriesAsync,
-  getAllProducts,
-  getShortLink,
-} from "../../utils/fetcher";
+import { getShortLink } from "../../utils/fetcher";
 import Products from "../../components/home/Products";
 import SingleProduct from "../../components/SingleProduct";
 
-export default function Subcategorie({ products, product, categorie }) {
+import * as mainData from "/mainData.json";
+
+export default function Subcategorie({ categorie, products, product }) {
   return categorie.hasSubcategories ? (
     <Products products={products} />
   ) : (
@@ -16,8 +13,8 @@ export default function Subcategorie({ products, product, categorie }) {
 }
 
 export async function getStaticPaths() {
-  let categories = await getAllCategoriesAsync();
-  let products = await getAllProducts();
+  const { categories, products } = mainData;
+
   let paths = [];
 
   categories.forEach((categorie) => {
@@ -50,8 +47,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  let products = await getAllProducts();
-  let categories = await getAllCategoriesAsync();
+  const { categories, products } = mainData;
 
   const categorie = categories.find((categorie) => {
     return getShortLink(categorie.name) == params.categorie;
@@ -68,6 +64,6 @@ export async function getStaticProps({ params }) {
   });
 
   return {
-    props: { categories, categorie, product, products: filteredProducts },
+    props: { categorie, product, products: filteredProducts },
   };
 }

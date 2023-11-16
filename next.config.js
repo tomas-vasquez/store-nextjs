@@ -1,3 +1,5 @@
+process.env.NODE_NO_WARNINGS = "1";
+
 const nextConfig = {
   publicRuntimeConfig: {
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,

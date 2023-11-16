@@ -1,16 +1,10 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
-import {
-  getAllCategoriesAsync,
-  getAllProducts,
-  getShortLink,
-} from "../utils/fetcher";
+import { getAllCategoriesAsync, getShortLink } from "../utils/fetcher";
 import Categories from "../components/home/Categories";
 import Products from "../components/home/Products";
+import * as mainData from "/mainData.json";
 
 const Product = function ({ categorie, products }) {
-  const route = useRouter();
   return (
     <>
       <div className="mt-5">
@@ -29,8 +23,7 @@ const Product = function ({ categorie, products }) {
 };
 
 export async function getStaticPaths() {
-  let categories = await getAllCategoriesAsync();
-
+  const { categories } = mainData;
   return {
     paths: categories.map((categorie) => `/${getShortLink(categorie.name)}`),
     fallback: false,
@@ -38,9 +31,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(props) {
-  console.log("loaded categories............");
-  let categories = await getAllCategoriesAsync();
-  let products = await getAllProducts();
+  const { categories, products } = mainData;
 
   const categorie = categories.find(
     (_categorie) => getShortLink(_categorie.name) === props.params.categorie
@@ -54,7 +45,6 @@ export async function getStaticProps(props) {
     props: {
       products: leakedProducts,
       categorie,
-      categories,
     },
   };
 }
