@@ -36,8 +36,10 @@ export default function Footer({ litle }) {
               {footer.links.map((link, index) => (
                 <li key={index}>
                   <Link href={link.url} className="text-foot">
-                    <i className="fas fa-sm fa-circle" />
-                    {link.title}l
+                    <small>
+                      <i className="fas fa-sm fa-circle" />
+                    </small>{" "}
+                    {link.title}
                   </Link>
                 </li>
               ))}

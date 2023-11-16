@@ -1,5 +1,3 @@
-const apiUrl = process.env.API_URL || "http://localhost:3001";
-
 const siteMetadata = {
   title: "Electronicos",
   author: {
@@ -14,31 +12,56 @@ const siteMetadata = {
   },
 };
 
-const socialIcons = [
+const navbar = [
   {
-    id: 0,
-    icon: "github",
-    url: "https://github.com/tomasdetloging",
+    title: "Inicio",
+    url: "/",
   },
   {
-    id: 356,
-    icon: "youtube",
-    url: "https://www.facebook.com/tomasdetloging",
+    title: "Favoritos",
+    url: "/whiteList",
   },
   {
-    id: 3,
-    icon: "linkedin",
-    url: "https://www.linkedin.com/in/tomasdetloging/",
+    title: "Preguntas frecuentes",
+    url: "/content/preguntas",
   },
   {
-    id: 2,
-    icon: "instagram",
-    url: "https://www.instagram.com/tomasdetloging/",
+    title: "Acerca de...",
+    url: "/content/about",
   },
   {
-    id: 4,
-    icon: "twitter",
-    url: "https://www.twitter.com/tomasdetloging/",
+    title: "Contacto",
+    url: "/contacto",
+  },
+];
+const banner = [
+  {
+    title: "🚀 ¡haz realidad tu proyecto! 🚀",
+    text: "Transforma tus ideas en realidad con la plataforma líder en electrónica DIY. En nuestra tienda, encontrarás todo lo que necesitas para tus proyectos Arduino:",
+    imageUrl: "/5035199.jpg",
+    bottomText: "Empieza con lo basico",
+    bottomUrl: "/placas/arduino",
+  },
+  {
+    title: "🔧 Componentes de Calidad 🔧",
+    text: "Desde placas Arduino hasta sensores y actuadores, ofrecemos una amplia gama de componentes confiables.",
+    imageUrl: "/3793117.jpg",
+    bottomText: "Empieza con lo basico",
+    bottomUrl: "/placas/arduino",
+  },
+  {
+    title: "🏍️ ¡Envío Rápido! 🏍️",
+    text: "Recibe tus componentes Arduino directamente en tu puerta.",
+    imageUrl: "/8841406.jpg",
+    bottomText: "Descubre mas acerca",
+    bottomUrl: "/content/envio",
+  },
+  {
+    title: "👩‍💻 Asesoramiento 👩‍💻",
+    text: "Nuestro equipo de expertos está listo para ayudarte en cada paso del camino. ¿Tienes preguntas? ¡Estamos aquí para responderlas!",
+    imageUrl: "/5124556.jpg",
+    bottomText: "Descubre mas acerca",
+    bottomUrl: "/content/envio",
   },
 ];
 
@@ -53,16 +76,24 @@ const footer = {
   LinksTitle: "Enlaces",
   links: [
     {
-      title: "Inicio",
-      url: "/",
+      title: "Acerca de nosotros",
+      url: "/content/about",
     },
     {
-      title: "Inicio",
-      url: "/",
+      title: "Servicio de envio",
+      url: "/content/envio",
     },
     {
-      title: "Inicio",
-      url: "/",
+      title: "Preguntas frecuentes",
+      url: "/content/terminos-condiciones",
+    },
+    {
+      title: "Politica de privacidad",
+      url: "/content/politica-privacidad",
+    },
+    {
+      title: "Terminos y condiciones",
+      url: "/content/terminos-condiciones",
     },
   ],
   newsLetterTitle: "NewsLetter",
@@ -70,6 +101,8 @@ const footer = {
 };
 
 module.exports = {
+  navbar,
+  banner,
   contact: {
     email: "tomasdetloging@gmail.com",
     phone: "(+591) 60008852",
@@ -97,9 +130,7 @@ module.exports = {
       type: "USD",
     },
   ],
-  socialIcons,
   siteMetadata,
-
   footer,
   search,
 };

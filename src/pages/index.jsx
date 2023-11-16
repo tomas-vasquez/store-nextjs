@@ -1,5 +1,6 @@
 import Categories from "../components/home/Categories";
 import Banner from "../components/home/Banner";
+import Header from "../components/common/Header";
 
 import { getAllCategoriesAsync, getAllProducts } from "../utils/fetcher";
 
@@ -7,10 +8,11 @@ export default function Home({ products, categories }) {
   return (
     <>
       <Banner />
-      <div className="text-center  my-5">
-        <h2>Navega por categorias:</h2>
-        <p>Encuentra mas facilmente lo que buscas:</p>
-      </div>
+      <Header
+        title="Navega por categorias:"
+        subtitle="Encuentra mas facilmente lo que buscas:"
+      />
+
       <Categories categories={categories} />
     </>
   );

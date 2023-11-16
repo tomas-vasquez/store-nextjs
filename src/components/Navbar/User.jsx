@@ -61,7 +61,6 @@ export default function User() {
           }}
           firebaseAuth={firebase.auth()}
         />
-        sxs
       </DropdownMenu>
     </UncontrolledDropdown>
   );

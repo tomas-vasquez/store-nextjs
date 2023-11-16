@@ -1,13 +1,14 @@
 import React from "react";
-import Image from "next/image";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Link from "next/link";
 
+import { banner } from "../../../../site.config";
+
 export default function index() {
   return (
-    <div className="bg-light py-3 mb-4">
+    <div className="pb-3 mb-4">
       <Carousel
         infinite={true}
         autoPlay={true}
@@ -28,35 +29,30 @@ export default function index() {
           },
         }}
       >
-        {["a"].map((course, index) => (
-          <div className="container" key={`ca-${index}`}>
-            <div className="row">
-              <div className="col-lg-7 p-5">
-                <h1 className="font-weight-bold">Arduino</h1>
-                <p className="font-weight-normal pb-4">
-                  Desata tu creatividad con Arduino. Desde proyectos simples
-                  hasta ideas innovadoras, haz realidad tus sueños de
-                  electrónica con la versatilidad y facilidad de Arduino.
-                  ¡Convierte la imaginación en realidad, uno de tus proyectos a
-                  la vez!
-                </p>
-                <p>
-                  <Link
-                    className="btn btn-md btn-outline-primary font-weight-bold px-5 py-2"
-                    href="#"
-                    role="button"
-                  >
-                    Ver categoria<i className="fas fa-arrow-right"></i>
-                  </Link>
-                </p>
+        {banner.map((item, index) => (
+          <div className="container px-5" key={`ca-${index}`}>
+            <div className="row px-5">
+              <div className="col-lg-6 d-flex ">
+                <div className="my-auto">
+                  <h1 className="font-weight-bold mb-4">{item.title}</h1>
+                  <p className="font-weight-normal mb-4">{item.text}</p>
+                  <p>
+                    <Link
+                      className="btn btn-md btn-outline-primary font-weight-bold px-5 py-2"
+                      href={item.bottomUrl}
+                      role="button"
+                    >
+                      {item.bottomText + " "}
+                      <i className="fas fa-arrow-right"></i>
+                    </Link>
+                  </p>
+                </div>
               </div>
-              <div className="col-lg-5">
-                <Image
-                  src="/arduino.png"
-                  className="float-right col-md-8"
+              <div className="col-lg-6">
+                <img
+                  src={item.imageUrl}
+                  className="float-right "
                   alt="dsd"
-                  width={0}
-                  height={0}
                   style={{ width: "100%", height: "auto" }} // optional
                 />
               </div>

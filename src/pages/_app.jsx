@@ -6,6 +6,7 @@ import Topbar from "../components/common/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/common/Footer";
 import AdminFooter from "../components/admin/Footer";
+import Head from "next/head";
 
 //redux
 import { Provider as ReduxProvider } from "react-redux";
@@ -33,8 +34,6 @@ import "firebase/storage";
 import AuthWrapper from "../components/admin/AuthWrapper";
 import Login from "../components/admin/Login";
 import { useEffect } from "react";
-import Head from "../components/common/Head";
-import Parallax from "../components/home/Parallax";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -53,7 +52,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Head />
+      <Head>
+        <meta name="viewport" content="viewport-fit=cover" />
+      </Head>
       <FirebaseContext.Provider value={firebase}>
         <ReduxProvider store={store}>
           <Topbar />
@@ -81,7 +82,6 @@ function MyApp({ Component, pageProps }) {
                   <Component {...pageProps} />
                 </div>
               </div>
-              <Parallax />
               <Footer />
             </>
           )}

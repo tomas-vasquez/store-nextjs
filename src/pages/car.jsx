@@ -1,5 +1,4 @@
 import React from "react";
-import Icons from "../components/common/Icons";
 import Link from "next/link";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -44,8 +43,7 @@ export default function Car() {
       <div className="row">
         <div className="col-md-12 mt-2 mb-4">
           <h2>
-            <i className="fas fa-car" />
-            <Icons icon="car" className="mr-3 text-primary" />
+            <i className="fas fa-car mr-3 text-primary" />
             Carrito de compras
           </h2>
           <p className="well">

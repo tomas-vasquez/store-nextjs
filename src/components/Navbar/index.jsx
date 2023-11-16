@@ -7,7 +7,7 @@ import User from "./User";
 const Navbar = ({ categories }) => {
   return (
     <>
-      <nav className="navbar bg-body-tertiary mt-3">
+      <nav className="navbar  mt-3">
         <div className="container-fluid">
           <Link className="navbar-brand logo m-0" href="/">
             <h1 className="text-dark">

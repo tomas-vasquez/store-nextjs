@@ -38,6 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(props) {
+  console.log("loaded categories............");
   let categories = await getAllCategoriesAsync();
   let products = await getAllProducts();
 

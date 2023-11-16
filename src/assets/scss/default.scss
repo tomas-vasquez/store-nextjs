@@ -28,8 +28,8 @@ $breadcrumb-bg:				transparent;
 $input-group-addon-bg:		transparent;
 
 
-$primary: #6950df;
-$secondary: #5065df;
+$primary: #3c67b3;
+$secondary: #3c67b3;
 $success: #58d666;
 $info: #50badf;
 $warning: #df8750;
@@ -324,26 +324,36 @@ $carousel-control-next-icon-bg:     str-replace(url("data:image/svg+xml;charset=
 	color:$brand-primary;
 	font-size:1.03rem;
 	outline:none;
-	
-	&.active
-	{
+
+	&:hover {
 		font-weight:bold;
 		position:relative;
+
 		
-		&::after
-		{
-			content:"";
-			width:15px;
-			height:8px;
-			background-color:#fff;
-			background-image: $arrow-up;
-			background-repeat:no-repeat;
-			background-size:100%;
-			position:absolute;
-			left:50%;
-			bottom:-1px;
-		}
-	}
+		left:50%;
+		bottom:-1px;
+		
+	  }
+	// &.active
+	// {
+	// 	font-weight:bold;
+	// 	position:relative;
+		
+	// 	&::after
+	// 	{
+	// 		content:"";
+	// 		width:15px;
+	// 		height:8px;
+	// 		background-color:#fff;
+	// 		background-image: $arrow-up;
+	// 		background-repeat:no-repeat;
+	// 		background-size:100%;
+	// 		position:absolute;
+	// 		left:50%;
+	// 		bottom:-1px;
+	// 	}
+	// }
+	
 }
 
 

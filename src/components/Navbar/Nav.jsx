@@ -8,9 +8,9 @@ import {
 } from "reactstrap";
 import { getShortLink } from "../../utils/fetcher";
 
-// import { categories } from "../../../site.data";
+import { navbar } from "../../../site.config";
 
-export default function Nav({ categories }) {
+export default function Nav({ categories = [] }) {
   const [openDropdownCategories, setOpenDropdownCategories] = useState(false);
   const toggle = () => setOpenDropdownCategories(!openDropdownCategories);
 
@@ -48,33 +48,14 @@ export default function Nav({ categories }) {
               </DropdownMenu>
             </ButtonDropdown>
           </li>
-          <li className="nav-item ml-3">
-            <Link href="/" className="nav-link">
-              Inicio
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" href="#">
-              Lista de deseos
-            </Link>
-          </li>
 
-          <li className="nav-item">
-            <Link className="nav-link" href="#">
-              preguntas?
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link " href="/">
-              Acerca de
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" href="#">
-              Contactanos
-            </Link>
-          </li>
+          {navbar.map((item) => (
+            <li className="nav-item ml-3" key={item.title}>
+              <Link href={item.url} className="nav-link">
+                {item.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="thickline"></div>
