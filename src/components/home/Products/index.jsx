@@ -6,7 +6,7 @@ export default function index({ products }) {
     <>
       <div className="row">
         {products.map((product, index) => (
-          <div key={index} className="col-6 col-md-3 mb-5">
+          <div key={product.name} className="col-6 col-md-3 mb-5">
             <Product product={product} />
           </div>
         ))}

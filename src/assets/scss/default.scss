@@ -685,3 +685,28 @@ section.parallax.white div > .container > .btn {
     height: 100%;
   }
 }
+
+.busqueda-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#busqueda-input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+}
+
+#buscar-btn {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 0 5px 5px 0;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#buscar-btn:hover {
+  background-color: #0056b3;
+}

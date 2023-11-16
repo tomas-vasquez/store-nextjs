@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { revert_getShortLink } from "../../utils/fetcher";
 
 export default function Header({ title, subtitle }) {
   const router = useRouter();
@@ -28,7 +29,7 @@ export default function Header({ title, subtitle }) {
             return (
               <span key={index}>
                 <Link className="text-white" href={path}>
-                  {segment}
+                  {revert_getShortLink(segment)}
                 </Link>
                 {index < pathSegments.length - 1 && <span> / </span>}
               </span>

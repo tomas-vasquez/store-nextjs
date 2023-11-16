@@ -22,16 +22,16 @@ const navbar = [
     url: "/whiteList",
   },
   {
+    title: "Buscar...",
+    url: "/search?word=Arduino",
+  },
+  {
     title: "Preguntas frecuentes",
     url: "/content/preguntas",
   },
   {
     title: "Acerca de...",
     url: "/content/about",
-  },
-  {
-    title: "Contacto",
-    url: "/contacto",
   },
 ];
 const banner = [
